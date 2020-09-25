@@ -1,13 +1,15 @@
+using ScoreImageGenerator.Helpers;
+
 namespace ScoreImageGenerator
 {
     public class BestScoreImage: IImageGenerator
     {
-        string _username;
-        int _limit;
-        public BestScoreImage(string username, int limit)
+        User _user;
+        Score _score;
+        public BestScoreImage(User user, Score score)
         {
-            _username = username;
-            _limit = limit;
+            _user = user;
+            _score = score;
         }
         public void Generate()
         {

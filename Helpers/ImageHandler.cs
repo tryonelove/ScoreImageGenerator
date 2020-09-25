@@ -1,3 +1,5 @@
+using ScoreImageGenerator.Helpers;
+
 namespace ScoreImageGenerator
 {
     public class ImageHandler
@@ -15,12 +17,18 @@ namespace ScoreImageGenerator
         public void GetImage()
         {
             IImageGenerator imageGenerator = null;
+
+            User user = new User();
+            user.Username = _username;
+
+            Score score = new Score();
+
             switch(_scoreType)
             {
                 case ScoreType.Best: 
-                    imageGenerator = new BestScoreImage(_username, _limit); break;
+                    imageGenerator = new BestScoreImage(user, score); break;
                 case ScoreType.Last: 
-                    imageGenerator = new RecentScoreImage(_username, _limit); break;
+                    imageGenerator = new RecentScoreImage(user, score); break;
             }
             imageGenerator?.Generate();
             return;            
