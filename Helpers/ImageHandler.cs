@@ -7,16 +7,16 @@ namespace ScoreImageGenerator
         string _username;
         int _limit;
         ScoreType _scoreType;
-        public ImageHandler(string username, int limit, ScoreType scoreType)
+        public ImageHandler(string username, int limit, int scoreType)
         {
             _username = username;
             _limit = limit;
-            _scoreType = scoreType;
+            _scoreType = (ScoreType)scoreType;
         }
 
         public void GetImage()
         {
-            IImageGenerator imageGenerator = null;
+            ImageGenerator imageGenerator = null;
 
             User user = new User();
             user.Username = _username;

@@ -1,19 +1,14 @@
+using System;
 using ScoreImageGenerator.Helpers;
 
 namespace ScoreImageGenerator
 {
-    public class BestScoreImage: IImageGenerator
+    public class BestScoreImage : ImageGenerator
     {
-        User _user;
-        Score _score;
         public BestScoreImage(User user, Score score)
+         : base(user, score, ScoreType.Best)
         {
-            _user = user;
-            _score = score;
-        }
-        public void Generate()
-        {
-            return;
+            Console.WriteLine("Best score");
         }
     }
 }
