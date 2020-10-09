@@ -1,5 +1,6 @@
 using System;
 using ScoreImageGenerator.Helpers;
+using SixLabors.Fonts;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -43,8 +44,11 @@ namespace ScoreImageGenerator.Helpers
 
         void DrawBeatmapTitle()
         {
-            Utils.DrawText(_image, $"{_score.Beatmap.Title} [{_score.Beatmap.DiffName}]", 15, new Point(313, 60));
-            Utils.DrawText(_image, $"mapped by {_score.Beatmap.Creator}", 15, new Point(313, 101));
+            FontCollection collection = new FontCollection();
+            FontFamily family = collection.Install($"./Fonts/{Roboto.Medium}");
+            Font font = family.CreateFont(size: 15);
+            Utils.DrawText(_image, $"{_score.Beatmap.Title} [{_score.Beatmap.DiffName}]", font, Color.White, new Point(313, 60));
+            Utils.DrawText(_image, $"mapped by {_score.Beatmap.Creator}", font, Color.White, new Point(313, 101));
         }
 
         public void Generate()
@@ -54,7 +58,6 @@ namespace ScoreImageGenerator.Helpers
             DrawUserStats();
             _image.SaveAsPng("template.png");
             _image.Dispose();
-            return;
         }
     }
 }

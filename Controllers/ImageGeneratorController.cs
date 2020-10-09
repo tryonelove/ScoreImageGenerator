@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ScoreImageGenerator.Helpers;
@@ -18,7 +19,9 @@ namespace ScoreImageGenerator.Controllers
             Console.WriteLine($"Type: {type}");
             ImageHandler handler = new ImageHandler(username, limit, type);
             handler.GetImage();
-            return PhysicalFile("/home/tryonelove/Documents/ScoreImageGenerator/template.png", "image/png");
+            string pwd = Directory.GetCurrentDirectory();
+            string filePath = Path.Combine(pwd, "template.png");
+            return PhysicalFile(filePath, "image/png");
         }
     }
 }
