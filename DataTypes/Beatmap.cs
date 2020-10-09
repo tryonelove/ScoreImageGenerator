@@ -17,7 +17,8 @@ namespace ScoreImageGenerator.Helpers
         // Max beatmap combo
         public int MaxCombo { get; set; }
         // Full combo PP
-        public int PP { get; set; }
-
+        public float PP { get; set; }
+        // Beatmap creator
+        public string Creator { get; set; }
     }
 }

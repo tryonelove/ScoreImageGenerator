@@ -1,7 +1,7 @@
 using System;
 using ScoreImageGenerator.Helpers;
 
-namespace ScoreImageGenerator
+namespace ScoreImageGenerator.Helpers
 {
     public class BestScoreImage : ImageGenerator
     {

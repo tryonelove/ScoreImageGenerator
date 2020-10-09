@@ -6,7 +6,7 @@ using ScoreImageGenerator.Helpers;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
-namespace ScoreImageGenerator
+namespace ScoreImageGenerator.Helpers
 {
     public class RecentScoreImage : ImageGenerator
     {
