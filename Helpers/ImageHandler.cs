@@ -1,4 +1,7 @@
-using ScoreImageGenerator.Helpers;
+using ScoreImageGenerator.Helpers.API.Responses;
+using ScoreImageGenerator.Helpers.API;
+using System;
+using System.Threading.Tasks;
 
 namespace ScoreImageGenerator.Helpers
 {

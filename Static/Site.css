@@ -1,0 +1,38 @@
+* {
+    color: #ffffff;
+}
+*:focus {
+    outline: none;
+}
+
+body {
+    background-color: #1C1C1C;
+}
+
+header {
+    font-family: 'Roboto', sans-serif;
+}
+
+.title {
+    font-size: 60px;
+}
+
+.username-text, .mode-text {
+    font-size: 41px;
+}
+
+.username-input {
+    background-color: transparent;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+.username-input:focus {
+    background-color: transparent;
+    border: 2px solid #fff;
+    outline: none;
+}
+
+.settings-form {
+    padding-top: 40px;
+}

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,8 +27,8 @@ namespace ScoreImageGenerator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddControllersWithViews();
-            services.AddMvc();
+            services.AddControllersWithViews();
+            // services.AddMvc();
             // services.AddImageSharp();
         }
 
@@ -39,9 +41,13 @@ namespace ScoreImageGenerator
             }
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(env.ContentRootPath, "Static")),
+                RequestPath = "/static"
+            });
             app.UseRouting();
-
             app.UseAuthorization();
 
             // app.UseImageSharp();

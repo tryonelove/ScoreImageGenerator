@@ -14,11 +14,18 @@ namespace ScoreImageGenerator.Helpers
         public float AR { get; set; }
         // Health point
         public float HP { get; set; }
+        // Overall difficulty
+        public float OD { get; set; }
         // Max beatmap combo
         public int MaxCombo { get; set; }
         // Full combo PP
         public float PP { get; set; }
         // Beatmap creator
         public string Creator { get; set; }
+        // Song BPM
+        public float BPM { get; set; }
+        // Stars
+        public float Stars { get; set; }
+        public int Length { get; set; }
     }
 }
