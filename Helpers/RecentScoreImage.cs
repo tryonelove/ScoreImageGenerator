@@ -11,7 +11,7 @@ namespace ScoreImageGenerator.Helpers
     public class RecentScoreImage : ImageGenerator
     {
         public RecentScoreImage(User user, Score score)
-         : base(user, score, ScoreType.Last)
+         : base(user, score, ScoreType.Recent)
         {
             Console.WriteLine("Recent score");
         }

@@ -55,7 +55,7 @@ namespace ScoreImageGenerator.Helpers
             {
                 case ScoreType.Best: 
                     imageGenerator = new BestScoreImage(user, score); break;
-                case ScoreType.Last: 
+                case ScoreType.Recent: 
                     imageGenerator = new RecentScoreImage(user, score); break;
             }
             imageGenerator?.Generate();
