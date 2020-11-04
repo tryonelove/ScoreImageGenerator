@@ -15,7 +15,7 @@ namespace ScoreImageGenerator
             var username = context.Request.Query["username"];
             var scoreType = int.Parse(context.Request.Query["type"]);
             var limit = int.Parse(context.Request.Query["limit"]);
-            if(scoreType != (int)ScoreType.Best || scoreType != (int)ScoreType.Last)
+            if(scoreType != (int)ScoreType.Best || scoreType != (int)ScoreType.Recent)
             {
                 context.Response.StatusCode = 404;
             }

@@ -1,5 +1,6 @@
 * {
     color: #ffffff;
+    font-family: 'Roboto', sans-serif;
 }
 *:focus {
     outline: none;
@@ -10,7 +11,7 @@ body {
 }
 
 header {
-    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 
 .title {
@@ -26,12 +27,14 @@ header {
     background-color: transparent;
     border: 2px solid;
     border-radius: 10px;
+    transition: 0.3s;
 }
 
 .username-input:focus {
     background-color: transparent;
     border: 2px solid #fff;
-    outline: none;
+    color: #c4c4c4;
+    box-shadow: none;
 }
 
 .settings-form {
@@ -46,6 +49,12 @@ header {
     display: inline-block;
     cursor: pointer;
     padding: 19px;
+    text-align: center;
+}
+
+.mode:focus {
+    background-color: #e1e1e110;
+    box-shadow: none;
 }
 
 ul.mode-block li img {
@@ -54,4 +63,22 @@ ul.mode-block li img {
 
 .preview {
     width: 500px;
+}
+
+.mode span {
+    display: block;
+    margin-top: 5px;
+}
+
+#generate-button {
+    margin-top: 50px;
+    background-color: transparent;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+#generate-button:hover {
+    color: #1C1C1C;
+    background-color: #E5E5E5;
 }

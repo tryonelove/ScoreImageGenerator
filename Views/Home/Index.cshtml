@@ -15,56 +15,59 @@
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <div class="row justify-content-center">
-        <h1 class="col-12 text-center title">Score Image Generator</h1>
-      </div>
-    </header>
-    <form>
-      <div class="col-md-4 offset-md-4 justify-content-center settings-form">
-        <div class="username-block">
-          <div class="text-center username-text">Username</div>
-          <input type="text" class="form-control username-input" placeholder="Username"aria-describedby="Username">
-        </div>
-      </div>
-      <div class="modes">
-        <div class="text-center mode-text">Mode</div>
-        <div class="row justify-content-center">
-          <ul class="mode-block">
-            <li class="mode std">
-              <img src="~/Static/mode-icons/std.png">
-              <span>osu!</span>
-            </li>
-            <li class="mode taiko">
-              <img src="~/Static/mode-icons/taiko.png">
-              <span>taiko</span>
-            </li>
-            <li class="mode ctb">
-              <img src="~/Static/mode-icons/catch.png">
-              <span>ctb</span>
-            </li>
-            <li class="mode mania">
-              <img src="~/Static/mode-icons/mania.png">
-              <span>taiko</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <button class="col-md-2 offset-md-5 btn btn-primary" type="submit">Generate</button>
-    </form>
-    <div class="offset-md-3 preview-area">
-      <img class="preview" src="/score?username=tryonelove&limit=5&type=1"
+<div class="container">
+  <header>
+    <div class="row justify-content-center">
+      <h1 class="col-12 text-center title">Score Image Generator</h1>
     </div>
+  </header>
+  <form>
+    <div class="settings-form">
+      <div class="row username-block">
+        <div class="col-12 col-md-4 offset-md-4 text-center username-text">Username</div>
+        <input name="username" type="text" class="col-12 col-md-4 offset-md-4 form-control username-input" placeholder="Username"aria-describedby="Username">
+      </div>
+    </div>
+  <div class="row justify-content-center modes">
+        <div class="col text-center mode-text">
+          Mode
+        </div>
+        <div class="w-100"></div>
+        <div class="btn-group mode-block" role="group">
+          <button type="button" class="btn mode std">
+            <img src="~/Static/mode-icons/std.png" alt="">
+            <span>osu!</span>
+          </button>
+          <button type="button" class="btn mode taiko">
+            <img src="~/Static/mode-icons/taiko.png" alt="">
+            <span>taiko</span>
+          </button>
+          <button type="button" class="btn mode ctb">
+            <img src="~/Static/mode-icons/catch.png" alt="">
+            <span>ctb</span>
+          </button>
+          <button type="button" class="btn mode mania">
+            <img src="~/Static/mode-icons/mania.png" alt="">
+            <span>taiko</span>
+          </button>
+        </div>
+        </div>
+    <div class="row">
+      <button id="generate-button" class="col-12 col-md-2 offset-md-5 text-center btn btn-primary" type="submit">Generate</button>
+    </div>
+  </form>
+  <div class="text-center preview-area">
+    <img class="preview" src="/score?username=tryonelove&limit=5&type=1" alt="">
   </div>
-  </div>
-  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+</div>
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-    crossorigin="anonymous"></script>
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+  <script src="~/Static/js/app.js"></script>
 </body>
 
 </html>
