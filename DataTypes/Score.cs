@@ -2,6 +2,7 @@ namespace ScoreImageGenerator.Helpers
 {
     public class Score
     {
+        public int Mode { get; set; }
         // Achieved score value
         public int ScoreValue { get; set;}
         // Enabled mods
@@ -16,7 +17,8 @@ namespace ScoreImageGenerator.Helpers
         public int Count50 { get; set; }
         // Count misss
         public int CountMiss { get; set; }
-        public float Accuracy { get; set; }
+        // Accuracy
+        public float Accuracy { get ; set; }
         // Achieved combo
         public int Combo { get; set; }
         // Beatmap stats

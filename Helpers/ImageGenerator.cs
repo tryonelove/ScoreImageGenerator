@@ -13,6 +13,7 @@ namespace ScoreImageGenerator.Helpers
         ScoreType _scoreType;
         int _limit;
         Score _score;
+        delegate void Drawer(FontFamily family);
         public ImageGenerator(User user, Score score, ScoreType scoreType)
         {
             _user = user;
@@ -103,14 +104,18 @@ namespace ScoreImageGenerator.Helpers
 
         public void Generate()
         {
+            Drawer draw = null;
             FontCollection collection = new FontCollection();
             FontFamily family = collection.Install($"./Fonts/{Roboto.Medium}");
             // Rendering background and templates for score stats
             CreateTemplate();
+            
             // Drawing data on the image
-            DrawBeatmapStats(family);
-            DrawUserStats(family);
-            DrawScoreStats(family);
+            draw+=DrawBeatmapStats;
+            draw+=DrawUserStats;
+            draw+=DrawScoreStats;            
+            draw?.Invoke(family);
+
             _image.SaveAsPng("template.png");
             _image.Dispose();
         }

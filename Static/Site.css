@@ -1,0 +1,57 @@
+* {
+    color: #ffffff;
+}
+*:focus {
+    outline: none;
+}
+
+body {
+    background-color: #1C1C1C;
+}
+
+header {
+    font-family: 'Roboto', sans-serif;
+}
+
+.title {
+    font-size: 60px;
+    padding-top: 20px;
+}
+
+.username-text, .mode-text {
+    font-size: 41px;
+}
+
+.username-input {
+    background-color: transparent;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+.username-input:focus {
+    background-color: transparent;
+    border: 2px solid #fff;
+    outline: none;
+}
+
+.settings-form {
+    margin-top: 30px;
+}
+
+.modes {
+    margin-top: 30px;
+}
+
+.mode {
+    display: inline-block;
+    cursor: pointer;
+    padding: 19px;
+}
+
+ul.mode-block li img {
+    display: block;
+}
+
+.preview {
+    width: 500px;
+}
