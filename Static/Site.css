@@ -45,6 +45,7 @@ header {
     margin-top: 30px;
 }
 
+
 .mode {
     display: inline-block;
     cursor: pointer;
@@ -52,7 +53,7 @@ header {
     text-align: center;
 }
 
-.mode:focus {
+.selected {
     background-color: #e1e1e110;
     box-shadow: none;
 }
@@ -62,7 +63,8 @@ ul.mode-block li img {
 }
 
 .preview {
-    width: 500px;
+    max-width:100%;
+    max-height:100%;
 }
 
 .mode span {
@@ -72,13 +74,40 @@ ul.mode-block li img {
 
 #generate-button {
     margin-top: 50px;
+}
+
+.default-button {
     background-color: transparent;
     border: 1px solid #E5E5E5;
+    color: #E5E5E5;
     border-radius: 10px;
     transition: 0.3s;
 }
 
-#generate-button:hover {
-    color: #1C1C1C;
+.default-button:hover  {
+    color: #1c1c1c;
     background-color: #E5E5E5;
+}
+
+.default-button:focus {
+    box-shadow: none;
+}
+
+.type-block {
+    margin-top: 30px;
+}
+
+.type {
+    width: 100%;
+}
+
+.type:focus {
+    background-color: #E5E5E5;
+    color: #1c1c1c;
+}
+
+.selected-button {
+    background-color: #E5E5E5;
+    color: #1c1c1c;
+    transition: 0.3s;
 }

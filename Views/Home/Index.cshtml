@@ -22,44 +22,58 @@
     </div>
   </header>
   <form>
-    <div class="settings-form">
+    <div class="form-group settings-form">
       <div class="row username-block">
         <div class="col-12 col-md-4 offset-md-4 text-center username-text">Username</div>
-        <input name="username" type="text" class="col-12 col-md-4 offset-md-4 form-control username-input" placeholder="Username"aria-describedby="Username">
+        <input name="username" type="text" class="col-12 col-md-4 offset-md-4 form-control username-input" placeholder="Username" aria-describedby="Username">
       </div>
     </div>
-  <div class="row justify-content-center modes">
+    <fieldset id="modes">
+      <div class="row justify-content-center modes"  role="group">
         <div class="col text-center mode-text">
           Mode
         </div>
         <div class="w-100"></div>
-        <div class="btn-group mode-block" role="group">
-          <button type="button" class="btn mode std">
+        <div class="btn-group mode-block">
+          <label class="btn mode std">
             <img src="~/Static/mode-icons/std.png" alt="">
             <span>osu!</span>
-          </button>
-          <button type="button" class="btn mode taiko">
+          </label>
+          <label class="btn mode taiko">
             <img src="~/Static/mode-icons/taiko.png" alt="">
             <span>taiko</span>
-          </button>
-          <button type="button" class="btn mode ctb">
+          </label>
+          <label class="btn mode ctb">
             <img src="~/Static/mode-icons/catch.png" alt="">
             <span>ctb</span>
-          </button>
-          <button type="button" class="btn mode mania">
+          </label>
+          <label class="btn mode mania">
             <img src="~/Static/mode-icons/mania.png" alt="">
-            <span>taiko</span>
-          </button>
+            <span>mania</span>
+          </label>
         </div>
-        </div>
+      </div>
+    </fieldset>
+    <fieldset id="types">
+          <div class="type-block">
+            <div class="row justify-content-center" role="group">
+              <div class="col-6 col-md-2">
+                <label class="col-md-12 btn default-button type recent">Recent</label>
+              </div>
+            <div class="col-6 col-md-2">
+               <label class="col-md-12 btn default-button type best">Best</label>
+            </div>
+          </div>
+      </div>
+    </fieldset>
     <div class="row">
-      <button id="generate-button" class="col-12 col-md-2 offset-md-5 text-center btn btn-primary" type="submit">Generate</button>
+      <a href="#" id="generate-button" class="col-12 col-md-2 offset-md-5 text-center btn default-button">Generate</a>
     </div>
   </form>
-  <div class="text-center preview-area">
-    <img class="preview" src="/score?username=tryonelove&limit=5&type=1" alt="">
+  <div id="previewarea" class="row justify-content-center">
+    <img src="/score?username=tryonelove&limit=1&type=1" class="preview lazy" alt=""/>
+    </div>
   </div>
-</div>
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
