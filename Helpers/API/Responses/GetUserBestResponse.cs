@@ -1,13 +1,16 @@
-using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace ScoreImageGenerator.Helpers.API.Responses
 {
-    public class GetUserRecent
+    public class GetUserBest
     {
         [JsonPropertyName("beatmap_id")]
         public string BeatmapId { get; set; } 
+
+        [JsonPropertyName("score_id")]
+        public string ScoreId { get; set; } 
 
         [JsonPropertyName("score")]
         public string Score { get; set; } 
@@ -47,5 +50,11 @@ namespace ScoreImageGenerator.Helpers.API.Responses
 
         [JsonPropertyName("rank")]
         public string Rank { get; set; } 
+
+        [JsonPropertyName("pp")]
+        public string PP { get; set; } 
+
+        [JsonPropertyName("replay_available")]
+        public string ReplayAvailable { get; set; }
     }
 }
