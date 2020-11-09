@@ -1,68 +1,88 @@
+using System.Collections.Generic;
+using System.IO;
 using ScoreImageGenerator.Helpers.API.Responses;
 using ScoreImageGenerator.Helpers.API;
-using System;
-using System.Threading.Tasks;
+using ScoreImageGenerator.Objects;
+using SixLabors.ImageSharp;
 
 namespace ScoreImageGenerator.Helpers
 {
     public class ImageHandler
     {
-        string _username;
-        int _limit;
-        ScoreType _scoreType;
-        public ImageHandler(string username, int limit, int scoreType)
+        private readonly string _username;
+        private readonly int _limit;
+        private readonly int _mode;
+        private readonly ScoreType _scoreType;
+
+        public ImageHandler(string username, int limit, int mode, int scoreType)
         {
             _username = username;
             _limit = limit;
-            _scoreType = (ScoreType)scoreType;
+            _mode = mode;
+            _scoreType = (ScoreType) scoreType;
         }
 
-        public void GetImage()
+        private Score GetBestScore(User user)
         {
-            ImageGenerator imageGenerator = null;
-
-            User user = new User();
-            user.Username = _username;
-            user.Rank = 1488;
-            user.PP = 7222.22f;
-            Score score = new Score();
-            Beatmap bmap = new Beatmap();
+            var userRequest = new GetUserBestRequest(user.Username, OsuMode.Standard, 0);
+            var userBestResponses = userRequest.PerformAsync().Result;
+            GetUserBestResponse resp = userBestResponses[0];
             
-            // Set bmap stats
-            bmap.AR = 5;
-            bmap.CS = 5;
-            bmap.DiffName = "Bright & Cheerful";
-            bmap.HP = 5;
-            bmap.OD = 5;
-            bmap.Id = 3228;
-            bmap.MaxCombo = 322;
-            bmap.PP = 3222.01f;
-            bmap.Title = "mimimemeMIMI - Harebare Fanfare";
-            bmap.Creator = "Luna-";
-            bmap.BPM = 322.22f;
-            bmap.Stars = 7.71f;
-            bmap.Length = 300;
-            // Set score
-            score.Count300 = 300;
-            score.Count100 = 100;
-            score.Count50 = 50;
-            score.CountMiss = 0;
-            score.Mods = 72;
-            score.PP = 320.01f;
-            score.Rank = "A";
-            score.Accuracy = 98.98f;
-            score.ScoreValue = 1337322;
-            score.Beatmap = bmap;
+            var bmapRequest = new GetBeatmapsRequest(b: int.Parse(resp.BeatmapId), limit: 1);
+            var bmapResponse = bmapRequest.PerformAsync().Result;
+            Beatmap bmap = new Beatmap(bmapResponse[0]);
+            bmap.BackgroundImage = Utils.GetBeatmapBackground(bmap.BeatmapSetId);
 
-            switch(_scoreType)
+            return new Score(resp, bmap);
+        }
+
+        private Score GetRecentScore(User user)
+        {
+            var request = new GetUserRecentRequest(user.Username, OsuMode.Standard, 0);
+            var response = request.PerformAsync().Result;
+            GetUserRecentResponse resp = response[0];
+            
+            var bmapRequest = new GetBeatmapsRequest(b: int.Parse(resp.BeatmapId), limit: 1);
+            var bmapResponse = bmapRequest.PerformAsync().Result;
+            Beatmap bmap = new Beatmap(bmapResponse[0]);
+            bmap.BackgroundImage = Utils.GetBeatmapBackground(bmap.BeatmapSetId);
+            return new Score(resp, bmap);
+        }
+
+        private User GetUser(string username, int m = 0)
+        {
+            var request = new GetUserRequest(username, m);
+            var response = request.PerformAsync().Result;
+            GetUserResponse resp = response[0];
+            User user = new User(resp);
+            user.Avatar = Utils.GetUserAvatar(resp.UserId);
+            
+            return user;
+        }
+        
+        public byte[] GetImage()
+        {
+            var user = GetUser(_username, _mode);
+            var score = _scoreType switch
             {
-                case ScoreType.Best: 
-                    imageGenerator = new BestScoreImage(user, score); break;
-                case ScoreType.Recent: 
-                    imageGenerator = new RecentScoreImage(user, score); break;
-            }
-            imageGenerator?.Generate();
-            return;            
+                ScoreType.Best => GetBestScore(user),
+                ScoreType.Recent => GetRecentScore(user),
+                _ => null
+            };
+
+            ImageGenerator imageGenerator = _scoreType switch
+            {
+                ScoreType.Best => new BestScoreImage(user, score),
+                ScoreType.Recent => new RecentScoreImage(user, score),
+                _ => null
+            };
+
+            Image image = imageGenerator?.Generate();
+            using var ms = new MemoryStream();
+            image.SaveAsPng(ms);
+            var imageArray = ms.GetBuffer();
+            
+            return imageArray;
         }
     }
 }

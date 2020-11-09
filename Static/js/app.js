@@ -1,12 +1,9 @@
 $(function(){
     let type = 0;
     let mode = 0;
-    let lc = 0;
     
     function reloadSig() {
-        if (new Date().getTime() >= lc + 500) {
-            lc = new Date().getTime();
-
+            console.log("Reloading sig.");
             let url = "score?";
 
             url += "&username=" + encodeURIComponent(($("input[name=username]").val() || "tryonelove"));
@@ -22,7 +19,6 @@ $(function(){
             });
 
             $("#previewarea").append(newImage);
-        }
     }
 
     $("#generate-button").click(function(e) {
@@ -42,7 +38,8 @@ $(function(){
     });
 
     $(".type-block .type").on("click", function(){
-        switch (this.classList[3]) {
+        console.log(this.classList)
+        switch (this.classList[4]) {
             case "recent": type = 0; break;
             case "best": type = 1; break;
         }

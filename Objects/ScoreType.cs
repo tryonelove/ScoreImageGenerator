@@ -1,4 +1,4 @@
-namespace ScoreImageGenerator
+namespace ScoreImageGenerator.Objects
 {
     public enum ScoreType
     {

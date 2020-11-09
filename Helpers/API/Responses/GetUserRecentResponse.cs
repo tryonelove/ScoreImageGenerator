@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace ScoreImageGenerator.Helpers.API.Responses
 {
-    public class GetUserRecent
+    public class GetUserRecentResponse
     {
         [JsonPropertyName("beatmap_id")]
         public string BeatmapId { get; set; } 

@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ScoreImageGenerator.Helpers;
@@ -21,14 +19,12 @@ namespace ScoreImageGenerator.Controllers
         
         [HttpPost]
         [HttpGet]
-        public IActionResult Get(string username, int limit, int type)
+        public IActionResult Get(string username, int mode, int limit, int type)
         {
-            _logger.LogInformation($"Username: {username} | Limit: {limit} | Type: {type}");
-            ImageHandler handler = new ImageHandler(username, limit, type);
-            handler.GetImage();
-            string pwd = Directory.GetCurrentDirectory();
-            string filePath = Path.Combine(pwd, "template.png");
-            return PhysicalFile(filePath, "image/png");
+            _logger.LogInformation($"Username: {username} | Mode: {mode} | Limit: {limit} | Type: {type}");
+            ImageHandler handler = new ImageHandler(username, limit, mode, type);
+            var image = handler.GetImage();
+            return File(image, "image/png");
         }
     }
 }

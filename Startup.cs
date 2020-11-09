@@ -28,8 +28,6 @@ namespace ScoreImageGenerator
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            // services.AddMvc();
-            // services.AddImageSharp();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,7 +46,6 @@ namespace ScoreImageGenerator
                 RequestPath = "/static"
             });
             app.UseRouting();
-            app.UseAuthorization();
 
             // app.UseImageSharp();
             app.UseEndpoints(endpoints =>

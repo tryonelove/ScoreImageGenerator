@@ -2,10 +2,10 @@ using System.Text.Json.Serialization;
 
 namespace ScoreImageGenerator.Helpers.API.Responses
 {
-    public class GetBeatmaps
+    public class GetBeatmapsResponse
     {
-        [JsonPropertyName("beatmapset_id")]
-        public string BeatmapSetId { get; set; } 
+       [JsonPropertyName("beatmapset_id")]
+        public string BeatmapsetId { get; set; } 
 
         [JsonPropertyName("beatmap_id")]
         public string BeatmapId { get; set; } 
@@ -77,7 +77,7 @@ namespace ScoreImageGenerator.Helpers.API.Responses
         public string CreatorId { get; set; } 
 
         [JsonPropertyName("bpm")]
-        public string BPM { get; set; } 
+        public string Bpm { get; set; } 
 
         [JsonPropertyName("source")]
         public string Source { get; set; } 
@@ -125,11 +125,9 @@ namespace ScoreImageGenerator.Helpers.API.Responses
         public string DiffAim { get; set; } 
 
         [JsonPropertyName("diff_speed")]
-        public string DiffSpeed { get; set; } 
+        public string DiffSpeed { get; set; }
 
-        [JsonPropertyName("difficultyrating")]
+        [JsonPropertyName("difficultyrating")] 
         public string DifficultyRating { get; set; }
-
-        public string Endpoint = "get_beatmaps";
     }
 }

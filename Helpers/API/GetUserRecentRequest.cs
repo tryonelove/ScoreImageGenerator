@@ -1,30 +1,34 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using ScoreImageGenerator.Helpers.API.Responses;
+using ScoreImageGenerator.Objects;
 
 namespace ScoreImageGenerator.Helpers.API
 {
-    public class GetUserRecent : IRequest<GetUserRecentResponse>
+    public class GetUserRecentRequest : Request<GetUserRecentResponse>
     {
-        public string Endpoint => "get_user_recent";
+        protected override string Endpoint => "get_user_recent";
 
         private readonly string _username;
-        private readonly string _mode;
-        private readonly string _limit;
+        private readonly int _mode;
+        private readonly int _limit;
 
-        public GetUserRecent(string username, string mode, string limit)
+        public GetUserRecentRequest(string username, OsuMode mode, int limit)
         {
             _username = username;
-            _mode = mode;
+            _mode = (int)mode;
             _limit = limit;
         }
         
-        public Uri BuildUri()
+        protected override Uri BuildUri()
         {
-            var builder = new UriBuilder("https://osu.ppy.sh/api/" + Endpoint);
+            var builder = Builder;
             var parameters = HttpUtility.ParseQueryString(string.Empty);
             parameters["k"] = Environment.GetEnvironmentVariable("OSU_API_KEY");
             parameters["u"] = _username;
@@ -32,11 +36,6 @@ namespace ScoreImageGenerator.Helpers.API
             parameters["limit"] = _limit.ToString();
             builder.Query = parameters.ToString() ?? string.Empty;
             return builder.Uri;
-        }
-
-        public Task<List<GetUserRecentResponse>> PerformAsync()
-        {
-            
         }
     }
 }

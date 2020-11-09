@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace ScoreImageGenerator.Helpers.API.Responses
 {
-    public class GetUserBest
+    public class GetUserBestResponse
     {
         [JsonPropertyName("beatmap_id")]
         public string BeatmapId { get; set; } 

@@ -1,22 +1,19 @@
 using System;
 using System.Web;
-using ScoreImageGenerator.Objects;
+using ScoreImageGenerator.Helpers.API.Responses;
 
-namespace ScoreImageGenerator.Helpers.API.Responses
+namespace ScoreImageGenerator.Helpers.API
 {
-    public class GetUserBestRequest : Request<GetUserBestResponse>
+    public class GetUserRequest : Request<GetUserResponse>
     {
-        protected override string Endpoint => "get_user_best";
-
+        protected override string Endpoint => "get_user";
         private readonly string _username;
         private readonly int _mode;
-        private readonly int _limit;
-
-        public GetUserBestRequest(string username, OsuMode mode, int limit)
+        
+        public GetUserRequest(string u, int m = 0)
         {
-            _username = username;
-            _mode = (int)mode;
-            _limit = limit;
+            _username = u;
+            _mode = m;
         }
         
         protected override Uri BuildUri()
@@ -26,7 +23,6 @@ namespace ScoreImageGenerator.Helpers.API.Responses
             parameters["k"] = Environment.GetEnvironmentVariable("OSU_API_KEY");
             parameters["u"] = _username;
             parameters["m"] = _mode.ToString();
-            parameters["limit"] = _limit.ToString();
             builder.Query = parameters.ToString() ?? string.Empty;
             return builder.Uri;
         }
