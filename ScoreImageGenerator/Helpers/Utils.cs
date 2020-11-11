@@ -1,11 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Text;
 using ScoreImageGenerator.Extensions;
 using ScoreImageGenerator.Objects;
 using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 
 namespace ScoreImageGenerator.Helpers
@@ -46,28 +45,27 @@ namespace ScoreImageGenerator.Helpers
             }
         }
 
-        public static string GetStringModsRepr(int mods)
+        public static List<string> GetModsList(int mods)
         {
-            string strMods = string.Empty;
+            List<string> strMods = new List<string>();
             foreach (int mod in Enum.GetValues(typeof(Mods)))
             {
                 if ((mod & mods) == mod)
                 {
-                    strMods += Enum.GetName(typeof(Mods), mod);
+                    strMods.Add(Enum.GetName(typeof(Mods), mod));
                 }
             }
-
-            if (strMods.Length > 2)
-            {
-                return strMods.Replace("NM", "");
-            }
+            
+            strMods.Remove("NM");
 
             if (strMods.Contains("NC") && strMods.Contains("DT"))
             {
-                return strMods.Replace("NC", "");
+                strMods.Remove("NC");
             }
             
             return strMods;
         }
+        
+        
     }
 }

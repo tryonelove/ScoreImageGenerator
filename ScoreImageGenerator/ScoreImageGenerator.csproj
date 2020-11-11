@@ -15,6 +15,25 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="PerformanceCalculator\obj\PerformanceCalculator.csproj.nuget.dgspec.json" />
     <_ContentIncludedByDefault Remove="PerformanceCalculator\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.deps.json" />
+    <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.runtimeconfig.dev.json" />
+    <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.runtimeconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="PerformanceCalculator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="PerformanceCalculator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="PerformanceCalculator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="PerformanceCalculator\**" />
   </ItemGroup>
 
 

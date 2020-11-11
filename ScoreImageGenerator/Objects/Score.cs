@@ -26,7 +26,7 @@ namespace ScoreImageGenerator.Objects
         // Beatmap stats
         public Beatmap Beatmap { get; }
         // PP for the score
-        public float PP { get; }
+        public double PP { get; set;  }
 
         public Score(GetUserBestResponse resp, Beatmap bmap)
         {

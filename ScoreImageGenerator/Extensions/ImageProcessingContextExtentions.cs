@@ -37,6 +37,7 @@ namespace ScoreImageGenerator.Extensions
             {
                 ctx = ctx.Fill(Color.Red, c);
             }
+            
             return ctx;
         }
 

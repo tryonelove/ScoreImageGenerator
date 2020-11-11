@@ -23,9 +23,13 @@
   </header>
   <form>
     <div class="form-group settings-form">
-      <div class="row username-block">
-        <div class="col-12 col-md-4 offset-md-4 text-center username-text">Username</div>
-        <input name="username" type="text" class="col-12 col-md-4 offset-md-4 form-control username-input" placeholder="Username" aria-describedby="Username">
+      <div class="row justify-content-center username-block">
+        <div class="col-12 col-md-8 col-lg-4">
+          <div class="text-center username-text">
+            Username
+          </div>
+          <input name="username" type="text" class="form-control username-input" placeholder="Username" aria-describedby="Username">
+        </div>
       </div>
     </div>
     <fieldset id="modes">
@@ -55,23 +59,26 @@
       </div>
     </fieldset>
     <fieldset id="types">
-          <div class="type-block">
-            <div class="row justify-content-center" role="group">
-              <div class="col-6 col-md-2">
-                <label class="col-md-12 btn default-button type recent selected-button">Recent</label>
-              </div>
-            <div class="col-6 col-md-2">
-               <label class="col-md-12 btn default-button type best">Best</label>
-            </div>
+      <div class="type-block">
+        <div class="row justify-content-center" role="group">
+          <div class="col-6 col-md-4 col-lg-2">
+            <label class="col-md-12 btn default-button type recent">Recent</label>
           </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <label class="col-md-12 btn default-button type best selected-button">Best</label>
+          </div>
+        </div>
       </div>
     </fieldset>
-    <div class="row">
-      <a href="#" id="generate-button" class="col-12 col-md-2 offset-md-5 text-center btn default-button">Generate</a>
+    <div class="row justify-content-center" role="group">  
+      <div class="col-12 col-md-4 col-lg-2">
+        <a href="#" id="generate-button" class="col-12 text-center btn default-button">Generate</a>
+      </div>
     </div>
   </form>
+
   <div id="previewarea" class="row justify-content-center">
-    <img src="/score?username=tryonelove&limit=1&mode=0&type=0" class="preview lazy" alt=""/>
+    <img src="/score?username=tryonelove&limit=1&mode=0&type=1" class="preview lazy col-8" alt=""/>
     </div>
   </div>
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

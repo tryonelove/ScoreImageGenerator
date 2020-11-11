@@ -4,101 +4,56 @@
     <projectFile>PerformanceCalculator/PerformanceCalculator.csproj</projectFile>
     <projectFile>ScoreImageGenerator/ScoreImageGenerator.csproj</projectFile>
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ce45325-fc3d-487c-9268-c395ff5f513e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/contentModel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_4_20,_1_29_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_4_20__1_29_PM__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator.dir/riderModule.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/contentModel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/riderModule.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/Utils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Mods.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-Black.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-BlackItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-BoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-LightItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-MediumItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-Thin.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/fonts/Roboto-ThinItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/usernotfound.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/osu-tools" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/ImageGeneratorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Controllers/ImageGeneratorController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SDS/Use-case.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Use-case.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SDS/Архитектурная стратегия.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Архитектурная стратегия.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SDS/Введение.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Введение.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SDS/Дизайн высокого уровня.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Дизайн высокого уровня.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SDS/Дизайн низкого уровня.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Дизайн низкого уровня.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SDS/Дизайн.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Дизайн.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SDS/Системный обзор.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Системный обзор.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SDS/Спецификация API.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Спецификация API.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SDS/Спецификация взаимодействия со сторонниим сервиса.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Спецификация взаимодействия со сторонниим сервиса.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SRS/Введение.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SRS/Введение.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SRS/Системные требования.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SRS/Системные требования.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/SRS/Требования пользователя.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SRS/Требования пользователя.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/Software Design Specifications.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/Software Design Specifications.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/Software Requirements Specification.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/Software Requirements Specification.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ErrorHandlingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/ErrorHandlingMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Extensions/ImageProcessingContextExtentions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Extensions/ImageProcessingContextExtentions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/API/GetBeatmapsRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetBeatmapsRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/API/GetUserBestRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserBestRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/API/GetUserRecentRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserRecentRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/API/GetUserRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/API/Request.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Request.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/API/Responses/GetBeatmapsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Responses/GetBeatmapsResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/API/Responses/GetUserBestResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Responses/GetUserBestResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/API/Responses/GetUserRecentResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Responses/GetUserRecentResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/API/Responses/GetUserResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Responses/GetUserResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/BestScoreImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/BestScoreImage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/ImageGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/ImageHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/RecentScoreImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/RecentScoreImage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/Roboto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/Roboto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/Utils.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/ImageMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Objects/Beatmap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Beatmap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Objects/OsuMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/OsuMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Objects/Score.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Score.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Objects/ScoreType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/ScoreType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Objects/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Program.cs" afterDir="false" />
+    <list default="true" id="3ce45325-fc3d-487c-9268-c395ff5f513e" name="Default Changelist" comment="Created a solution">
+      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/PpCalculator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/CalculatorResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/ScoreImageGenerator.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Static/Site.css" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/Site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Static/mode-icons/catch.png" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/mode-icons/catch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Static/mode-icons/mania.png" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/mode-icons/mania.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Static/mode-icons/std.png" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/mode-icons/std.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Static/mode-icons/taiko.png" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/mode-icons/taiko.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Use-case.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Архитектурная стратегия.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Введение.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Дизайн высокого уровня.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Дизайн низкого уровня.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Дизайн.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Системный обзор.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Спецификация API.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SDS/Спецификация взаимодействия со сторонниим сервиса.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SRS/Введение.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SRS/Системные требования.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/SRS/Требования пользователя.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/Software Design Specifications.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Documentation/Software Requirements Specification.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Extensions/ImageProcessingContextExtentions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Extensions/ImageProcessingContextExtentions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/Utils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Beatmap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Beatmap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Objects/OsuMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/OsuMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Score.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Score.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/ScoreImageGenerator.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/ScoreImageGenerator.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Views/Home/Index.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +63,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/ScoreImageGenerator/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/osu-tools/PerformanceCalculator/ProcessorCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/osu-tools/PerformanceCalculator/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/osu-tools/PerformanceCalculator/Difficulty/DifficultyCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/osu-tools/PerformanceCalculator/Performance/PerformanceCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/31C6A07D-38C7-4CC4-8F47-E5BD5F9183FD/bf/0a65d192/DeveloperExceptionPageMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -115,6 +78,19 @@
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserRecentRequest.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Responses/GetUserBestResponse.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/.gitignore" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/CalculatePp.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Extensions/ImageProcessingContextExtentions.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/CalculatorResponse.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/Score.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/OsuMode.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/Utils.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Views/Home/Index.cshtml" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Static/js/app.js" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/Beatmap.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Responses/GetBeatmapsResponse.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/PpCalculator.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageGenerator.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs" />
       </list>
     </option>
   </component>
@@ -124,6 +100,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34997287" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30005425" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ScoreImageGenerator/Properties/launchSettings.json" />
@@ -132,24 +110,6 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.ScoreImageGenerator">
-    <configuration name="PerformanceCalculator" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/PerformanceCalculator/PerformanceCalculator.csproj" />
-      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
-      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
     <configuration name="ScoreImageGenerator" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ScoreImageGenerator/ScoreImageGenerator.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.1" />
@@ -180,6 +140,10 @@
         <option name="Build" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.ScoreImageGenerator" />
+      <item itemvalue=".NET Launch Settings Profile.ScoreImageGenerator: IIS Express" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -189,14 +153,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605013410625</updated>
-      <workItem from="1605013412423" duration="318000" />
+      <workItem from="1605013412423" duration="4316000" />
+      <workItem from="1605019588299" duration="812000" />
+      <workItem from="1605032238435" duration="3389000" />
+      <workItem from="1605049694754" duration="946000" />
+      <workItem from="1605101842599" duration="3629000" />
+      <workItem from="1605107404335" duration="4118000" />
     </task>
+    <task id="LOCAL-00001" summary="Created a solution">
+      <created>1605013750720</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605013750720</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -208,18 +185,154 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Created a solution" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a solution" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2338" y="182" width="1084" height="710" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605032302456">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2338" y="182" width="1084" height="710" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605032302456" />
+    <state width="466" height="505" key="DebuggerActiveHint" timestamp="1605109172230">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="466" height="505" key="DebuggerActiveHint/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605109172230" />
     <state x="2664" y="283" key="FileChooserDialogImpl" timestamp="1605013675014">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2664" y="283" key="FileChooserDialogImpl/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605013675014" />
+    <state width="1874" height="273" key="GridCell.Tab.0.bottom" timestamp="1605111142406">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="273" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605111142406" />
+    <state width="1874" height="273" key="GridCell.Tab.0.center" timestamp="1605111142406">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="273" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605111142406" />
+    <state width="1874" height="273" key="GridCell.Tab.0.left" timestamp="1605111142406">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="273" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605111142406" />
+    <state width="1874" height="273" key="GridCell.Tab.0.right" timestamp="1605111142406">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="273" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605111142406" />
+    <state width="1874" height="310" key="GridCell.Tab.1.bottom" timestamp="1605110855118">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855118" />
+    <state width="1874" height="310" key="GridCell.Tab.1.center" timestamp="1605110855118">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.1.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855118" />
+    <state width="1874" height="310" key="GridCell.Tab.1.left" timestamp="1605110855118">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.1.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855118" />
+    <state width="1874" height="310" key="GridCell.Tab.1.right" timestamp="1605110855118">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.1.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855118" />
+    <state width="1874" height="310" key="GridCell.Tab.2.bottom" timestamp="1605110855118">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.2.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855118" />
+    <state width="1874" height="310" key="GridCell.Tab.2.center" timestamp="1605110855118">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.2.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855118" />
+    <state width="1874" height="310" key="GridCell.Tab.2.left" timestamp="1605110855118">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.2.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855118" />
+    <state width="1874" height="310" key="GridCell.Tab.2.right" timestamp="1605110855118">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.2.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855118" />
+    <state width="1874" height="310" key="GridCell.Tab.3.bottom" timestamp="1605110855119">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.3.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855119" />
+    <state width="1874" height="310" key="GridCell.Tab.3.center" timestamp="1605110855119">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.3.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855119" />
+    <state width="1874" height="310" key="GridCell.Tab.3.left" timestamp="1605110855119">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.3.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855119" />
+    <state width="1874" height="310" key="GridCell.Tab.3.right" timestamp="1605110855119">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.3.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855119" />
+    <state width="1874" height="310" key="GridCell.Tab.4.bottom" timestamp="1605110855119">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.4.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855119" />
+    <state width="1874" height="310" key="GridCell.Tab.4.center" timestamp="1605110855119">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.4.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855119" />
+    <state width="1874" height="310" key="GridCell.Tab.4.left" timestamp="1605110855119">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.4.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855119" />
+    <state width="1874" height="310" key="GridCell.Tab.4.right" timestamp="1605110855119">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="310" key="GridCell.Tab.4.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605110855119" />
     <state x="2476" y="260" key="Rider.ProjectTemplateDialog.Size" timestamp="1605013410601">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2476" y="260" key="Rider.ProjectTemplateDialog.Size/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605013410601" />
+    <state x="2476" y="261" key="Vcs.Push.Dialog.v2" timestamp="1605013778401">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2476" y="261" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605013778401" />
+    <state x="2441" y="306" width="672" height="678" key="search.everywhere.popup" timestamp="1605104353072">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2441" y="306" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605104353072" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs</url>
+          <line>36</line>
+          <properties documentPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs" initialLine="36">
+            <startOffsets>
+              <option value="1232" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1284" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ScoreImageGenerator/Objects/Beatmap.cs</url>
+          <line>39</line>
+          <properties documentPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Beatmap.cs" initialLine="39">
+            <startOffsets>
+              <option value="1181" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1232" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Frame#ScoreImageGenerator.Helpers.PpCalculator.Perform" memberName="startInfo" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

@@ -90,7 +90,7 @@ namespace ScoreImageGenerator.Helpers
                 .DrawText("Combo", font, color, new Point(538, 245))
                 .DrawText($"{_score.Combo}/{_score.Beatmap.MaxCombo}", font, Color.White, new Point(538, 284))
                 .DrawText("Mods", font, color, new Point(817, 245))
-                .DrawText($"{Utils.GetStringModsRepr(_score.Mods)}", font, Color.White, new Point(817, 284))
+                .DrawText($"{string.Join("", Utils.GetModsList(_score.Mods))}", font, Color.White, new Point(817, 284))
 
                 // Draw hit circles accuracy
                 .DrawText("300", font, color, new Point(48, 350))
@@ -101,14 +101,12 @@ namespace ScoreImageGenerator.Helpers
                 .DrawText($"{_score.Count50}", font, Color.DodgerBlue, new Point(218, 382))
                 .DrawText("X", font, color, new Point(280, 350))
                 .DrawText($"{_score.CountMiss}", font, Color.Maroon, new Point(280, 382))
-                .DrawText("Accuracy", font, color, new Point(374, 350))
-                .DrawText($"{Math.Round(_score.Accuracy, 2)}%", font, Color.White, new Point(374, 382))
-                .DrawText("Completion", font, color, new Point(517, 350))
-                .DrawText($"{_score.Accuracy}%", font, Color.White, new Point(517, 382))
-                .DrawText("Performance", font, color, new Point(690, 350))
-                .DrawText($"{Math.Round(_score.PP, 2)}pp", font, Color.White, new Point(690, 382))
+                .DrawText("Accuracy", font, color, new Point(402, 350))
+                .DrawText($"{Math.Round(_score.Accuracy, 2)}%", font, Color.White, new Point(402, 382))
+                .DrawText("Performance", font, color, new Point(626, 350))
+                .DrawText($"{Math.Round(_score.PP, 2)}pp", font, Color.White, new Point(650, 382))
                 .DrawText("If FC", font, color, new Point(836, 350))
-                .DrawText($"{Math.Round(_score.Beatmap.PP, 2)}", font, Color.White, new Point(836, 382)));
+                .DrawText($"{Math.Round(_score.Beatmap.PP, 2)}", font, Color.White, new Point(815, 382)));
         }
 
         public Image<Rgba32> Generate()

@@ -10,26 +10,6 @@
           <e p="HomeController.cs" t="Include" />
           <e p="ImageGeneratorController.cs" t="Include" />
         </e>
-        <e p="Documentation" t="Include">
-          <e p="SDS" t="Include">
-            <e p="Use-case.md" t="Include" />
-            <e p="Архитектурная стратегия.md" t="Include" />
-            <e p="Введение.md" t="Include" />
-            <e p="Дизайн высокого уровня.md" t="Include" />
-            <e p="Дизайн низкого уровня.md" t="Include" />
-            <e p="Дизайн.md" t="Include" />
-            <e p="Системный обзор.md" t="Include" />
-            <e p="Спецификация API.md" t="Include" />
-            <e p="Спецификация взаимодействия со сторонниим сервиса.md" t="Include" />
-          </e>
-          <e p="SRS" t="Include">
-            <e p="Введение.md" t="Include" />
-            <e p="Системные требования.md" t="Include" />
-            <e p="Требования пользователя.md" t="Include" />
-          </e>
-          <e p="Software Design Specifications.md" t="Include" />
-          <e p="Software Requirements Specification.md" t="Include" />
-        </e>
         <e p="ErrorHandlingMiddleware.cs" t="Include" />
         <e p="Extensions" t="Include">
           <e p="ImageProcessingContextExtentions.cs" t="Include" />
@@ -51,6 +31,7 @@
           <e p="BestScoreImage.cs" t="Include" />
           <e p="ImageGenerator.cs" t="Include" />
           <e p="ImageHandler.cs" t="Include" />
+          <e p="PpCalculator.cs" t="Include" />
           <e p="RecentScoreImage.cs" t="Include" />
           <e p="Roboto.cs" t="Include" />
           <e p="Utils.cs" t="Include" />
@@ -58,17 +39,25 @@
         <e p="ImageMiddleware.cs" t="Include" />
         <e p="Objects" t="Include">
           <e p="Beatmap.cs" t="Include" />
+          <e p="CalculatorResponse.cs" t="Include" />
           <e p="Mods.cs" t="Include" />
           <e p="OsuMode.cs" t="Include" />
           <e p="Score.cs" t="Include" />
           <e p="ScoreType.cs" t="Include" />
           <e p="User.cs" t="Include" />
         </e>
+        <e p="PerformanceCalculator" t="Include">
+          <e p="cache" t="Include">
+            <e p="1257580.osu" t="Include" />
+            <e p="161834.osu" t="Include" />
+            <e p="2410945.osu" t="Include" />
+            <e p="654374.osu" t="Include" />
+          </e>
+        </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
         </e>
-        <e p="README.md" t="Include" />
         <e p="ScoreImageGenerator.csproj" t="IncludeRecursive" />
         <e p="Startup.cs" t="Include" />
         <e p="Static" t="Include">

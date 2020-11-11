@@ -1,23 +1,22 @@
 $(function(){
-    let type = 0;
+    let type = 1;
     let mode = 0;
     
     function reloadSig() {
             console.log("Reloading sig.");
             let url = "score?";
 
-            url += "&username=" + encodeURIComponent(($("input[name=username]").val() || "tryonelove"));
+            url += "username=" + encodeURIComponent(($("input[name=username]").val() || "tryonelove"));
             url += "&limit=1";
             url += "&mode=" + mode;
             url += "&type=" + type;
 
-            let fullUrl = window.location.origin + "/" + url;
             $("#previewarea img").remove();
-
+    
             let newImage = $("<img />", {
-                src: url
-            });
-
+                    src: url
+                });
+            
             $("#previewarea").append(newImage);
     }
 

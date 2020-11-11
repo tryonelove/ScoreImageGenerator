@@ -2,9 +2,9 @@ namespace ScoreImageGenerator.Objects
 {
     public enum OsuMode
     {
-        Standard,
-        Taiko,
-        Ctb,
-        Mania
+        osu,
+        taiko,
+        ctb,
+        mania
     }
 }

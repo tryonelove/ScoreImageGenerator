@@ -1,4 +1,5 @@
 using System.IO;
+using ScoreImageGenerator.Helpers;
 using ScoreImageGenerator.Helpers.API.Responses;
 
 namespace ScoreImageGenerator.Objects
@@ -23,7 +24,7 @@ namespace ScoreImageGenerator.Objects
         // Max beatmap combo
         public int MaxCombo { get; set; }
         // Full combo PP
-        public float PP { get; set; }
+        public double PP { get; set; }
         // Beatmap creator
         public string Creator { get; set; }
         // Song BPM
@@ -36,20 +37,20 @@ namespace ScoreImageGenerator.Objects
         
         public Beatmap(GetBeatmapsResponse bmap)
         {
-            BeatmapSetId = int.Parse(bmap.BeatmapsetId);
-            BeatmapId = int.Parse(bmap.BeatmapId);
+            BeatmapSetId = int.Parse(bmap.BeatmapsetId ?? "0");
+            BeatmapId = int.Parse(bmap.BeatmapId ?? "0");
             Title = bmap.Title;
             DiffName = bmap.Version;
-            CS = float.Parse(bmap.DiffSize);
-            AR = float.Parse(bmap.DiffApproach);
-            HP = float.Parse(bmap.DiffDrain);
-            OD = float.Parse(bmap.DiffOverall);
-            MaxCombo = int.Parse(bmap.MaxCombo);
-            PP = 322f;
+            BPM = float.Parse(bmap.Bpm ?? "0");
+            CS = float.Parse(bmap.DiffSize ?? "0");
+            AR = float.Parse(bmap.DiffApproach ?? "0");
+            HP = float.Parse(bmap.DiffDrain ?? "0");
+            OD = float.Parse(bmap.DiffOverall ?? "0");
+            MaxCombo = int.Parse(bmap.MaxCombo ?? "0");
             Creator = bmap.Creator;
-            // BPM = int.Parse(bmap.BPM);
-            Stars = float.Parse(bmap.DifficultyRating);
-            Length = int.Parse(bmap.TotalLength);
+            Stars = float.Parse(bmap.DifficultyRating ?? "0");
+            Length = int.Parse(bmap.TotalLength ?? "0");
+            BackgroundImage = Utils.GetBeatmapBackground(BeatmapSetId);
         }
     }
 }
