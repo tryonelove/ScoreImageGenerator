@@ -111,3 +111,8 @@ ul.mode-block li img {
     color: #1c1c1c;
     transition: 0.3s;
 }
+
+#previewarea {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

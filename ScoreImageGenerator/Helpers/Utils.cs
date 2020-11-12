@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using ScoreImageGenerator.Extensions;
 using ScoreImageGenerator.Objects;
@@ -11,6 +12,12 @@ namespace ScoreImageGenerator.Helpers
 {
     public static class Utils
     {
+        public static string[] MOD_ORDER =
+        {
+            "EZ", "HD", "HT", "DT", "NC", "HR", "FL", "NF",
+            "SD", "PF", "RX", "AP", "SO", "AT", "V2", "TD"
+        };
+
         public static byte[] GetBeatmapBackground(int beatmapSetId)
         {
             var url = $"https://assets.ppy.sh/beatmaps/{beatmapSetId}/covers/cover.jpg";
@@ -47,25 +54,35 @@ namespace ScoreImageGenerator.Helpers
 
         public static List<string> GetModsList(int mods)
         {
-            List<string> strMods = new List<string>();
+            List<string> modsList = new List<string>();
             foreach (int mod in Enum.GetValues(typeof(Mods)))
             {
                 if ((mod & mods) == mod)
                 {
-                    strMods.Add(Enum.GetName(typeof(Mods), mod));
+                    modsList.Add(Enum.GetName(typeof(Mods), mod));
                 }
             }
-            
-            strMods.Remove("NM");
 
-            if (strMods.Contains("NC") && strMods.Contains("DT"))
+            List<string> orderedMods = new List<string>();
+            foreach (string mod in MOD_ORDER)
             {
-                strMods.Remove("NC");
+                if (modsList.Contains(mod))
+                {
+                    orderedMods.Add(mod);
+                }
+            }
+
+            if (orderedMods.Contains("NC"))
+            {
+                orderedMods.Remove("DT");
+            }
+
+            if (orderedMods.Contains("PF"))
+            {
+                orderedMods.Remove("SD");
             }
             
-            return strMods;
+            return orderedMods;
         }
-        
-        
     }
 }

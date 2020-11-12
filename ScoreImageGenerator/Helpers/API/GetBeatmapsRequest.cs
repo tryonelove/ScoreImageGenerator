@@ -19,7 +19,7 @@ namespace ScoreImageGenerator.Helpers.API
         private readonly int _mode;
         private readonly int _limit;
         
-        public GetBeatmapsRequest(string username = "", int s = 0, int b = 0, OsuMode m = 0, int limit = 100)
+        public GetBeatmapsRequest(string username = "", int s = 0, int b = 0, Mode m = 0, int limit = 100)
         {
             _username = username;
             _beatmapSetId = s;

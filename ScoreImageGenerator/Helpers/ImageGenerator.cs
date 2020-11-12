@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using ScoreImageGenerator.Objects;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;
@@ -13,7 +15,7 @@ namespace ScoreImageGenerator.Helpers
     public class ImageGenerator
     {
         Image<Rgba32> _image = new Image<Rgba32>(956, 454);
-        protected OsuMode _mode;
+        protected Mode _mode;
         private User _user;
         private Score _score;
         delegate void Drawer(FontFamily family);
@@ -79,6 +81,12 @@ namespace ScoreImageGenerator.Helpers
 
         private void DrawScoreStats(FontFamily family)
         {
+            List<string> mods = Utils.GetModsList(_score.Mods);
+            if (mods.Count == 0)
+            {
+                mods.Add("NM");
+            }
+            
             var font = family.CreateFont(size: 21);
             var color = new Rgba32(185,185,185,255);
             // Draw middle image info about score
@@ -90,7 +98,7 @@ namespace ScoreImageGenerator.Helpers
                 .DrawText("Combo", font, color, new Point(538, 245))
                 .DrawText($"{_score.Combo}/{_score.Beatmap.MaxCombo}", font, Color.White, new Point(538, 284))
                 .DrawText("Mods", font, color, new Point(817, 245))
-                .DrawText($"{string.Join("", Utils.GetModsList(_score.Mods))}", font, Color.White, new Point(817, 284))
+                .DrawText($"{string.Join("", mods)}", font, Color.White, new Point(817, 284))
 
                 // Draw hit circles accuracy
                 .DrawText("300", font, color, new Point(48, 350))
@@ -102,10 +110,10 @@ namespace ScoreImageGenerator.Helpers
                 .DrawText("X", font, color, new Point(280, 350))
                 .DrawText($"{_score.CountMiss}", font, Color.Maroon, new Point(280, 382))
                 .DrawText("Accuracy", font, color, new Point(402, 350))
-                .DrawText($"{Math.Round(_score.Accuracy, 2)}%", font, Color.White, new Point(402, 382))
+                .DrawText($"{Math.Round(_score.Accuracy, 2)}%", font, Color.White, new Point(408, 382))
                 .DrawText("Performance", font, color, new Point(626, 350))
-                .DrawText($"{Math.Round(_score.PP, 2)}pp", font, Color.White, new Point(650, 382))
-                .DrawText("If FC", font, color, new Point(836, 350))
+                .DrawText($"{Math.Round(_score.PP, 2)}pp", font, Color.White, new Point(645, 382))
+                .DrawText("If FC", font, color, new Point(826, 350))
                 .DrawText($"{Math.Round(_score.Beatmap.PP, 2)}", font, Color.White, new Point(815, 382)));
         }
 

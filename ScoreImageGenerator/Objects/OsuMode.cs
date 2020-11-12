@@ -1,6 +1,6 @@
 namespace ScoreImageGenerator.Objects
 {
-    public enum OsuMode
+    public enum Mode
     {
         osu,
         taiko,

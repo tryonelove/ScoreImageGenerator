@@ -13,7 +13,7 @@ namespace ScoreImageGenerator.Helpers.API
         private readonly int _mode;
         private readonly int _limit;
 
-        public GetUserRecentRequest(string username, OsuMode mode, int limit)
+        public GetUserRecentRequest(string username, Mode mode, int limit)
         {
             _username = username;
             _mode = (int)mode;

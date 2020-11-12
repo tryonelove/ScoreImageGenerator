@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace ScoreImageGenerator.Helpers
                 return;
             }
             
-            Uri uri = new Uri ($"{baseUrl}/osu/{_beatmapId}");
+            var uri = new Uri ($"{baseUrl}/osu/{_beatmapId}");
             // Create a FileWebRequest object.
             using (var client = new WebClient())
             {
@@ -43,7 +44,7 @@ namespace ScoreImageGenerator.Helpers
         private string GetModsArgs(List<string> mods)
         {
             string args = string.Empty;
-            foreach (var mod in mods)
+            foreach (string mod in mods)
             {
                 args += $"-m {mod} ";
             }
@@ -51,16 +52,21 @@ namespace ScoreImageGenerator.Helpers
             return args;
         }
 
-        public CalculatorResponse GetFcPp(List<string> mods, OsuMode osuMode)
+        public CalculatorResponse GetFcPp(Score score, List<string> mods, Mode osuMode)
         {
             CacheBeatmap();
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "dotnet";
-            startInfo.CreateNoWindow = true;
-            startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = true;
-            startInfo.WorkingDirectory = _workingDirectory;
-            startInfo.Arguments = $"PerformanceCalculator.dll simulate {osuMode} {_workingDirectory}/cache/{_beatmapId}.osu -j ";
+            mods.Remove("NM");
+
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                FileName = "dotnet",
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                WorkingDirectory = _workingDirectory,
+                Arguments =
+                    $"PerformanceCalculator.dll simulate {osuMode} {_workingDirectory}/cache/{_beatmapId}.osu -j "
+            };
             startInfo.Arguments += GetModsArgs(mods);
             
             Process process = Process.Start(startInfo);
@@ -69,17 +75,28 @@ namespace ScoreImageGenerator.Helpers
             return JsonSerializer.Deserialize<CalculatorResponse>(output);
         }
 
-        public CalculatorResponse GetScorePp(Score score, List<string> mods, OsuMode osuMode)
+        private string GetStdParams(Score score)
+        {
+            StringBuilder param = new StringBuilder();
+  
+            return param.ToString();
+        }
+        
+        public CalculatorResponse GetScorePp(Score score, List<string> mods, Mode osuMode)
         {
             CacheBeatmap();
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "dotnet";
-            startInfo.CreateNoWindow = true;
-            startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = true;
-            startInfo.WorkingDirectory = _workingDirectory;
-            startInfo.Arguments = $"PerformanceCalculator.dll simulate {osuMode} {_workingDirectory}/cache/{_beatmapId}.osu -j ";
-            startInfo.Arguments += GetModsArgs(mods);
+            mods.Remove("NM");
+
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                FileName = "dotnet",
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                WorkingDirectory = _workingDirectory,
+                Arguments =
+                    $"PerformanceCalculator.dll simulate {osuMode} {_workingDirectory}/cache/{_beatmapId}.osu -j "
+            };
 
             if (string.Compare(osuMode.ToString(), "mania", StringComparison.CurrentCulture) == 0)
             {   
@@ -91,6 +108,7 @@ namespace ScoreImageGenerator.Helpers
                 startInfo.Arguments += $"-c {score.Combo} ";
                 startInfo.Arguments += $"-X {score.CountMiss} ";
             }
+            startInfo.Arguments += GetModsArgs(mods);
 
             Process process = Process.Start(startInfo);
             string output = process.StandardOutput.ReadToEnd();

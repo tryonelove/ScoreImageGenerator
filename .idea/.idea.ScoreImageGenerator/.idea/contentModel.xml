@@ -46,14 +46,6 @@
           <e p="ScoreType.cs" t="Include" />
           <e p="User.cs" t="Include" />
         </e>
-        <e p="PerformanceCalculator" t="Include">
-          <e p="cache" t="Include">
-            <e p="1257580.osu" t="Include" />
-            <e p="161834.osu" t="Include" />
-            <e p="2410945.osu" t="Include" />
-            <e p="654374.osu" t="Include" />
-          </e>
-        </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />

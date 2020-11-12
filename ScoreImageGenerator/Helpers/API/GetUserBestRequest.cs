@@ -12,7 +12,7 @@ namespace ScoreImageGenerator.Helpers.API.Responses
         private readonly int _mode;
         private readonly int _limit;
 
-        public GetUserBestRequest(string username, OsuMode mode, int limit)
+        public GetUserBestRequest(string username, Mode mode, int limit)
         {
             _username = username;
             _mode = (int)mode;

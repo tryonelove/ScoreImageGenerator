@@ -14,8 +14,9 @@ $(function(){
             $("#previewarea img").remove();
     
             let newImage = $("<img />", {
-                    src: url
-                });
+                    "src": url,
+                    "class": "preview lazy col-8"
+            });
             
             $("#previewarea").append(newImage);
     }

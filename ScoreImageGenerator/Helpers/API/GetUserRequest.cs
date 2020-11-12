@@ -11,7 +11,7 @@ namespace ScoreImageGenerator.Helpers.API
         private readonly string _username;
         private readonly int _mode;
         
-        public GetUserRequest(string u, OsuMode m = 0)
+        public GetUserRequest(string u, Mode m = 0)
         {
             _username = u;
             _mode = (int)m;
