@@ -36,7 +36,6 @@
           <e p="Roboto.cs" t="Include" />
           <e p="Utils.cs" t="Include" />
         </e>
-        <e p="ImageMiddleware.cs" t="Include" />
         <e p="Objects" t="Include">
           <e p="Beatmap.cs" t="Include" />
           <e p="CalculatorResponse.cs" t="Include" />

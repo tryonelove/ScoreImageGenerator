@@ -4,7 +4,7 @@ namespace ScoreImageGenerator.Objects
     {
         osu,
         taiko,
-        ctb,
+        @catch,
         mania
     }
 }

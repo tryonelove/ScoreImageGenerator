@@ -38,10 +38,9 @@ namespace ScoreImageGenerator.Helpers.API
         public async Task<List<T>> PerformAsync()
         {
             var uri = BuildUri();
-            Console.WriteLine(uri);
             var request =  (HttpWebRequest)WebRequest.Create(uri);
             request.Accept = "application/json";
-            var response = (HttpWebResponse)request.GetResponseAsync().Result;
+            var response = (HttpWebResponse) await request.GetResponseAsync();
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new HttpListenerException((int)response.StatusCode);
@@ -53,9 +52,7 @@ namespace ScoreImageGenerator.Helpers.API
                 throw new EndOfStreamException($"Response stream is null.");
             }
             
-            StreamReader reader = new StreamReader(responseStream);
-            var str = await reader.ReadToEndAsync();
-            List<T> deserialized = JsonSerializer.Deserialize<List<T>>(str);
+            List<T> deserialized = await JsonSerializer.DeserializeAsync<List<T>>(responseStream);
             return deserialized;
         }
     }

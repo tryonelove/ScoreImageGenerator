@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -16,6 +17,7 @@ namespace ScoreImageGenerator.Helpers
         private string _workingDirectory = Environment.CurrentDirectory + "/PerformanceCalculator";
         private const string baseUrl = "https://osu.ppy.sh";
         private int _beatmapId;
+        private readonly HttpClient _client = new HttpClient();
 
         public int BeatmapId { get => _beatmapId; set => _beatmapId = value; }
 
@@ -24,7 +26,7 @@ namespace ScoreImageGenerator.Helpers
             _beatmapId = beatmapId;
         }
 
-        private void CacheBeatmap()
+        private async Task CacheBeatmap()
         {
             string beatmapPath = $"{_workingDirectory}/cache/{_beatmapId}.osu";
             if (File.Exists(beatmapPath))
@@ -33,11 +35,10 @@ namespace ScoreImageGenerator.Helpers
             }
             
             var uri = new Uri ($"{baseUrl}/osu/{_beatmapId}");
-            // Create a FileWebRequest object.
-            using (var client = new WebClient())
+            var osuFileStream = await _client.GetStreamAsync(uri);
+            using (var fs = new FileStream(beatmapPath, FileMode.CreateNew))
             {
-                Task download = client.DownloadFileTaskAsync(uri, beatmapPath);
-                Task.WaitAll(download);
+                await osuFileStream.CopyToAsync(fs);
             }
         }
 
@@ -52,9 +53,9 @@ namespace ScoreImageGenerator.Helpers
             return args;
         }
 
-        public CalculatorResponse GetFcPp(Score score, List<string> mods, Mode osuMode)
+        public async Task<CalculatorResponse> GetFcPp(Score score, List<string> mods, Mode osuMode)
         {
-            CacheBeatmap();
+            await CacheBeatmap();
             mods.Remove("NM");
 
             ProcessStartInfo startInfo = new ProcessStartInfo
@@ -70,7 +71,7 @@ namespace ScoreImageGenerator.Helpers
             startInfo.Arguments += GetModsArgs(mods);
             
             Process process = Process.Start(startInfo);
-            string output = process.StandardOutput.ReadToEnd();
+            string output = process?.StandardOutput.ReadToEnd();
 
             return JsonSerializer.Deserialize<CalculatorResponse>(output);
         }
@@ -82,9 +83,9 @@ namespace ScoreImageGenerator.Helpers
             return param.ToString();
         }
         
-        public CalculatorResponse GetScorePp(Score score, List<string> mods, Mode osuMode)
+        public async Task<CalculatorResponse> GetScorePp(Score score, List<string> mods, Mode osuMode)
         {
-            CacheBeatmap();
+            await CacheBeatmap();
             mods.Remove("NM");
 
             ProcessStartInfo startInfo = new ProcessStartInfo
@@ -111,9 +112,9 @@ namespace ScoreImageGenerator.Helpers
             startInfo.Arguments += GetModsArgs(mods);
 
             Process process = Process.Start(startInfo);
-            string output = process.StandardOutput.ReadToEnd();
+            var output = process?.StandardOutput;
 
-            return JsonSerializer.Deserialize<CalculatorResponse>(output);
+            return await JsonSerializer.DeserializeAsync<CalculatorResponse>(output?.BaseStream);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ScoreImageGenerator.Helpers;
@@ -19,11 +20,11 @@ namespace ScoreImageGenerator.Controllers
         
         [HttpPost]
         [HttpGet]
-        public IActionResult Get(string username, int mode, int limit, int type)
+        public async Task<IActionResult> Get(string username, int mode, int limit, int type)
         {
             _logger.LogInformation($"Username: {username} | Mode: {mode} | Limit: {limit} | Type: {type}");
             ImageHandler handler = new ImageHandler(username, limit, mode, type);
-            var image = handler.GetImage();
+            var image = await handler.GetImage();
             return File(image, "image/png");
         }
     }

@@ -1,0 +1,718 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>osu.Game.Rulesets.Taiko</name>
+    </assembly>
+    <members>
+        <member name="T:osu.Game.Rulesets.Taiko.Audio.DrumSampleContainer">
+            <summary>
+            Stores samples for the input drum.
+            The lifetime of the samples is adjusted so that they are only alive during the appropriate sample control point.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Beatmaps.TaikoBeatmapConverter.LEGACY_VELOCITY_MULTIPLIER">
+            <summary>
+            osu! is generally slower than taiko, so a factor is added to increase
+            speed. This must be used everywhere slider length or beat length is used.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Beatmaps.TaikoBeatmapConverter.swell_hit_multiplier">
+            <summary>
+            Because swells are easier in taiko than spinners are in osu!,
+            legacy taiko multiplies a factor when converting the number of required hits.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Beatmaps.TaikoBeatmapConverter.osu_base_scoring_distance">
+            <summary>
+            Base osu! slider scoring distance.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Beatmaps.TaikoBeatmapConverter.taiko_base_distance">
+            <summary>
+            Drum roll distance that results in a duration of 1 speed-adjusted beat length.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.StaminaCheeseDetector">
+            <summary>
+            Detects special hit object patterns which are easier to hit using special techniques
+            than normally assumed in the fully-alternating play style.
+            </summary>
+            <remarks>
+            This component detects two basic types of patterns, leveraged by the following techniques:
+            <list>
+            <item>Rolling allows hitting patterns with quickly and regularly alternating notes with a single hand.</item>
+            <item>TL tapping makes hitting longer sequences of consecutive same-colour notes with little to no colour changes in-between.</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.StaminaCheeseDetector.roll_min_repetitions">
+            <summary>
+            The minimum number of consecutive objects with repeating patterns that can be classified as hittable using a roll.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.StaminaCheeseDetector.tl_min_repetitions">
+            <summary>
+            The minimum number of consecutive objects with repeating patterns that can be classified as hittable using a TL tap.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.StaminaCheeseDetector.hitObjects">
+            <summary>
+            The list of all <see cref="T:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject"/>s in the map.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.StaminaCheeseDetector.FindCheese">
+            <summary>
+            Finds and marks all objects in <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.StaminaCheeseDetector.hitObjects"/> that special difficulty-reducing techiques apply to
+            with the <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.StaminaCheese"/> flag.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.StaminaCheeseDetector.findRolls(System.Int32)">
+            <summary>
+            Finds and marks all sequences hittable using a roll.
+            </summary>
+            <param name="patternLength">The length of a single repeating pattern to consider (triplets/quadruplets).</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.StaminaCheeseDetector.containsPatternRepeat(osu.Game.Rulesets.Difficulty.Utils.LimitedCapacityQueue{osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject},System.Int32)">
+            <summary>
+            Determines whether the objects stored in <paramref name="history"/> contain a repetition of a pattern of length <paramref name="patternLength"/>.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.StaminaCheeseDetector.findTlTap(System.Int32,osu.Game.Rulesets.Taiko.Objects.HitType)">
+            <summary>
+            Finds and marks all sequences hittable using a TL tap.
+            </summary>
+            <param name="parity">Whether sequences starting with an odd- (1) or even-indexed (0) hit object should be checked.</param>
+            <param name="type">The type of hit to check for TL taps.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.StaminaCheeseDetector.markObjectsAsCheese(System.Int32,System.Int32)">
+            <summary>
+            Marks <paramref name="count"/> elements counting backwards from <paramref name="end"/> as <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.StaminaCheese"/>.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject">
+            <summary>
+            Represents a single hit object in taiko difficulty calculation.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.Rhythm">
+            <summary>
+            The rhythm required to hit this hit object.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.HitType">
+            <summary>
+            The hit type of this hit object.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.ObjectIndex">
+            <summary>
+            The index of the object in the beatmap.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.StaminaCheese">
+            <summary>
+            Whether the object should carry a penalty due to being hittable using special techniques
+            making it easier to do so.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.#ctor(osu.Game.Rulesets.Objects.HitObject,osu.Game.Rulesets.Objects.HitObject,osu.Game.Rulesets.Objects.HitObject,System.Double,System.Int32)">
+            <summary>
+            Creates a new difficulty hit object.
+            </summary>
+            <param name="hitObject">The gameplay <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> associated with this difficulty object.</param>
+            <param name="lastObject">The gameplay <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> preceding <paramref name="hitObject"/>.</param>
+            <param name="lastLastObject">The gameplay <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> preceding <paramref name="lastObject"/>.</param>
+            <param name="clockRate">The rate of the gameplay clock. Modified by speed-changing mods.</param>
+            <param name="objectIndex">The index of the object in the beatmap.</param>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.common_rhythms">
+            <summary>
+            List of most common rhythm changes in taiko maps.
+            </summary>
+            <remarks>
+            The general guidelines for the values are:
+            <list type="bullet">
+            <item>rhythm changes with ratio closer to 1 (that are <i>not</i> 1) are harder to play,</item>
+            <item>speeding up is <i>generally</i> harder than slowing down (with exceptions of rhythm changes requiring a hand switch).</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.getClosestRhythm(osu.Game.Rulesets.Objects.HitObject,osu.Game.Rulesets.Objects.HitObject,System.Double)">
+            <summary>
+            Returns the closest rhythm change from <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.common_rhythms"/> required to hit this object.
+            </summary>
+            <param name="lastObject">The gameplay <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> preceding this one.</param>
+            <param name="lastLastObject">The gameplay <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> preceding <paramref name="lastObject"/>.</param>
+            <param name="clockRate">The rate of the gameplay clock.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObjectRhythm">
+            <summary>
+            Represents a rhythm change in a taiko map.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObjectRhythm.Difficulty">
+            <summary>
+            The difficulty multiplier associated with this rhythm change.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObjectRhythm.Ratio">
+            <summary>
+            The ratio of current <see cref="F:osu.Game.Rulesets.Difficulty.Preprocessing.DifficultyHitObject.DeltaTime"/>
+            to previous <see cref="F:osu.Game.Rulesets.Difficulty.Preprocessing.DifficultyHitObject.DeltaTime"/> for the rhythm change.
+            A <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObjectRhythm.Ratio"/> above 1 indicates a slow-down; a <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObjectRhythm.Ratio"/> below 1 indicates a speed-up.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObjectRhythm.#ctor(System.Int32,System.Int32,System.Double)">
+            <summary>
+            Creates an object representing a rhythm change.
+            </summary>
+            <param name="numerator">The numerator for <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObjectRhythm.Ratio"/>.</param>
+            <param name="denominator">The denominator for <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObjectRhythm.Ratio"/></param>
+            <param name="difficulty">The difficulty multiplier associated with this rhythm change.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour">
+            <summary>
+            Calculates the colour coefficient of taiko difficulty.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour.mono_history_max_length">
+            <summary>
+            Maximum number of entries to keep in <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour.monoHistory"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour.monoHistory">
+            <summary>
+            Queue with the lengths of the last <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour.mono_history_max_length"/> most recent mono (single-colour) patterns,
+            with the most recent value at the end of the queue.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour.previousHitType">
+            <summary>
+            The <see cref="T:osu.Game.Rulesets.Taiko.Objects.HitType"/> of the last object hit before the one being considered.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour.currentMonoLength">
+            <summary>
+            Length of the current mono pattern.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour.repetitionPenalties">
+            <summary>
+            The penalty to apply due to the length of repetition in colour streaks.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour.isSamePattern(System.Int32,System.Int32)">
+            <summary>
+            Determines whether the last <paramref name="mostRecentPatternsToCompare"/> patterns have repeated in the history
+            of single-colour note sequences, starting from <paramref name="start"/>.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour.repetitionPenalty(System.Int32)">
+            <summary>
+            Calculates the strain penalty for a colour pattern repetition.
+            </summary>
+            <param name="notesSince">The number of notes since the last repetition of the pattern.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm">
+            <summary>
+            Calculates the rhythm coefficient of taiko difficulty.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.strain_decay">
+            <summary>
+            The note-based decay for rhythm strain.
+            </summary>
+            <remarks>
+            <see cref="P:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.StrainDecayBase"/> is not used here, as it's time- and not note-based.
+            </remarks>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.rhythm_history_max_length">
+            <summary>
+            Maximum number of entries in <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.rhythmHistory"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.rhythmHistory">
+            <summary>
+            Contains the last <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.rhythm_history_max_length"/> changes in note sequence rhythms.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.currentStrain">
+            <summary>
+            Contains the rolling rhythm strain.
+            Used to apply per-note decay.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.notesSinceRhythmChange">
+            <summary>
+            Number of notes since the last rhythm change has taken place.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.repetitionPenalties(osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject)">
+            <summary>
+            Returns a penalty to apply to the current hit object caused by repeating rhythm changes.
+            </summary>
+            <remarks>
+            Repetitions of more recent patterns are associated with a higher penalty.
+            </remarks>
+            <param name="hitObject">The current hit object being considered.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.samePattern(System.Int32,System.Int32)">
+            <summary>
+            Determines whether the rhythm change pattern starting at <paramref name="start"/> is a repeat of any of the
+            <paramref name="mostRecentPatternsToCompare"/>.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.repetitionPenalty(System.Int32)">
+            <summary>
+            Calculates a single rhythm repetition penalty.
+            </summary>
+            <param name="notesSince">Number of notes since the last repetition of a rhythm change.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.patternLengthPenalty(System.Int32)">
+            <summary>
+            Calculates a penalty based on the number of notes since the last rhythm change.
+            Both rare and frequent rhythm changes are penalised.
+            </summary>
+            <param name="patternLength">Number of notes since the last rhythm change.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.speedPenalty(System.Double)">
+            <summary>
+            Calculates a penalty for objects that do not require alternating hands.
+            </summary>
+            <param name="deltaTime">Time (in milliseconds) since the last hit object.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.resetRhythmAndStrain">
+            <summary>
+            Resets the rolling strain value and <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm.notesSinceRhythmChange"/> counter.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina">
+            <summary>
+            Calculates the stamina coefficient of taiko difficulty.
+            </summary>
+            <remarks>
+            The reference play style chosen uses two hands, with full alternating (the hand changes after every hit).
+            </remarks>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.max_history_length">
+            <summary>
+            Maximum number of entries to keep in <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.notePairDurationHistory"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.hand">
+            <summary>
+            The index of the hand this <see cref="T:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina"/> instance is associated with.
+            </summary>
+            <remarks>
+            The value of 0 indicates the left hand (full alternating gameplay starting with left hand is assumed).
+            This naturally translates onto index offsets of the objects in the map.
+            </remarks>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.notePairDurationHistory">
+            <summary>
+            Stores the last <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.max_history_length"/> durations between notes hit with the hand indicated by <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.hand"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.offhandObjectDuration">
+            <summary>
+            Stores the <see cref="F:osu.Game.Rulesets.Difficulty.Preprocessing.DifficultyHitObject.DeltaTime"/> of the last object that was hit by the <i>other</i> hand.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.#ctor(System.Boolean)">
+            <summary>
+            Creates a <see cref="T:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina"/> skill.
+            </summary>
+            <param name="rightHand">Whether this instance is performing calculations for the right hand.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.cheesePenalty(System.Double)">
+            <summary>
+            Applies a penalty for hit objects marked with <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Preprocessing.TaikoDifficultyHitObject.StaminaCheese"/>.
+            </summary>
+            <param name="notePairDuration">The duration between the current and previous note hit using the hand indicated by <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.hand"/>.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.speedBonus(System.Double)">
+            <summary>
+            Applies a speed bonus dependent on the time since the last hit performed using this hand.
+            </summary>
+            <param name="notePairDuration">The duration between the current and previous note hit using the hand indicated by <see cref="F:osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina.hand"/>.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.TaikoDifficultyCalculator.simpleColourPenalty(System.Double,System.Double)">
+            <summary>
+            Calculates the penalty for the stamina skill for maps with low colour difficulty.
+            </summary>
+            <remarks>
+            Some maps (especially converts) can be easy to read despite a high note density.
+            This penalty aims to reduce the star rating of such maps by factoring in colour difficulty to the stamina skill.
+            </remarks>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.TaikoDifficultyCalculator.norm(System.Double,System.Double[])">
+            <summary>
+            Returns the <i>p</i>-norm of an <i>n</i>-dimensional vector.
+            </summary>
+            <param name="p">The value of <i>p</i> to calculate the norm for.</param>
+            <param name="values">The coefficients of the vector.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.TaikoDifficultyCalculator.locallyCombinedDifficulty(osu.Game.Rulesets.Taiko.Difficulty.Skills.Colour,osu.Game.Rulesets.Taiko.Difficulty.Skills.Rhythm,osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina,osu.Game.Rulesets.Taiko.Difficulty.Skills.Stamina,System.Double)">
+            <summary>
+            Returns the partial star rating of the beatmap, calculated using peak strains from all sections of the map.
+            </summary>
+            <remarks>
+            For each section, the peak strains of all separate skills are combined into a single peak strain for the section.
+            The resulting partial rating of the beatmap is a weighted sum of the combined peaks (higher peaks are weighted more).
+            </remarks>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Difficulty.TaikoDifficultyCalculator.rescale(System.Double)">
+            <summary>
+            Applies a final re-scaling of the star rating to bring maps with recorded full combos below 9.5 stars.
+            </summary>
+            <param name="sr">The raw star rating value before re-scaling.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableBarLine">
+            <summary>
+            A line that scrolls alongside hit objects in the playfield and visualises control points.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableBarLine.tracker_width">
+            <summary>
+            The width of the line tracker.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableBarLine.base_fadeout_time">
+            <summary>
+            Fade out time calibrated to a pre-empt of 1000ms.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableBarLine.Line">
+            <summary>
+            The visual line tracker.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableBarLine.BarLine">
+            <summary>
+            The bar line.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableBarLineMajor.triangle_offfset">
+            <summary>
+            The vertical offset of the triangles from the line tracker.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableBarLineMajor.triangle_size">
+            <summary>
+            The size of the triangles.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableDrumRoll.rolling_hits_for_engaged_colour">
+            <summary>
+            Number of rolling hits required to reach the dark/final colour.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableDrumRoll.rollingHits">
+            <summary>
+            Rolling number of tick hits. This increases for hits and decreases for misses.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableDrumRollTick.JudgementType">
+            <summary>
+            The hit type corresponding to the <see cref="T:osu.Game.Rulesets.Taiko.TaikoAction"/> that the user pressed to hit this <see cref="T:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableDrumRollTick"/>.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableFlyingHit">
+            <summary>
+            A hit used specifically for drum rolls, where spawning flying hits is required.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableHit.HitActions">
+            <summary>
+            A list of keys which can result in hits for this HitObject.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableHit.HitAction">
+            <summary>
+            The action that caused this <see cref="T:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableHit"/> to be hit.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableHit.StrongNestedHit.second_hit_window">
+            <summary>
+            The lenience for the second key press.
+            This does not adjust by map difficulty in ScoreV2 yet.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableStrongNestedHit">
+            <summary>
+            Used as a nested hitobject to provide <see cref="T:osu.Game.Rulesets.Taiko.Judgements.TaikoStrongJudgement"/>s for <see cref="T:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject"/>s.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableSwell.ring_appear_offset">
+            <summary>
+            Offset away from the start time of the swell at which the ring starts appearing.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject.ComputeIsMaskedAway(osu.Framework.Graphics.Primitives.RectangleF)">
+            <summary>
+            <see cref="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject.proxiedContent"/> is proxied into an upper layer. We don't want to get masked away otherwise <see cref="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject.proxiedContent"/> would too.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject.ProxyContent">
+            <summary>
+            Moves <see cref="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject.Content"/> to a layer proxied above the playfield.
+            Does nothing if content is already proxied.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject.UnproxyContent">
+            <summary>
+            Moves <see cref="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject.Content"/> to the normal hitobject layer.
+            Does nothing is content is not currently proxied.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject.CreateProxiedContent">
+            <summary>
+            Creates a proxy for the content of this <see cref="T:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject"/>.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject`1.CreateStrongHit(osu.Game.Rulesets.Taiko.Objects.StrongHitObject)">
+            <summary>
+            Creates the handler for this <see cref="T:osu.Game.Rulesets.Objects.Drawables.DrawableHitObject"/>'s <see cref="T:osu.Game.Rulesets.Taiko.Objects.StrongHitObject"/>.
+            This is only invoked if <see cref="P:osu.Game.Rulesets.Taiko.Objects.TaikoHitObject.IsStrong"/> is true for <see cref="F:osu.Game.Rulesets.Taiko.Objects.Drawables.DrawableTaikoHitObject`1.HitObject"/>.
+            </summary>
+            <param name="hitObject">The strong hitobject.</param>
+            <returns>The strong hitobject handler.</returns>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Objects.Drawables.Pieces.CentreHitCirclePiece.CentreHitSymbolPiece">
+            <summary>
+            The symbol used for centre hit pieces.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Objects.Drawables.Pieces.CirclePiece">
+            <summary>
+            A circle piece which is used uniformly through osu!taiko to visualise hitobjects.
+            <para>
+            Note that this can actually be non-circle if the width is changed. See <see cref="T:osu.Game.Rulesets.Taiko.Objects.Drawables.Pieces.ElongatedCirclePiece"/>
+            for a usage example.
+            </para>
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Taiko.Objects.Drawables.Pieces.CirclePiece.AccentColour">
+            <summary>
+            The colour of the inner circle and outer glows.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Taiko.Objects.Drawables.Pieces.CirclePiece.KiaiMode">
+            <summary>
+            Whether Kiai mode effects are enabled for this circle piece.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Objects.Drawables.Pieces.RimHitCirclePiece.RimHitSymbolPiece">
+            <summary>
+            The symbol used for rim hit pieces.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Objects.Drawables.Pieces.SwellCirclePiece.SwellSymbolPiece">
+            <summary>
+            The symbol used for swell pieces.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.Pieces.TickPiece.tick_border_width">
+            <summary>
+            Any tick that is not the first for a drumroll is not filled, but is instead displayed
+            as a hollow circle. This is what controls the border width of that circle.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Drawables.Pieces.TickPiece.tick_size">
+            <summary>
+            The size of a tick.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.DrumRoll.base_distance">
+            <summary>
+            Drum roll distance that results in a duration of 1 speed-adjusted beat length.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Taiko.Objects.DrumRoll.Velocity">
+            <summary>
+            Velocity of this <see cref="T:osu.Game.Rulesets.Taiko.Objects.DrumRoll"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.DrumRoll.TickRate">
+            <summary>
+            Numer of ticks per beat length.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Taiko.Objects.DrumRoll.RequiredGoodHits">
+            <summary>
+            Number of drum roll ticks required for a "Good" hit.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Taiko.Objects.DrumRoll.RequiredGreatHits">
+            <summary>
+            Number of drum roll ticks required for a "Great" hit.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.DrumRoll.tickSpacing">
+            <summary>
+            The length (in milliseconds) between ticks of this drumroll.
+            <para>Half of this value is the hit window of the ticks.</para>
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.DrumRollTick.FirstTick">
+            <summary>
+            Whether this is the first (initial) tick of the slider.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.DrumRollTick.TickSpacing">
+            <summary>
+            The length (in milliseconds) between this tick and the next.
+            <para>Half of this value is the hit window of the tick.</para>
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Taiko.Objects.DrumRollTick.HitWindow">
+            <summary>
+            The time allowed to hit this tick.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Taiko.Objects.Hit.Type">
+            <summary>
+            The <see cref="T:osu.Game.Rulesets.Taiko.Objects.HitType"/> that actuates this <see cref="T:osu.Game.Rulesets.Taiko.Objects.Hit"/>.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Objects.HitType">
+            <summary>
+            The type of a <see cref="T:osu.Game.Rulesets.Taiko.Objects.Hit"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.HitType.Centre">
+            <summary>
+            A <see cref="T:osu.Game.Rulesets.Taiko.Objects.Hit"/> that can be hit by the centre portion of the drum.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.HitType.Rim">
+            <summary>
+            A <see cref="T:osu.Game.Rulesets.Taiko.Objects.Hit"/> that can be hit by the rim portion of the drum.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.Swell.RequiredHits">
+            <summary>
+            The number of hits required to complete the swell successfully.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.TaikoHitObject.DEFAULT_SIZE">
+            <summary>
+            Default size of a drawable taiko hit object.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.TaikoHitObject.STRONG_SCALE">
+            <summary>
+            Scale multiplier for a strong drawable taiko hit object.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Objects.TaikoHitObject.DEFAULT_STRONG_SIZE">
+            <summary>
+            Default size of a strong drawable taiko hit object.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Taiko.Objects.TaikoHitObject.IsStrong">
+            <summary>
+            Whether this HitObject is a "strong" type.
+            Strong hit objects give more points for hitting the hit object with both keys.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Scoring.TaikoHealthProcessor">
+            <summary>
+            A <see cref="T:osu.Game.Rulesets.Scoring.HealthProcessor"/> for the taiko ruleset.
+            Taiko fails if the player has not half-filled their health by the end of the map.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Scoring.TaikoHealthProcessor.object_count_factor">
+            <summary>
+            A value used for calculating <see cref="F:osu.Game.Rulesets.Taiko.Scoring.TaikoHealthProcessor.hpMultiplier"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Scoring.TaikoHealthProcessor.hpMultiplier">
+            <summary>
+            HP multiplier for a successful <see cref="T:osu.Game.Rulesets.Scoring.HitResult"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Scoring.TaikoHealthProcessor.hpMissMultiplier">
+            <summary>
+            HP multiplier for a <see cref="F:osu.Game.Rulesets.Scoring.HitResult.Miss"/>.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Skinning.LegacyInputDrum">
+            <summary>
+            A component of the playfield that captures input and displays input as a drum.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.Skinning.LegacyInputDrum.LegacyHalfDrum">
+            <summary>
+            A half-drum. Contains one centre and one rim hit.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Skinning.LegacyInputDrum.LegacyHalfDrum.RimAction">
+            <summary>
+            The key to be used for the rim of the half-drum.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.Skinning.LegacyInputDrum.LegacyHalfDrum.CentreAction">
+            <summary>
+            The key to be used for the centre of the half-drum.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.UI.DrawableTaikoJudgement">
+            <summary>
+            Text that is shown as judgement when a hit object is hit or missed.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.UI.DrawableTaikoJudgement.#ctor(osu.Game.Rulesets.Judgements.JudgementResult,osu.Game.Rulesets.Objects.Drawables.DrawableHitObject)">
+            <summary>
+            Creates a new judgement text.
+            </summary>
+            <param name="judgedObject">The object which is being judged.</param>
+            <param name="result">The judgement to visualise.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.UI.HitExplosion">
+            <summary>
+            A circle explodes from the hit target to indicate a hitobject has been hit.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Taiko.UI.HitExplosion.VisualiseSecondHit">
+            <summary>
+            Transforms this hit explosion to visualise a secondary hit.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.UI.InputDrum">
+            <summary>
+            A component of the playfield that captures input and displays input as a drum.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.UI.InputDrum.TaikoHalfDrum">
+            <summary>
+            A half-drum. Contains one centre and one rim hit.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.UI.InputDrum.TaikoHalfDrum.RimAction">
+            <summary>
+            The key to be used for the rim of the half-drum.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.UI.InputDrum.TaikoHalfDrum.CentreAction">
+            <summary>
+            The key to be used for the centre of the half-drum.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Taiko.UI.TaikoHitTarget">
+            <summary>
+            A component that is displayed at the hit position in the taiko playfield.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.UI.TaikoHitTarget.border_thickness">
+            <summary>
+            Thickness of all drawn line pieces.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Taiko.UI.TaikoPlayfield.DEFAULT_HEIGHT">
+            <summary>
+            Default height of a <see cref="T:osu.Game.Rulesets.Taiko.UI.TaikoPlayfield"/> when inside a <see cref="T:osu.Game.Rulesets.Taiko.UI.DrawableTaikoRuleset"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using ScoreImageGenerator.Objects;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;
@@ -117,7 +118,7 @@ namespace ScoreImageGenerator.Helpers
                 .DrawText($"{Math.Round(_score.Beatmap.PP, 2)}", font, Color.White, new Point(815, 382)));
         }
 
-        public Image<Rgba32> Generate()
+        public Image Generate()
         {
             Drawer draw = null;
             var collection = new FontCollection();

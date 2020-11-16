@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using ScoreImageGenerator.Extensions;
 using ScoreImageGenerator.Objects;
 using SixLabors.ImageSharp;
@@ -18,35 +19,35 @@ namespace ScoreImageGenerator.Helpers
             "SD", "PF", "RX", "AP", "SO", "AT", "V2", "TD"
         };
 
-        public static byte[] GetBeatmapBackground(int beatmapSetId)
+        public static async Task<byte[]> GetBeatmapBackground(int beatmapSetId)
         {
             var url = $"https://assets.ppy.sh/beatmaps/{beatmapSetId}/covers/cover.jpg";
             var request =  (HttpWebRequest)WebRequest.Create(url);
             request.Accept = "image/jpeg";
             var response = request.GetResponseAsync().Result;
-            using (Image image = Image.LoadAsync(response.GetResponseStream()).Result)
+            using (Image image = await Image.LoadAsync(response.GetResponseStream()))
             {
                 using (Image bg = image.Clone(x => x.ConvertToRounded(new Size(615, 170), 10)))
                 {
-                    using var ms = new MemoryStream();
-                    bg.SaveAsPng(ms);
+                    await using var ms = new MemoryStream();
+                    await bg.SaveAsPngAsync(ms);
                     return ms.GetBuffer();
                 }
             }
         }
 
-        public static byte[] GetUserAvatar(string userId)
+        public static async Task<byte[]> GetUserAvatar(string userId)
         {
             var url = $"https://a.ppy.sh/{userId}";
             var request = (HttpWebRequest) WebRequest.Create(url);
             request.Accept = "image/png";
             var response = request.GetResponse();
-            using (Image image = Image.Load(response.GetResponseStream()))
+            using (Image image = await Image.LoadAsync(response.GetResponseStream()))
             {
                 using (Image avatar = image.Clone(x => x.ConvertToRounded(new Size(170, 170), 10)))
                 {
-                    using var ms = new MemoryStream();
-                    avatar.SaveAsPng(ms);
+                    await using var ms = new MemoryStream();
+                    await avatar.SaveAsPngAsync(ms);
                     return ms.GetBuffer();
                 }
             }

@@ -1,0 +1,602 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>osu.Game.Rulesets.Osu</name>
+    </assembly>
+    <members>
+        <member name="P:osu.Game.Rulesets.Osu.Difficulty.Preprocessing.OsuDifficultyHitObject.JumpDistance">
+            <summary>
+            Normalized distance from the end position of the previous <see cref="T:osu.Game.Rulesets.Osu.Difficulty.Preprocessing.OsuDifficultyHitObject"/> to the start position of this <see cref="T:osu.Game.Rulesets.Osu.Difficulty.Preprocessing.OsuDifficultyHitObject"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Difficulty.Preprocessing.OsuDifficultyHitObject.TravelDistance">
+            <summary>
+            Normalized distance between the start and end position of the previous <see cref="T:osu.Game.Rulesets.Osu.Difficulty.Preprocessing.OsuDifficultyHitObject"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Difficulty.Preprocessing.OsuDifficultyHitObject.Angle">
+            <summary>
+            Angle the player has to take to hit this <see cref="T:osu.Game.Rulesets.Osu.Difficulty.Preprocessing.OsuDifficultyHitObject"/>.
+            Calculated as the angle between the circles (current-2, current-1, current).
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Difficulty.Preprocessing.OsuDifficultyHitObject.StrainTime">
+            <summary>
+            Milliseconds elapsed since the start time of the previous <see cref="T:osu.Game.Rulesets.Osu.Difficulty.Preprocessing.OsuDifficultyHitObject"/>, with a minimum of 50ms.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Difficulty.Skills.Aim">
+            <summary>
+            Represents the skill required to correctly aim at every object in the map with a uniform CircleSize and normalized distances.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Difficulty.Skills.Speed">
+            <summary>
+            Represents the skill required to press keys with regards to keeping up with the speed at which objects need to be hit.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Edit.Blueprints.BlueprintPiece`1">
+            <summary>
+            A piece of a selection or placement blueprint which visualises an <see cref="T:osu.Game.Rulesets.Osu.Objects.OsuHitObject"/>.
+            </summary>
+            <typeparam name="T">The type of <see cref="T:osu.Game.Rulesets.Osu.Objects.OsuHitObject"/> which this <see cref="T:osu.Game.Rulesets.Osu.Edit.Blueprints.BlueprintPiece`1"/> visualises.</typeparam>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Edit.Blueprints.BlueprintPiece`1.UpdateFrom(`0)">
+            <summary>
+            Updates this <see cref="T:osu.Game.Rulesets.Osu.Edit.Blueprints.BlueprintPiece`1"/> using the properties of a <see cref="T:osu.Game.Rulesets.Osu.Objects.OsuHitObject"/>.
+            </summary>
+            <param name="hitObject">The <see cref="T:osu.Game.Rulesets.Osu.Objects.OsuHitObject"/> to reference properties from.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Edit.Blueprints.Sliders.Components.PathControlPointConnectionPiece">
+            <summary>
+            A visualisation of the line between two <see cref="T:osu.Game.Rulesets.Osu.Edit.Blueprints.Sliders.Components.PathControlPointPiece"/>s.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Edit.Blueprints.Sliders.Components.PathControlPointConnectionPiece.updateConnectingPath">
+            <summary>
+            Updates the path connecting this control point to the next one.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Edit.Blueprints.Sliders.Components.PathControlPointPiece">
+            <summary>
+            A visualisation of a single <see cref="T:osu.Game.Rulesets.Objects.PathControlPoint"/> in a <see cref="T:osu.Game.Rulesets.Osu.Objects.Slider"/>.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Edit.Blueprints.Sliders.Components.PathControlPointPiece.updateMarkerDisplay">
+            <summary>
+            Updates the state of the circular control point marker.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Edit.Blueprints.Sliders.SliderPlacementBlueprint.canPlaceNewControlPoint(osu.Game.Rulesets.Objects.PathControlPoint@)">
+            <summary>
+            Whether a new control point can be placed at the current mouse position.
+            </summary>
+            <param name="lastPoint">The last-placed control point. May be null, but is not null if <c>false</c> is returned.</param>
+            <returns>Whether a new control point can be placed at the current position.</returns>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Edit.DrawableOsuEditRuleset.editor_hit_object_fade_out_extension">
+            <summary>
+            Hit objects are intentionally made to fade out at a constant slower rate than in gameplay.
+            This allows a mapper to gain better historical context and use recent hitobjects as reference / snap points.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Edit.OsuHitObjectComposer.createGrid(System.Func{osu.Game.Rulesets.Objects.HitObject,System.Boolean},System.Int32)">
+            <summary>
+            Creates a grid from the last <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> matching a predicate to a target <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>.
+            </summary>
+            <param name="sourceSelector">A predicate that matches <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>s where the grid can start from.
+            Only the last <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> matching the predicate is used.</param>
+            <param name="targetOffset">An offset from the <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> selected via <paramref name="sourceSelector"/> at which the grid should stop.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Osu.Edit.OsuDistanceSnapGrid"/> from a selected <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> to a target <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>.</returns>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Judgements.OsuHitCircleJudgementResult.HitCircle">
+            <summary>
+            The <see cref="P:osu.Game.Rulesets.Osu.Judgements.OsuHitCircleJudgementResult.HitCircle"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Judgements.OsuHitCircleJudgementResult.CursorPositionAtHit">
+            <summary>
+            The position of the player's cursor when <see cref="P:osu.Game.Rulesets.Osu.Judgements.OsuHitCircleJudgementResult.HitCircle"/> was hit.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Mods.OsuModBlinds.DrawableOsuBlinds">
+            <summary>
+            Element for the Blinds mod drawing 2 black boxes covering the whole screen which resize inside a restricted area with some leniency.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Mods.OsuModBlinds.DrawableOsuBlinds.blackBoxLeft">
+            <summary>
+            Black background boxes behind blind panel textures.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Mods.OsuModBlinds.DrawableOsuBlinds.blackBoxRight">
+            <summary>
+            Black background boxes behind blind panel textures.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Mods.OsuModBlinds.DrawableOsuBlinds.target_clamp">
+            <summary>
+            Value between 0 and 1 setting a maximum "closedness" for the blinds.
+            Useful for animating how far the blinds can be opened while keeping them at the original position if they are wider open than this.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Mods.OsuModBlinds.DrawableOsuBlinds.leniency">
+            <summary>
+            <para>
+            Percentage of playfield to extend blinds over. Basically moves the origin points where the blinds start.
+            </para>
+            <para>
+            -1 would mean the blinds always cover the whole screen no matter health.
+            0 would mean the blinds will only ever be on the edge of the playfield on 0% health.
+            1 would mean the blinds are fully outside the playfield on 50% health.
+            Infinity would mean the blinds are always outside the playfield except on 100% health.
+            </para>
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Mods.OsuModBlinds.DrawableOsuBlinds.AnimateClosedness(System.Single)">
+            <summary>
+            0 is open, 1 is closed.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Mods.OsuModObjectScaleTween">
+            <summary>
+            Adjusts the size of hit objects during their fade in animation.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Mods.OsuModRelax.relax_leniency">
+            <summary>
+            How early before a hitobject's start time to trigger a hit.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint">
+            <summary>
+            A single follow point positioned between two adjacent <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/>s.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection">
+            <summary>
+            Visualises the <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s between two <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/>s.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection.StartTime">
+            <summary>
+            The start time of <see cref="F:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection.Start"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection.Start">
+            <summary>
+            The <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/> which <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s will exit from.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection.#ctor(osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject)">
+            <summary>
+            Creates a new <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection"/>.
+            </summary>
+            <param name="start">The <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/> which <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s will exit from.</param>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection.End">
+            <summary>
+            The <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/> which <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s will enter.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointRenderer">
+            <summary>
+            Visualises connections between <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/>s.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointRenderer.Connections">
+            <summary>
+            All the <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection"/>s contained by this <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointRenderer"/>.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointRenderer.AddFollowPoints(osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject)">
+            <summary>
+            Adds the <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s around a <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/>.
+            This includes <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s leading into <paramref name="hitObject"/>, and <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s exiting <paramref name="hitObject"/>.
+            </summary>
+            <param name="hitObject">The <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/> to add <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s for.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointRenderer.RemoveFollowPoints(osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject)">
+            <summary>
+            Removes the <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s around a <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/>.
+            This includes <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s leading into <paramref name="hitObject"/>, and <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s exiting <paramref name="hitObject"/>.
+            </summary>
+            <param name="hitObject">The <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/> to remove <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPoint"/>s for.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointRenderer.addConnection(osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection)">
+            <summary>
+            Adds a <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection"/> to this <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointRenderer"/>.
+            </summary>
+            <param name="connection">The <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection"/> to add.</param>
+            <returns>The index of <paramref name="connection"/> in <see cref="F:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointRenderer.connections"/>.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointRenderer.removeGroup(osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection)">
+            <summary>
+            Removes a <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection"/> from this <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointRenderer"/>.
+            </summary>
+            <param name="connection">The <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Connections.FollowPointConnection"/> to remove.</param>
+            <returns>Whether <paramref name="connection"/> was removed.</returns>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject.CheckHittable">
+            <summary>
+            Whether this <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/> can be hit, given a time value.
+            If non-null, judgements will be ignored (resulting in a shake) whilst the function returns false.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject.MissForcefully">
+            <summary>
+            Causes this <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableOsuHitObject"/> to get missed, disregarding all conditions in implementations of <see cref="M:osu.Game.Rulesets.Objects.Drawables.DrawableHitObject.CheckForResult(System.Boolean,System.Double)"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableSliderTail.DisplayResult">
+            <summary>
+            The judgement text is provided by the <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableSlider"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableSpinner.Progress">
+            <summary>
+            The completion progress of this spinner from 0..1 (clamped).
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableSpinnerTick.TriggerResult(System.Boolean)">
+            <summary>
+            Apply a judgement result.
+            </summary>
+            <param name="hit">Whether this tick was reached.</param>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.IRequireTracking.Tracking">
+            <summary>
+            Whether the <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.DrawableSlider"/> is currently being tracked by the user.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Objects.Drawables.ITrackSnaking">
+            <summary>
+            A component which tracks the current end snaking position of a slider.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.ManualSliderBody">
+            <summary>
+            A <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBody"/> with the ability to set the drawn vertices manually.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBall.ReceivePositionalInputAt(osuTK.Vector2)">
+            <summary>
+            If the cursor moves out of the ball's radius we still need to be able to receive positional updates to stop tracking.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBall.timeToAcceptAnyKeyAfter">
+             <summary>
+             The point in time after which we can accept any key for tracking. Before this time, we may need to restrict tracking to the key used to hit the head circle.
+            
+             This is a requirement to stop the case where a player holds down one key (from before the slider) and taps the second key while maintaining full scoring (tracking) of sliders.
+             Visually, this special case can be seen below (time increasing from left to right):
+            
+              Z  Z+X  Z
+                  o========o
+            
+             Without this logic, tracking would continue through the entire slider even though no key hold action is directly attributing to it.
+            
+             In all other cases, no special handling is required (either key being pressed is allowable as valid tracking).
+            
+             The reason for storing this as a time value (rather than a bool) is to correctly handle rewind scenarios.
+             </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBall.isValidTrackingAction(osu.Game.Rulesets.Osu.OsuAction)">
+            <summary>
+            Check whether a given user input is a valid tracking action.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBody.PathOffset">
+            <summary>
+            Offset in absolute coordinates from the start of the curve.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBody.AccentColour">
+            <summary>
+            Used to colour the path.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBody.BorderColour">
+            <summary>
+            Used to colour the path border.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBody.BorderSize">
+            <summary>
+            Used to size the path border.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBody.RecyclePath">
+            <summary>
+            Initialises a new <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.DrawableSliderPath"/>, releasing all resources retained by the old one.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBody.SetVertices(System.Collections.Generic.IReadOnlyList{osuTK.Vector2})">
+            <summary>
+            Sets the vertices of the path which should be drawn by this <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBody"/>.
+            </summary>
+            <param name="vertices">The vertices</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SnakingSliderBody">
+            <summary>
+            A <see cref="T:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SliderBody"/> which changes its curve depending on the snaking progress.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SnakingSliderBody.snakedPosition">
+            <summary>
+            The top-left position of the path when fully snaked.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SnakingSliderBody.snakedPathOffset">
+            <summary>
+            The offset of the path from <see cref="F:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SnakingSliderBody.snakedPosition"/> when fully snaked.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SpinnerBonusDisplay">
+            <summary>
+            Shows incremental bonus score achieved for a spinner.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SpinnerRotationTracker.RateAdjustedRotation">
+            <summary>
+            The total rotation performed on the spinner disc, disregarding the spin direction,
+            adjusted for the track's playback rate.
+            </summary>
+            <remarks>
+            <para>
+            This value is always non-negative and is monotonically increasing with time
+            (i.e. will only increase if time is passing forward, but can decrease during rewind).
+            </para>
+            <para>
+            The rotation from each frame is multiplied by the clock's current playback rate.
+            The reason this is done is to ensure that spinners give the same score and require the same number of spins
+            regardless of whether speed-modifying mods are applied.
+            </para>
+            </remarks>
+            <example>
+            Assuming no speed-modifying mods are active,
+            if the spinner is spun 360 degrees clockwise and then 360 degrees counter-clockwise,
+            this property will return the value of 720 (as opposed to 0 for <see cref="P:osu.Framework.Graphics.Drawable.Rotation"/>).
+            If Double Time is active instead (with a speed multiplier of 1.5x),
+            in the same scenario the property will return 720 * 1.5 = 1080.
+            </example>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SpinnerRotationTracker.IsSpinning">
+            <summary>
+            Whether the spinning is spinning at a reasonable speed to be considered visually spinning.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SpinnerRotationTracker.isSpinnableTime">
+            <summary>
+            Whether currently in the correct time range to allow spinning.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.Drawables.Pieces.SpinnerRotationTracker.AddRotation(System.Single)">
+            <summary>
+            Rotate the disc by the provided angle (in addition to any existing rotation).
+            </summary>
+            <remarks>
+            Will be a no-op if not a valid time to spin.
+            </remarks>
+            <param name="angle">The delta angle.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Objects.ISliderProgress.UpdateProgress(System.Double)">
+            <summary>
+            Updates the progress of this <see cref="T:osu.Game.Rulesets.Osu.Objects.ISliderProgress"/> element along the slider.
+            </summary>
+            <param name="completionProgress">Amount of the slider completed.</param>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.OsuHitObject.OBJECT_RADIUS">
+            <summary>
+            The radius of hit objects (ie. the radius of a <see cref="T:osu.Game.Rulesets.Osu.Objects.HitCircle"/>).
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.OsuHitObject.BASE_SCORING_DISTANCE">
+            <summary>
+            Scoring distance with a speed-adjusted beat length of 1 second (ie. the speed slider balls move through their track).
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.Slider.LazyEndPosition">
+            <summary>
+            The position of the cursor at the point of completion of this <see cref="T:osu.Game.Rulesets.Osu.Objects.Slider"/> if it was hit
+            with as few movements as possible. This is set and used by difficulty calculation.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.Slider.LazyTravelDistance">
+            <summary>
+            The distance travelled by the cursor upon completion of this <see cref="T:osu.Game.Rulesets.Osu.Objects.Slider"/> if it was hit
+            with as few movements as possible. This is set and used by difficulty calculation.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Slider.SpanDuration">
+            <summary>
+            The length of one span of this <see cref="T:osu.Game.Rulesets.Osu.Objects.Slider"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Slider.Velocity">
+            <summary>
+            Velocity of this <see cref="T:osu.Game.Rulesets.Osu.Objects.Slider"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Slider.TickDistance">
+            <summary>
+            Spacing between <see cref="T:osu.Game.Rulesets.Osu.Objects.SliderTick"/>s of this <see cref="T:osu.Game.Rulesets.Osu.Objects.Slider"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Objects.Slider.TickDistanceMultiplier">
+            <summary>
+            An extra multiplier that affects the number of <see cref="T:osu.Game.Rulesets.Osu.Objects.SliderTick"/>s generated by this <see cref="T:osu.Game.Rulesets.Osu.Objects.Slider"/>.
+            An increase in this value increases <see cref="P:osu.Game.Rulesets.Osu.Objects.Slider.TickDistance"/>, which reduces the number of ticks generated.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Objects.SliderTailCircle">
+            <summary>
+            Note that this should not be used for timing correctness.
+            See <see cref="F:osu.Game.Rulesets.Objects.SliderEventType.LegacyLastTick"/> usage in <see cref="T:osu.Game.Rulesets.Osu.Objects.Slider"/> for more information.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Spinner.SpinsRequired">
+            <summary>
+            Number of spins required to finish the spinner without miss.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Objects.Spinner.MaximumBonusSpins">
+            <summary>
+            Number of spins available to give bonus, beyond <see cref="P:osu.Game.Rulesets.Osu.Objects.Spinner.SpinsRequired"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.OsuInputManager.AllowUserCursorMovement">
+            <summary>
+            Whether the user's cursor movement events should be accepted.
+            Can be used to block only movement while still accepting button input.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Replays.OsuAutoGenerator.DelayedMovements">
+            <summary>
+            If delayed movements should be used, causing the cursor to stay on each hitobject for as long as possible.
+            Mainly for Autopilot.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Replays.OsuAutoGenerator.reactionTime">
+            <summary>
+            The "reaction time" in ms between "seeing" a new hit object and moving to "react" to it.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Replays.OsuAutoGenerator.preferredEasing">
+            <summary>
+            What easing to use when moving between hitobjects
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Replays.OsuAutoGenerator.buttonIndex">
+            <summary>
+            Which button (left or right) to use for the current hitobject.
+            Even means LMB will be used to click, odd means RMB will be used.
+            This keeps track of the button previously used for alt/singletap logic.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Replays.OsuAutoGeneratorBase.SPINNER_CENTRE">
+            <summary>
+            Constants (for spinners).
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Replays.OsuAutoGeneratorBase.FrameDelay">
+            <summary>
+            The time in ms between each ReplayFrame.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Skinning.LegacyNewStyleSpinner">
+            <summary>
+            Legacy skinned spinner with two main spinning layers, one fixed overlay and one final spinning overlay.
+            No background layer.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Skinning.LegacyOldStyleSpinner">
+            <summary>
+            Legacy skinned spinner with one main spinning layer and a background layer.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Skinning.LegacySliderBody.LegacyDrawableSliderPath.lighten(osuTK.Graphics.Color4,System.Single)">
+            <summary>
+            Lightens a colour in a way more friendly to dark or strong colours.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.Skinning.NonPlayfieldSprite">
+            <summary>
+            A sprite which is displayed within the playfield, but historically was not considered part of the playfield.
+            Performs scale adjustment to undo the scale applied by <see cref="T:osu.Game.Rulesets.UI.PlayfieldAdjustmentContainer"/> (osu! ruleset specifically).
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Skinning.OsuLegacySkinTransformer.LEGACY_CIRCLE_RADIUS">
+            <summary>
+            On osu-stable, hitcircles have 5 pixels of transparent padding on each side to allow for shadows etc.
+            Their hittable area is 128px, but the actual circle portion is 118px.
+            We must account for some gameplay elements such as slider bodies, where this padding is not present.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Statistics.AccuracyHeatmap.inner_portion">
+            <summary>
+            Size of the inner circle containing the "hit" points, relative to the size of this <see cref="T:osu.Game.Rulesets.Osu.Statistics.AccuracyHeatmap"/>.
+            All other points outside of the inner circle are "miss" points.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Osu.Statistics.AccuracyHeatmap.points_per_dimension">
+            <summary>
+            Number of rows/columns of points.
+            ~4px per point @ 128x128 size (the contents of the <see cref="T:osu.Game.Rulesets.Osu.Statistics.AccuracyHeatmap"/> are always square). 1089 total points.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.Statistics.AccuracyHeatmap.PeakValue">
+            <summary>
+            The highest count of any point currently being displayed.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.Statistics.AccuracyHeatmap.HitPoint.Increment">
+            <summary>
+            Increment the value of this point by one.
+            </summary>
+            <returns>The value after incrementing.</returns>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.UI.Cursor.CursorTrail.FadeDuration">
+            <summary>
+            The amount of time to fade the cursor trail pieces.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.UI.Cursor.CursorTrail.InterpolateMovements">
+            <summary>
+            Whether to interpolate mouse movements and add trail pieces at intermediate points.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.UI.Cursor.OsuCursorContainer.GetScaleForCircleSize(System.Single)">
+            <summary>
+            Get the scale applicable to the ActiveCursor based on a beatmap's circle size.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.UI.Cursor.OsuCursorSprite.ExpandTarget">
+            <summary>
+            The an optional piece of the cursor to expand when in a clicked state.
+            If null, the whole cursor will be affected by expansion.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.UI.OrderedHitPolicy">
+            <summary>
+            Ensures that <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>s are hit in-order. Affectionately known as "note lock".
+            If a <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> is hit out of order:
+            <list type="number">
+            <item><description>The hit is blocked if it occurred earlier than the previous <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>'s start time.</description></item>
+            <item><description>The hit causes all previous <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>s to missed otherwise.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.UI.OrderedHitPolicy.IsHittable(osu.Game.Rulesets.Objects.Drawables.DrawableHitObject,System.Double)">
+            <summary>
+            Determines whether a <see cref="T:osu.Game.Rulesets.Objects.Drawables.DrawableHitObject"/> can be hit at a point in time.
+            </summary>
+            <param name="hitObject">The <see cref="T:osu.Game.Rulesets.Objects.Drawables.DrawableHitObject"/> to check.</param>
+            <param name="time">The time to check.</param>
+            <returns>Whether <paramref name="hitObject"/> can be hit at the given <paramref name="time"/>.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.UI.OrderedHitPolicy.HandleHit(osu.Game.Rulesets.Objects.Drawables.DrawableHitObject)">
+            <summary>
+            Handles a <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> being hit to potentially miss all earlier <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>s.
+            </summary>
+            <param name="hitObject">The <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> that was hit.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Osu.UI.OrderedHitPolicy.hitObjectCanBlockFutureHits(osu.Game.Rulesets.Objects.Drawables.DrawableHitObject)">
+            <summary>
+            Whether a <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> blocks hits on future <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>s until its start time is reached.
+            </summary>
+            <param name="hitObject">The <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> to test.</param>
+        </member>
+        <member name="P:osu.Game.Rulesets.Osu.UI.OsuPlayfieldAdjustmentContainer.AlignWithStoryboard">
+            <summary>
+            When true, an offset is applied to allow alignment with historical storyboards displayed in the same parent space.
+            This will shift the playfield downwards slightly.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Osu.UI.OsuPlayfieldAdjustmentContainer.ScalingContainer">
+            <summary>
+            A <see cref="T:osu.Framework.Graphics.Containers.Container"/> which scales its content relative to a target width.
+            </summary>
+        </member>
+    </members>
+</doc>

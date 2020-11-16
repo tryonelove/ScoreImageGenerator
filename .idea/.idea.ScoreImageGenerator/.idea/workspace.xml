@@ -23,21 +23,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ce45325-fc3d-487c-9268-c395ff5f513e" name="Default Changelist" comment="Displaying score PP and all the needed stats">
+    <list default="true" id="3ce45325-fc3d-487c-9268-c395ff5f513e" name="Default Changelist" comment="Fixed changing image div size when generating new image&#10;Properly display enabled mods">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScoreImageGenerator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetBeatmapsRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetBeatmapsRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserBestRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserBestRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserRecentRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserRecentRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Controllers/ImageGeneratorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Controllers/ImageGeneratorController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Request.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Request.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/PpCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/PpCalculator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/Utils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/ImageMiddleware.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Beatmap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Beatmap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Objects/OsuMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/OsuMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Score.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Objects/Score.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Static/Site.css" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/Site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreImageGenerator/Static/usernotfound.png" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreImageGenerator/Static/usernotfound.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,10 +47,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/ScoreImageGenerator/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator/Objects/Score.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/osu-tools/PerformanceCalculator/ProcessorCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/osu-tools/PerformanceCalculator/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator/Objects/Score.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/osu-tools/PerformanceCalculator/Difficulty/DifficultyCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/osu-tools/PerformanceCalculator/Performance/PerformanceCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/31C6A07D-38C7-4CC4-8F47-E5BD5F9183FD/bf/0a65d192/DeveloperExceptionPageMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
@@ -65,22 +61,24 @@
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/CalculatePp.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Extensions/ImageProcessingContextExtentions.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/CalculatorResponse.cs" />
-        <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/Beatmap.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Responses/GetBeatmapsResponse.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/Mods.cs" />
-        <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/OsuMode.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetBeatmapsRequest.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserBestRequest.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserRecentRequest.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/GetUserRequest.cs" />
-        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/Utils.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/Score.cs" />
-        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/PpCalculator.cs" />
-        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs" />
-        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageGenerator.cs" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Static/Site.css" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Views/Home/Index.cshtml" />
         <option value="$PROJECT_DIR$/ScoreImageGenerator/Static/js/app.js" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageGenerator.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/Beatmap.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/API/Request.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Controllers/ImageGeneratorController.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Objects/OsuMode.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/PpCalculator.cs" />
+        <option value="$PROJECT_DIR$/ScoreImageGenerator/Helpers/Utils.cs" />
       </list>
     </option>
   </component>
@@ -96,7 +94,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ScoreImageGenerator/Properties/launchSettings.json" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="discord-project" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.ScoreImageGenerator">
@@ -150,7 +148,11 @@
       <workItem from="1605101842599" duration="3629000" />
       <workItem from="1605107404335" duration="5512000" />
       <workItem from="1605130912692" duration="4280000" />
-      <workItem from="1605175380490" duration="6256000" />
+      <workItem from="1605175380490" duration="6404000" />
+      <workItem from="1605305369883" duration="2307000" />
+      <workItem from="1605466769582" duration="7711000" />
+      <workItem from="1605481968787" duration="639000" />
+      <workItem from="1605524759907" duration="156000" />
     </task>
     <task id="LOCAL-00001" summary="Created a solution">
       <created>1605013750720</created>
@@ -166,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605111823166</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed changing image div size when generating new image&#10;Properly display enabled mods">
+      <created>1605182478880</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605182478881</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,117 +199,122 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Created a solution" />
     <MESSAGE value="Displaying score PP and all the needed stats" />
-    <option name="LAST_COMMIT_MESSAGE" value="Displaying score PP and all the needed stats" />
+    <MESSAGE value="Fixed changing image div size when generating new image&#10;Properly display enabled mods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed changing image div size when generating new image&#10;Properly display enabled mods" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2338" y="182" width="1084" height="710" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605032302456">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2338" y="182" width="1084" height="710" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605032302456" />
-    <state width="466" height="505" key="DebuggerActiveHint" timestamp="1605109172230">
+    <state width="466" height="505" key="DebuggerActiveHint" timestamp="1605475322240">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="466" height="505" key="DebuggerActiveHint/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605109172230" />
+    <state width="466" height="505" key="DebuggerActiveHint/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475322240" />
     <state x="2108" y="78" key="DiffContextDialog" timestamp="1605111848940">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2108" y="78" key="DiffContextDialog/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605111848940" />
-    <state x="2664" y="283" key="FileChooserDialogImpl" timestamp="1605013675014">
+    <state x="2664" y="283" key="FileChooserDialogImpl" timestamp="1605524827447">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2664" y="283" key="FileChooserDialogImpl/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605013675014" />
+    <state x="2664" y="283" key="FileChooserDialogImpl/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605524827447" />
     <state x="2666" y="429" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog" timestamp="1605111863152">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2666" y="429" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605111863152" />
-    <state width="1874" height="273" key="GridCell.Tab.0.bottom" timestamp="1605182293017">
+    <state width="1874" height="310" key="GridCell.Tab.0.bottom" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="273" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605182293017" />
-    <state width="1874" height="273" key="GridCell.Tab.0.center" timestamp="1605182293017">
+    <state width="1874" height="310" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.0.center" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="273" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605182293017" />
-    <state width="1874" height="273" key="GridCell.Tab.0.left" timestamp="1605182293017">
+    <state width="1874" height="310" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.0.left" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="273" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605182293017" />
-    <state width="1874" height="273" key="GridCell.Tab.0.right" timestamp="1605182293017">
+    <state width="1874" height="310" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.0.right" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="273" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605182293017" />
-    <state width="1874" height="310" key="GridCell.Tab.1.bottom" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.1.bottom" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.1.center" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.1.center" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.1.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.1.left" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.1.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.1.left" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.1.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.1.right" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.1.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.1.right" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.1.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.2.bottom" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.1.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.2.bottom" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.2.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.2.center" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.2.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.2.center" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.2.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.2.left" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.2.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.2.left" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.2.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.2.right" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.2.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.2.right" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.2.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.3.bottom" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.2.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.3.bottom" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.3.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.3.center" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.3.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.3.center" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.3.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.3.left" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.3.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.3.left" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.3.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.3.right" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.3.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.3.right" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.3.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.4.bottom" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.3.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.4.bottom" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.4.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.4.center" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.4.bottom/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.4.center" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.4.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.4.left" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.4.center/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.4.left" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.4.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
-    <state width="1874" height="310" key="GridCell.Tab.4.right" timestamp="1605181410613">
+    <state width="1874" height="310" key="GridCell.Tab.4.left/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
+    <state width="1874" height="310" key="GridCell.Tab.4.right" timestamp="1605475584755">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="310" key="GridCell.Tab.4.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605181410613" />
+    <state width="1874" height="310" key="GridCell.Tab.4.right/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605475584755" />
     <state x="2476" y="260" key="Rider.ProjectTemplateDialog.Size" timestamp="1605013410601">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2476" y="260" key="Rider.ProjectTemplateDialog.Size/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605013410601" />
-    <state x="2476" y="261" key="Vcs.Push.Dialog.v2" timestamp="1605111884654">
+    <state x="2376" y="159" key="SettingsEditor" timestamp="1605524872132">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2476" y="261" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605111884654" />
+    <state x="2376" y="159" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605524872132" />
+    <state x="2476" y="261" key="Vcs.Push.Dialog.v2" timestamp="1605182481292">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2476" y="261" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605182481292" />
     <state width="964" height="524" key="XDebugger.FullValuePopup" timestamp="1605181052322">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -311,6 +325,23 @@
     <state x="2441" y="306" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.0.1920.1044@1920.0.1920.1080" timestamp="1605180876419" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs</url>
+          <line>30</line>
+          <properties documentPath="$PROJECT_DIR$/ScoreImageGenerator/Helpers/ImageHandler.cs" initialLine="30">
+            <startOffsets>
+              <option value="848" />
+            </startOffsets>
+            <endOffsets>
+              <option value="929" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Frame#ScoreImageGenerator.Helpers.ImageHandler.GetBestScore" memberName="userRequest" />

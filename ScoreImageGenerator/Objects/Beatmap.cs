@@ -50,7 +50,6 @@ namespace ScoreImageGenerator.Objects
             Creator = bmap.Creator;
             Stars = float.Parse(bmap.DifficultyRating ?? "0");
             Length = int.Parse(bmap.TotalLength ?? "0");
-            BackgroundImage = Utils.GetBeatmapBackground(BeatmapSetId);
         }
     }
 }

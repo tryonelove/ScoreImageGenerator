@@ -1,0 +1,967 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>osu.Game.Rulesets.Mania</name>
+    </assembly>
+    <members>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmap.Stages">
+            <summary>
+            The definitions for each stage in a <see cref="T:osu.Game.Rulesets.Mania.UI.ManiaPlayfield"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmap.TotalColumns">
+            <summary>
+            Total number of columns represented by all stages in this <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmap"/>.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmap.#ctor(osu.Game.Rulesets.Mania.Beatmaps.StageDefinition)">
+            <summary>
+            Creates a new <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmap"/>.
+            </summary>
+            <param name="defaultStage">The initial stages.</param>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmapConverter.max_notes_for_density">
+            <summary>
+            Maximum number of previous notes to consider for density calculation.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmapConverter.generateSpecific(osu.Game.Rulesets.Objects.HitObject,osu.Game.Beatmaps.IBeatmap)">
+            <summary>
+            Method that generates hit objects for osu!mania specific beatmaps.
+            </summary>
+            <param name="original">The original hit object.</param>
+            <param name="originalBeatmap">The original beatmap. This is used to look-up any values dependent on a fully-loaded beatmap.</param>
+            <returns>The hit objects generated.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmapConverter.generateConverted(osu.Game.Rulesets.Objects.HitObject,osu.Game.Beatmaps.IBeatmap)">
+            <summary>
+            Method that generates hit objects for non-osu!mania beatmaps.
+            </summary>
+            <param name="original">The original hit object.</param>
+            <param name="originalBeatmap">The original beatmap. This is used to look-up any values dependent on a fully-loaded beatmap.</param>
+            <returns>The hit objects generated.</returns>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmapConverter.SpecificBeatmapPatternGenerator">
+            <summary>
+            A pattern generator for osu!mania-specific beatmaps.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmapConverter.SpecificBeatmapPatternGenerator.defaultNodeSamples">
+            <remarks>
+            osu!mania-specific beatmaps in stable only play samples at the start of the hold note.
+            </remarks>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator">
+            <summary>
+            A pattern generator for IHasDistance hit objects.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.osu_base_scoring_distance">
+            <summary>
+            Base osu! slider scoring distance.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.generateRandomHoldNotes(System.Double,System.Int32)">
+            <summary>
+            Generates random hold notes that start at an span the same amount of rows.
+            </summary>
+            <param name="startTime">Start time of each hold note.</param>
+            <param name="noteCount">Number of hold notes.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> containing the hit objects.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.generateRandomNotes(System.Double,System.Int32)">
+            <summary>
+            Generates random notes, with one note per row and no stacking.
+            </summary>
+            <param name="startTime">The start time.</param>
+            <param name="noteCount">The number of notes.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> containing the hit objects.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.generateStair(System.Double)">
+            <summary>
+            Generates a stair of notes, with one note per row.
+            </summary>
+            <param name="startTime">The start time.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> containing the hit objects.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.generateRandomMultipleNotes(System.Double)">
+            <summary>
+            Generates random notes with 1-2 notes per row and no stacking.
+            </summary>
+            <param name="startTime">The start time.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> containing the hit objects.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.generateNRandomNotes(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Generates random hold notes. The amount of hold notes generated is determined by probabilities.
+            </summary>
+            <param name="startTime">The hold note start time.</param>
+            <param name="p2">The probability required for 2 hold notes to be generated.</param>
+            <param name="p3">The probability required for 3 hold notes to be generated.</param>
+            <param name="p4">The probability required for 4 hold notes to be generated.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> containing the hit objects.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.generateTiledHoldNotes(System.Double)">
+            <summary>
+            Generates tiled hold notes. You can think of this as a stair of hold notes.
+            </summary>
+            <param name="startTime">The first hold note start time.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> containing the hit objects.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.generateHoldAndNormalNotes(System.Double)">
+            <summary>
+            Generates a hold note alongside normal notes.
+            </summary>
+            <param name="startTime">The start time of notes.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> containing the hit objects.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.sampleInfoListAt(System.Double)">
+            <summary>
+            Retrieves the sample info list at a point in time.
+            </summary>
+            <param name="time">The time to retrieve the sample info list from.</param>
+            <returns></returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.nodeSamplesAt(System.Double)">
+            <summary>
+            Retrieves the list of node samples that occur at time greater than or equal to <paramref name="time"/>.
+            </summary>
+            <param name="time">The time to retrieve node samples at.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.DistanceObjectPatternGenerator.addToPattern(osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern,System.Int32,System.Double,System.Double)">
+            <summary>
+            Constructs and adds a note to a pattern.
+            </summary>
+            <param name="pattern">The pattern to add to.</param>
+            <param name="column">The column to add the note to.</param>
+            <param name="startTime">The start time of the note.</param>
+            <param name="endTime">The end time of the note (set to <paramref name="startTime"/> for a non-hold note).</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.EndTimeObjectPatternGenerator.addToPattern(osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern,System.Int32,System.Boolean)">
+            <summary>
+            Constructs and adds a note to a pattern.
+            </summary>
+            <param name="pattern">The pattern to add to.</param>
+            <param name="column">The column to add the note to.</param>
+            <param name="holdNote">Whether to add a hold note.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.HitObjectPatternGenerator.generateRandomNotes(System.Int32)">
+            <summary>
+            Generates random notes.
+            <para>
+            This will generate as many as it can up to <paramref name="noteCount"/>, accounting for
+            any stacks if <see cref="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.HitObjectPatternGenerator.convertType"/> is forcing no stacks.
+            </para>
+            </summary>
+            <param name="noteCount">The amount of notes to generate.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> containing the hit objects.</returns>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.HitObjectPatternGenerator.hasSpecialColumn">
+            <summary>
+            Whether this hit object can generate a note in the special column.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.HitObjectPatternGenerator.generateRandomPattern(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Generates a random pattern.
+            </summary>
+            <param name="p2">Probability for 2 notes to be generated.</param>
+            <param name="p3">Probability for 3 notes to be generated.</param>
+            <param name="p4">Probability for 4 notes to be generated.</param>
+            <param name="p5">Probability for 5 notes to be generated.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> containing the hit objects.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.HitObjectPatternGenerator.generateRandomPatternWithMirrored(System.Double,System.Double,System.Double)">
+            <summary>
+            Generates a random pattern which has both normal and mirrored notes.
+            </summary>
+            <param name="centreProbability">The probability for a note to be added to the centre column.</param>
+            <param name="p2">Probability for 2 notes to be generated.</param>
+            <param name="p3">Probability for 3 notes to be generated.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> containing the hit objects.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.HitObjectPatternGenerator.getRandomNoteCount(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Generates a count of notes to be generated from a list of probabilities.
+            </summary>
+            <param name="p2">Probability for 2 notes to be generated.</param>
+            <param name="p3">Probability for 3 notes to be generated.</param>
+            <param name="p4">Probability for 4 notes to be generated.</param>
+            <param name="p5">Probability for 5 notes to be generated.</param>
+            <returns>The amount of notes to be generated.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.HitObjectPatternGenerator.getRandomNoteCountMirrored(System.Double,System.Double,System.Double,System.Boolean@)">
+            <summary>
+            Generates a count of notes to be generated from a list of probabilities.
+            </summary>
+            <param name="centreProbability">The probability for a note to be added to the centre column.</param>
+            <param name="p2">Probability for 2 notes to be generated.</param>
+            <param name="p3">Probability for 3 notes to be generated.</param>
+            <param name="addToCentre">Whether to add a note to the centre column.</param>
+            <returns>The amount of notes to be generated. The note to be added to the centre column will NOT be part of this count.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.HitObjectPatternGenerator.addToPattern(osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern,System.Int32)">
+            <summary>
+            Constructs and adds a note to a pattern.
+            </summary>
+            <param name="pattern">The pattern to add to.</param>
+            <param name="column">The column to add the note to.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator">
+            <summary>
+            A pattern generator for legacy hit objects.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.RandomStart">
+            <summary>
+            The column index at which to start generating random notes.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.Random">
+            <summary>
+            The random number generator to use.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.OriginalBeatmap">
+            <summary>
+            The beatmap which <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> is being converted from.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.GetColumn(System.Single,System.Boolean)">
+            <summary>
+            Converts an x-position into a column.
+            </summary>
+            <param name="position">The x-position.</param>
+            <param name="allowSpecial">Whether to treat as 7K + 1.</param>
+            <returns>The column.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.GetRandomNoteCount(System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Generates a count of notes to be generated from probabilities.
+            </summary>
+            <param name="p2">Probability for 2 notes to be generated.</param>
+            <param name="p3">Probability for 3 notes to be generated.</param>
+            <param name="p4">Probability for 4 notes to be generated.</param>
+            <param name="p5">Probability for 5 notes to be generated.</param>
+            <param name="p6">Probability for 6 notes to be generated.</param>
+            <returns>The amount of notes to be generated.</returns>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.ConversionDifficulty">
+            <summary>
+            A difficulty factor used for various conversion methods from osu!stable.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.FindAvailableColumn(System.Int32,osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern[])">
+            <summary>
+            Finds a new column in which a <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> can be placed.
+            This uses <see cref="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.GetRandomColumn(System.Nullable{System.Int32},System.Nullable{System.Int32})"/> to pick the next candidate column.
+            </summary>
+            <param name="initialColumn">The initial column to test. This may be returned if it is already a valid column.</param>
+            <param name="patterns">A list of patterns for which the validity of a column should be checked against.
+            A column is not a valid candidate if a <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> occupies the same column in any of the patterns.</param>
+            <returns>A column for which there are no <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>s in any of <paramref name="patterns"/> occupying the same column.</returns>
+            <exception cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.NotEnoughColumnsException">If there are no valid candidate columns.</exception>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.FindAvailableColumn(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Func{System.Int32,System.Int32},System.Func{System.Int32,System.Boolean},osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern[])">
+            <summary>
+            Finds a new column in which a <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> can be placed.
+            </summary>
+            <param name="initialColumn">The initial column to test. This may be returned if it is already a valid column.</param>
+            <param name="nextColumn">A function to retrieve the next column. If null, a randomisation scheme will be used.</param>
+            <param name="validation">A function to perform additional validation checks to determine if a column is a valid candidate for a <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>.</param>
+            <param name="lowerBound">The minimum column index. If null, <see cref="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.RandomStart"/> is used.</param>
+            <param name="upperBound">The maximum column index. If null, <see cref="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.PatternGenerator.TotalColumns">TotalColumns</see> is used.</param>
+            <param name="patterns">A list of patterns for which the validity of a column should be checked against.
+            A column is not a valid candidate if a <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> occupies the same column in any of the patterns.</param>
+            <returns>A column which has passed the <paramref name="validation"/> check and for which there are no
+            <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>s in any of <paramref name="patterns"/> occupying the same column.</returns>
+            <exception cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.NotEnoughColumnsException">If there are no valid candidate columns.</exception>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.GetRandomColumn(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns a random column index in the range [<paramref name="lowerBound"/>, <paramref name="upperBound"/>).
+            </summary>
+            <param name="lowerBound">The minimum column index. If null, <see cref="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.RandomStart"/> is used.</param>
+            <param name="upperBound">The maximum column index. If null, <see cref="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.PatternGenerator.TotalColumns"/> is used.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternGenerator.NotEnoughColumnsException">
+            <summary>
+            Occurs when mania conversion is stuck in an infinite loop unable to find columns to place new hitobjects in.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType">
+            <summary>
+            The type of pattern to generate. Used for legacy patterns.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.ForceStack">
+            <summary>
+            Keep the same as last row.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.ForceNotStack">
+            <summary>
+            Keep different from last row.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.KeepSingle">
+            <summary>
+            Keep as single note at its original position.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.LowProbability">
+            <summary>
+            Use a lower random value.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.Alternate">
+            <summary>
+            Reserved.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.ForceSigSlider">
+            <summary>
+            Ignore the repeat count.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.ForceNotSlider">
+            <summary>
+            Convert slider to circle.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.Gathered">
+            <summary>
+            Notes gathered together.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.Reverse">
+            <summary>
+            Change 0 -> 6.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.Cycle">
+            <summary>
+            1 -> 5 -> 1 -> 5 like reverse.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.Stair">
+            <summary>
+            Next note will be at column + 1.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Legacy.PatternType.ReverseStair">
+            <summary>
+            Next note will be at column - 1.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern">
+            <summary>
+            Creates a pattern containing hit objects.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern.HitObjects">
+            <summary>
+            All the hit objects contained in this pattern.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern.ColumnHasObject(System.Int32)">
+            <summary>
+            Check whether a column of this patterns contains a hit object.
+            </summary>
+            <param name="column">The column index.</param>
+            <returns>Whether the column with index <paramref name="column"/> contains a hit object.</returns>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern.ColumnWithObjects">
+            <summary>
+            Amount of columns taken up by hit objects in this pattern.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern.Add(osu.Game.Rulesets.Mania.Objects.ManiaHitObject)">
+            <summary>
+            Adds a hit object to this pattern.
+            </summary>
+            <param name="hitObject">The hit object to add.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern.Add(osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern)">
+            <summary>
+            Copies hit object from another pattern to this one.
+            </summary>
+            <param name="other">The other pattern.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern.Clear">
+            <summary>
+            Clears this pattern, removing all hit objects.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern.Remove(osu.Game.Rulesets.Mania.Objects.ManiaHitObject)">
+            <summary>
+            Removes a hit object from this pattern.
+            </summary>
+            <param name="hitObject">The hit object to remove.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.PatternGenerator">
+            <summary>
+            Generator to create a pattern <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/> from a hit object.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.PatternGenerator.PreviousPattern">
+            <summary>
+            The last pattern.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.PatternGenerator.HitObject">
+            <summary>
+            The hit object to create the pattern for.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.PatternGenerator.Beatmap">
+            <summary>
+            The beatmap which <see cref="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.PatternGenerator.HitObject"/> is a part of.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.Patterns.PatternGenerator.Generate">
+            <summary>
+            Generates the patterns for <see cref="F:osu.Game.Rulesets.Mania.Beatmaps.Patterns.PatternGenerator.HitObject"/>, each filled with hit objects.
+            </summary>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.Beatmaps.Patterns.Pattern"/>s containing the hit objects.</returns>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Beatmaps.StageDefinition">
+            <summary>
+            Defines properties for each stage in a <see cref="T:osu.Game.Rulesets.Mania.UI.ManiaPlayfield"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Beatmaps.StageDefinition.Columns">
+            <summary>
+            The number of <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/>s which this stage contains.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.StageDefinition.IsSpecialColumn(System.Int32)">
+            <summary>
+            Whether the column index is a special column for this stage.
+            </summary>
+            <param name="column">The 0-based column index.</param>
+            <returns>Whether the column is a special column.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Beatmaps.StageDefinition.GetTypeOfColumn(System.Int32)">
+            <summary>
+            Get the type of column given a column index.
+            </summary>
+            <param name="column">The 0-based column index.</param>
+            <returns>The type of the column.</returns>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Edit.ManiaBeatSnapGrid">
+            <summary>
+            A grid which displays coloured beat divisor lines in proximity to the selection or placement cursor.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Edit.ManiaBeatSnapGrid.SelectionTimeRange">
+            <summary>
+            The range of time values of the current selection.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.ManiaRuleset.MAX_STAGE_KEYS">
+            <summary>
+            The maximum number of supported keys in a single stage.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.ManiaRuleset.getDualStageKeyCount(System.Int32)">
+            <summary>
+            Finds the number of keys for each stage in a <see cref="F:osu.Game.Rulesets.Mania.PlayfieldType.Dual"/> variant.
+            </summary>
+            <param name="variant">The variant.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.ManiaRuleset.getPlayfieldType(System.Int32)">
+            <summary>
+            Finds the <see cref="T:osu.Game.Rulesets.Mania.PlayfieldType"/> that corresponds to a variant value.
+            </summary>
+            <param name="variant">The variant value.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.PlayfieldType"/> that corresponds to <paramref name="variant"/>.</returns>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.PlayfieldType.Single">
+            <summary>
+            Columns are grouped into a single stage.
+            Number of columns in this stage lies at (item - Single).
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.PlayfieldType.Dual">
+            <summary>
+            Columns are grouped into two stages.
+            Overall number of columns lies at (item - Dual), further computation is required for
+            number of columns in each individual stage.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.ManiaSkinComponent.TargetColumn">
+            <summary>
+            The intended <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/> index for this component.
+            May be null if the component does not exist in a <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.ManiaSkinComponent.StageDefinition">
+            <summary>
+            The intended <see cref="F:osu.Game.Rulesets.Mania.ManiaSkinComponent.StageDefinition"/> for this component.
+            May be null if the component is not a direct member of a <see cref="T:osu.Game.Rulesets.Mania.UI.Stage"/>.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.ManiaSkinComponent.#ctor(osu.Game.Rulesets.Mania.ManiaSkinComponents,System.Nullable{System.Int32},System.Nullable{osu.Game.Rulesets.Mania.Beatmaps.StageDefinition})">
+            <summary>
+            Creates a new <see cref="T:osu.Game.Rulesets.Mania.ManiaSkinComponent"/>.
+            </summary>
+            <param name="component">The component.</param>
+            <param name="targetColumn">The intended <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/> index for this component. May be null if the component does not exist in a <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/>.</param>
+            <param name="stageDefinition">The intended <see cref="F:osu.Game.Rulesets.Mania.ManiaSkinComponent.StageDefinition"/> for this component. May be null if the component is not a direct member of a <see cref="T:osu.Game.Rulesets.Mania.UI.Stage"/>.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.MathUtils.FastRandom">
+            <summary>
+            A PRNG specified in http://heliosphan.org/fastrandom.html.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.MathUtils.FastRandom.NextUInt">
+            <summary>
+            Generates a random unsigned integer within the range [<see cref="F:System.UInt32.MinValue"/>, <see cref="F:System.UInt32.MaxValue"/>).
+            </summary>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.MathUtils.FastRandom.Next">
+            <summary>
+            Generates a random integer value within the range [0, <see cref="F:System.Int32.MaxValue"/>).
+            </summary>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.MathUtils.FastRandom.Next(System.Int32)">
+            <summary>
+            Generates a random integer value within the range [0, <paramref name="upperBound"/>).
+            </summary>
+            <param name="upperBound">The upper bound.</param>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.MathUtils.FastRandom.Next(System.Int32,System.Int32)">
+            <summary>
+            Generates a random integer value within the range [<paramref name="lowerBound"/>, <paramref name="upperBound"/>).
+            </summary>
+            <param name="lowerBound">The lower bound of the range.</param>
+            <param name="upperBound">The upper bound of the range.</param>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.MathUtils.FastRandom.NextDouble">
+            <summary>
+            Generates a random double value within the range [0, 1).
+            </summary>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.MathUtils.FastRandom.NextBool">
+            <summary>
+            Generates a reandom boolean value. Cached such that a random value is only generated once in every 32 calls.
+            </summary>
+            <returns>The random value.</returns>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Mods.IPlayfieldTypeMod.PlayfieldType">
+            <summary>
+            The <see cref="P:osu.Game.Rulesets.Mania.Mods.IPlayfieldTypeMod.PlayfieldType"/> which this <see cref="T:osu.Game.Rulesets.Mania.Mods.IPlayfieldTypeMod"/> requires.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Mods.ManiaModHidden.ExpandDirection">
+            <summary>
+            The direction in which the cover should expand.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableBarLine">
+            <summary>
+            Visualises a <see cref="T:osu.Game.Rulesets.Mania.Objects.BarLine"/>. Although this derives DrawableManiaHitObject,
+            this does not handle input/sound like a normal hit object.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableBarLine.triangle_height">
+            <summary>
+            Height of major bar line triangles.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableBarLine.triangle_offset">
+            <summary>
+            Offset of the major bar line triangles from the sides of the bar line.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNote">
+            <summary>
+            Visualises a <see cref="T:osu.Game.Rulesets.Mania.Objects.HoldNote"/> hit object.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNote.sizingContainer">
+            <summary>
+            Contains the size of the hold note covering the whole head/tail bounds. The size of this container changes as the hold note is being pressed.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNote.maskingContainer">
+            <summary>
+            Contains the contents of the hold note that should be masked as the hold note is being pressed. Follows changes in the size of <see cref="F:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNote.sizingContainer"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNote.HoldStartTime">
+            <summary>
+            Time at which the user started holding this hold note. Null if the user is not holding this hold note.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNote.HasBroken">
+            <summary>
+            Whether the hold note has been released too early and shouldn't give full score for the release.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNote.releaseTime">
+            <summary>
+            Whether the hold note has been released potentially without having caused a break.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNoteHead">
+            <summary>
+            The head of a <see cref="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNote"/>.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNoteTail">
+            <summary>
+            The tail of a <see cref="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNote"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNoteTail.release_window_lenience">
+            <summary>
+            Lenience of release hit windows. This is to make cases where the hold note release
+            is timed alongside presses of other hit objects less awkward.
+            Todo: This shouldn't exist for non-LegacyBeatmapDecoder beatmaps
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNoteTick">
+            <summary>
+            Visualises a <see cref="T:osu.Game.Rulesets.Mania.Objects.HoldNoteTick"/> hit object.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableHoldNoteTick.HoldStartTime">
+            <summary>
+            References the time at which the user started holding the hold note.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableManiaHitObject.Action">
+            <summary>
+            The <see cref="T:osu.Game.Rulesets.Mania.ManiaAction"/> which causes this <see cref="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableManiaHitObject`1"/> to be hit.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableManiaHitObject.CheckHittable">
+            <summary>
+            Whether this <see cref="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableManiaHitObject"/> can be hit, given a time value.
+            If non-null, judgements will be ignored whilst the function returns false.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableManiaHitObject.AlwaysAlive">
+            <summary>
+            Whether this <see cref="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableManiaHitObject"/> should always remain alive.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableManiaHitObject.MissForcefully">
+            <summary>
+            Causes this <see cref="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableManiaHitObject"/> to get missed, disregarding all conditions in implementations of <see cref="M:osu.Game.Rulesets.Objects.Drawables.DrawableHitObject.CheckForResult(System.Boolean,System.Double)"/>.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Drawables.DrawableNote">
+            <summary>
+            Visualises a <see cref="T:osu.Game.Rulesets.Mania.Objects.Note"/> hit object.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Drawables.Pieces.DefaultBodyPiece">
+            <summary>
+            Represents length-wise portion of a hold note.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Drawables.Pieces.DefaultNotePiece">
+            <summary>
+            Represents the static hit markers of notes.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Drawables.Pieces.IHoldNoteBody">
+            <summary>
+            Interface for mania hold note bodies.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Objects.Drawables.Pieces.IHoldNoteBody.Recycle">
+            <summary>
+            Recycles the contents of this <see cref="T:osu.Game.Rulesets.Mania.Objects.Drawables.Pieces.IHoldNoteBody"/> to free used resources.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.HoldNote">
+            <summary>
+            Represents a hit object which requires pressing, holding, and releasing a key.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Objects.HoldNote.Head">
+            <summary>
+            The head note of the hold.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Objects.HoldNote.Tail">
+            <summary>
+            The tail note of the hold.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Objects.HoldNote.tickSpacing">
+            <summary>
+            The time between ticks of this hold.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.HoldNoteTick">
+            <summary>
+            A scoring tick of a hold note.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Note">
+            <summary>
+            Represents a hit object which has a single hit press.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Objects.Types.IHasColumn">
+            <summary>
+            A type of hit object which lies in one of a number of predetermined columns.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Objects.Types.IHasColumn.Column">
+            <summary>
+            The column which the hit object lies in.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Replays.ManiaReplayFrame.getSpecialColumnIndex(osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmap,System.Int32)">
+            <summary>
+            Find the overall index (across all stages) for a specified special key.
+            </summary>
+            <param name="maniaBeatmap">The beatmap.</param>
+            <param name="specialOffset">The special key offset (0 is S1).</param>
+            <returns>The overall index for the special column.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Replays.ManiaReplayFrame.isColumnAtIndexSpecial(osu.Game.Rulesets.Mania.Beatmaps.ManiaBeatmap,System.Int32)">
+            <summary>
+            Check whether the column at an overall index (across all stages) is a special column.
+            </summary>
+            <param name="beatmap">The beatmap.</param>
+            <param name="index">The overall index to check.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.Skinning.LegacyManiaColumnElement">
+            <summary>
+            A <see cref="T:osu.Framework.Graphics.Containers.CompositeDrawable"/> which is placed somewhere within a <see cref="P:osu.Game.Rulesets.Mania.Skinning.LegacyManiaColumnElement.Column"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.Skinning.LegacyManiaColumnElement.FallbackColumnIndex">
+            <summary>
+            The column type identifier to use for texture lookups, in the case of no user-provided configuration.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Skinning.ManiaLegacySkinTransformer.hitresult_mapping">
+            <summary>
+            Mapping of <see cref="T:osu.Game.Rulesets.Scoring.HitResult"/> to their corresponding
+            <see cref="T:osu.Game.Skinning.LegacyManiaSkinConfigurationLookups"/> value.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Skinning.ManiaLegacySkinTransformer.default_hitresult_skin_filenames">
+            <summary>
+            Mapping of <see cref="T:osu.Game.Rulesets.Scoring.HitResult"/> to their corresponding
+            default filenames.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Skinning.ManiaLegacySkinTransformer.hasKeyTexture">
+            <summary>
+            Whether texture for the keys exists.
+            Used to determine if the mania ruleset is skinned.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Skinning.ManiaSkinConfigExtensions.GetManiaSkinConfig``1(osu.Game.Skinning.ISkin,osu.Game.Skinning.LegacyManiaSkinConfigurationLookups,System.Nullable{System.Int32})">
+            <summary>
+            Retrieve a per-column-count skin configuration.
+            </summary>
+            <param name="skin">The skin from which configuration is retrieved.</param>
+            <param name="lookup">The value to retrieve.</param>
+            <param name="index">If not null, denotes the index of the column to which the entry applies.</param>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Skinning.ManiaSkinConfigurationLookup.Lookup">
+            <summary>
+            The configuration lookup value.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.Skinning.ManiaSkinConfigurationLookup.TargetColumn">
+            <summary>
+            The intended <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/> index for the configuration.
+            May be null if the configuration does not apply to a <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/>.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.Skinning.ManiaSkinConfigurationLookup.#ctor(osu.Game.Skinning.LegacyManiaSkinConfigurationLookups,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new <see cref="T:osu.Game.Rulesets.Mania.Skinning.ManiaSkinConfigurationLookup"/>.
+            </summary>
+            <param name="lookup">The lookup value.</param>
+            <param name="targetColumn">The intended <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/> index for the configuration. May be null if the configuration does not apply to a <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/>.</param>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.UI.Column.Index">
+            <summary>
+            The index of this column as part of the whole playfield.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.UI.Column.Add(osu.Game.Rulesets.Objects.Drawables.DrawableHitObject)">
+            <summary>
+            Adds a DrawableHitObject to this Playfield.
+            </summary>
+            <param name="hitObject">The DrawableHitObject to add.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.UI.ColumnFlow`1">
+            <summary>
+            A <see cref="T:osu.Framework.Graphics.Drawable"/> which flows its contents according to the <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/>s in a <see cref="T:osu.Game.Rulesets.Mania.UI.Stage"/>.
+            Content can be added to individual columns via <see cref="M:osu.Game.Rulesets.Mania.UI.ColumnFlow`1.SetContentForColumn(System.Int32,`0)"/>.
+            </summary>
+            <typeparam name="TContent">The type of content in each column.</typeparam>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.UI.ColumnFlow`1.Content">
+            <summary>
+            All contents added to this <see cref="T:osu.Game.Rulesets.Mania.UI.ColumnFlow`1"/>.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.UI.ColumnFlow`1.SetContentForColumn(System.Int32,`0)">
+            <summary>
+            Sets the content of one of the columns of this <see cref="T:osu.Game.Rulesets.Mania.UI.ColumnFlow`1"/>.
+            </summary>
+            <param name="column">The index of the column to set the content of.</param>
+            <param name="content">The content.</param>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.UI.DrawableManiaRuleset.MIN_TIME_RANGE">
+            <summary>
+            The minimum time range. This occurs at a <see cref="P:osu.Game.Rulesets.Mania.UI.DrawableManiaRuleset.relativeTimeRange"/> of 40.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.UI.DrawableManiaRuleset.MAX_TIME_RANGE">
+            <summary>
+            The maximum time range. This occurs at a <see cref="P:osu.Game.Rulesets.Mania.UI.DrawableManiaRuleset.relativeTimeRange"/> of 1.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.UI.IHitExplosion">
+            <summary>
+            Common interface for all hit explosion bodies.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.UI.IHitExplosion.Animate(osu.Game.Rulesets.Judgements.JudgementResult)">
+            <summary>
+            Begins animating this <see cref="T:osu.Game.Rulesets.Mania.UI.IHitExplosion"/>.
+            </summary>
+            <param name="result">The type of <see cref="T:osu.Game.Rulesets.Judgements.JudgementResult"/> that caused this explosion.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.UI.ManiaPlayfield.GetColumnByPosition(osuTK.Vector2)">
+            <summary>
+            Retrieves a column from a screen-space position.
+            </summary>
+            <param name="screenSpacePosition">The screen-space position.</param>
+            <returns>The column which the <paramref name="screenSpacePosition"/> lies in.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.UI.ManiaPlayfield.GetColumn(System.Int32)">
+            <summary>
+            Retrieves a <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/> by index.
+            </summary>
+            <param name="index">The index of the column.</param>
+            <returns>The <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/> corresponding to the given index.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="index"/> is less than 0 or greater than <see cref="P:osu.Game.Rulesets.Mania.UI.ManiaPlayfield.TotalColumns"/>.</exception>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.UI.ManiaPlayfield.TotalColumns">
+            <summary>
+            Retrieves the total amount of columns across all stages in this playfield.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.UI.OrderedHitPolicy">
+            <summary>
+            Ensures that only the most recent <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> is hittable, affectionately known as "note lock".
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.UI.OrderedHitPolicy.IsHittable(osu.Game.Rulesets.Objects.Drawables.DrawableHitObject,System.Double)">
+            <summary>
+            Determines whether a <see cref="T:osu.Game.Rulesets.Objects.Drawables.DrawableHitObject"/> can be hit at a point in time.
+            </summary>
+            <remarks>
+            Only the most recent <see cref="T:osu.Game.Rulesets.Objects.Drawables.DrawableHitObject"/> can be hit, a previous hitobject's window cannot extend past the next one.
+            </remarks>
+            <param name="hitObject">The <see cref="T:osu.Game.Rulesets.Objects.Drawables.DrawableHitObject"/> to check.</param>
+            <param name="time">The time to check.</param>
+            <returns>Whether <paramref name="hitObject"/> can be hit at the given <paramref name="time"/>.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.UI.OrderedHitPolicy.HandleHit(osu.Game.Rulesets.Objects.Drawables.DrawableHitObject)">
+            <summary>
+            Handles a <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> being hit to potentially miss all earlier <see cref="T:osu.Game.Rulesets.Objects.HitObject"/>s.
+            </summary>
+            <param name="hitObject">The <see cref="T:osu.Game.Rulesets.Objects.HitObject"/> that was hit.</param>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.UI.PlayfieldCoveringWrapper">
+            <summary>
+            A <see cref="T:osu.Framework.Graphics.Containers.Container"/> that has its contents partially hidden by an adjustable "cover". This is intended to be used in a playfield.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.UI.PlayfieldCoveringWrapper.cover">
+            <summary>
+            The complete cover, including gradient and fill.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.UI.PlayfieldCoveringWrapper.gradient">
+            <summary>
+            The gradient portion of the cover.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.UI.PlayfieldCoveringWrapper.filled">
+            <summary>
+            The fully-opaque portion of the cover.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.UI.PlayfieldCoveringWrapper.Coverage">
+            <summary>
+            The relative area that should be completely covered. This does not include the fade.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Mania.UI.PlayfieldCoveringWrapper.Direction">
+            <summary>
+            The direction in which the cover expands.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.UI.CoverExpandDirection.AlongScroll">
+            <summary>
+            The cover expands along the scrolling direction.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.UI.CoverExpandDirection.AgainstScroll">
+            <summary>
+            The cover expands against the scrolling direction.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Mania.UI.Stage">
+            <summary>
+            A collection of <see cref="T:osu.Game.Rulesets.Mania.UI.Column"/>s.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.VariantMappingGenerator.LeftKeys">
+            <summary>
+            All the <see cref="T:osu.Framework.Input.Bindings.InputKey"/>s available to the left hand.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.VariantMappingGenerator.RightKeys">
+            <summary>
+            All the <see cref="T:osu.Framework.Input.Bindings.InputKey"/>s available to the right hand.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.VariantMappingGenerator.SpecialKey">
+            <summary>
+            The <see cref="T:osu.Framework.Input.Bindings.InputKey"/> for the special key.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.VariantMappingGenerator.NormalActionStart">
+            <summary>
+            The <see cref="T:osu.Game.Rulesets.Mania.ManiaAction"/> at which the normal columns should begin.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Mania.VariantMappingGenerator.SpecialAction">
+            <summary>
+            The <see cref="T:osu.Game.Rulesets.Mania.ManiaAction"/> for the special column.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Mania.VariantMappingGenerator.GenerateKeyBindingsFor(System.Int32,osu.Game.Rulesets.Mania.ManiaAction@)">
+            <summary>
+            Generates a list of <see cref="T:osu.Framework.Input.Bindings.KeyBinding"/>s for a specific number of columns.
+            </summary>
+            <param name="columns">The number of columns that need to be bound.</param>
+            <param name="nextNormalAction">The next <see cref="T:osu.Game.Rulesets.Mania.ManiaAction"/> to use for normal columns.</param>
+            <returns>The keybindings.</returns>
+        </member>
+    </members>
+</doc>

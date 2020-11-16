@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using ScoreImageGenerator.Helpers.API.Responses;
 using ScoreImageGenerator.Helpers.API;
 using ScoreImageGenerator.Objects;
@@ -25,10 +26,10 @@ namespace ScoreImageGenerator.Helpers
             _scoreType = (ScoreType)scoreType;
         }
 
-        private Score GetBestScore(User user)
+        private async Task<Score> GetBestScore(User user)
         {
             GetUserBestRequest userRequest = new GetUserBestRequest(user.Username, _mode, 0);
-            List<GetUserBestResponse> userBestResponses = userRequest.PerformAsync().Result;
+            List<GetUserBestResponse> userBestResponses = await userRequest.PerformAsync();
             if (userBestResponses.Count == 0)
             {
                 return null;
@@ -37,7 +38,7 @@ namespace ScoreImageGenerator.Helpers
             GetUserBestResponse resp = userBestResponses.First();
 
             GetBeatmapsRequest bmapRequest = new GetBeatmapsRequest(b: int.Parse(resp.BeatmapId), limit: 1, m: _mode);
-            List<GetBeatmapsResponse> bmapResponse = bmapRequest.PerformAsync().Result;
+            List<GetBeatmapsResponse> bmapResponse = await bmapRequest.PerformAsync();
             if (bmapResponse.Count == 0)
             {
                 return null;
@@ -46,16 +47,16 @@ namespace ScoreImageGenerator.Helpers
             GetBeatmapsResponse bmapResp = bmapResponse.First();
             Beatmap bmap = new Beatmap(bmapResp)
             {
-                BackgroundImage = Utils.GetBeatmapBackground(int.Parse(bmapResp.BeatmapsetId))
+                BackgroundImage = await Utils.GetBeatmapBackground(int.Parse(bmapResp.BeatmapsetId))
             };
             
             return new Score(resp, bmap) { Mode = _mode};
         }
 
-        private Score GetRecentScore(User user)
+        private async Task<Score> GetRecentScore(User user)
         {
             var request = new GetUserRecentRequest(user.Username, _mode, 0);
-            var response = request.PerformAsync().Result;
+            var response = await request.PerformAsync();
             if (response.Count == 0)
             {
                 return null;
@@ -64,7 +65,7 @@ namespace ScoreImageGenerator.Helpers
             GetUserRecentResponse resp = response.First();
             
             var bmapRequest = new GetBeatmapsRequest(b: int.Parse(resp.BeatmapId), limit: 1);
-            var bmapResponse = bmapRequest.PerformAsync().Result;
+            var bmapResponse = await bmapRequest.PerformAsync();
             if (bmapResponse.Count == 0)
             {
                 return null;
@@ -73,34 +74,34 @@ namespace ScoreImageGenerator.Helpers
             GetBeatmapsResponse bmapResp = bmapResponse.First();
             Beatmap bmap = new Beatmap(bmapResp)
             {
-                BackgroundImage = Utils.GetBeatmapBackground(int.Parse(bmapResp.BeatmapsetId))
+                BackgroundImage = await Utils.GetBeatmapBackground(int.Parse(bmapResp.BeatmapsetId))
             };
             
             return new Score(resp, bmap) { Mode = _mode};
         }
 
-        private User GetUser(string username, Mode m = Mode.osu)
+        private async Task<User> GetUser(string username, Mode m = Mode.osu)
         {
             GetUserRequest request = new GetUserRequest(username, m);
-            List<GetUserResponse> getUserResponses = request.PerformAsync().Result;
+            List<GetUserResponse> getUserResponses = await request.PerformAsync();
             GetUserResponse getUserResponse = getUserResponses.First();
             User user = new User(getUserResponse)
             {
-                Avatar = Utils.GetUserAvatar(getUserResponse.UserId)
+                Avatar = await Utils.GetUserAvatar(getUserResponse.UserId)
             };
 
             return user;
         }
         
-        public byte[] GetImage()
+        public async Task<byte[]> GetImage()
         {
             Image image;
 
-            var user = GetUser(_username, _mode);
+            var user = await GetUser(_username, _mode);
             var score = _scoreType switch
             {
-                ScoreType.Best => GetBestScore(user),
-                ScoreType.Recent => GetRecentScore(user),
+                ScoreType.Best => await GetBestScore(user),
+                ScoreType.Recent => await GetRecentScore(user),
                 _ => null
             };
 
@@ -109,8 +110,8 @@ namespace ScoreImageGenerator.Helpers
                 List<string> mods = Utils.GetModsList(score.Mods);
                 var pp = new PpCalculator(score.Beatmap.BeatmapId);
             
-                score.Beatmap.PP = pp.GetFcPp(score, mods, _mode).Pp;
-                score.PP = pp.GetScorePp(score, mods, _mode).Pp;
+                score.Beatmap.PP = (await pp.GetFcPp(score, mods, _mode)).Pp;
+                score.PP = (await pp.GetScorePp(score, mods, _mode)).Pp;
 
                 ImageGenerator imageGenerator = _scoreType switch
                 {
@@ -124,18 +125,18 @@ namespace ScoreImageGenerator.Helpers
                 }
                 catch (Exception e)
                 {
-                    image = Image.LoadAsync("./Static/usernotfound.png").Result;
+                    image = await Image.LoadAsync("./Static/usernotfound.png");
                 }
             }
             else
             {
-                image = Image.LoadAsync("./Static/usernotfound.png").Result;
+                image = await Image.LoadAsync("./Static/usernotfound.png");
             }
 
            
            
-            using var ms = new MemoryStream();
-            image.SaveAsPng(ms);
+            await using var ms = new MemoryStream();
+            await image.SaveAsPngAsync(ms);
             byte[] imageArray = ms.GetBuffer();
             
             return imageArray;
