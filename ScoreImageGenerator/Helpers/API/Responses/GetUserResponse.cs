@@ -21,7 +21,7 @@ namespace ScoreImageGenerator.Helpers.API.Responses
         public string Epicfactor { get; set; } 
     }
     
-    public class GetUserResponse
+    public class GetUserResponse: GetUserScore
     {
         [JsonPropertyName("user_id")]
         public string UserId { get; set; } 

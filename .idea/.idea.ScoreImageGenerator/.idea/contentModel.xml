@@ -26,6 +26,7 @@
               <e p="GetUserBestResponse.cs" t="Include" />
               <e p="GetUserRecentResponse.cs" t="Include" />
               <e p="GetUserResponse.cs" t="Include" />
+              <e p="GetUserScore.cs" t="Include" />
             </e>
           </e>
           <e p="BestScoreImage.cs" t="Include" />
