@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "OUL2Pk2sxfb0WKtI6pBv3GuUmhh4tyjTSoEUc9KU+I2uedizQxtCVuAlcu38GdRm8phal17Ij2xpwaMT7m7QjQ==",
+  "success": true,
+  "projectFilePath": "/home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator.Web/ScoreImageGenerator.Web.csproj",
+  "expectedPackageFiles": [
+    "/home/tryonelove/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.8/microsoft.aspnetcore.app.ref.3.1.8.nupkg.sha512"
+  ],
+  "logs": []
+}

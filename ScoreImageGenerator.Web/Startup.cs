@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
-namespace ScoreImageGenerator
+namespace ScoreImageGenerator.Web
 {
     public class Startup
     {
@@ -32,15 +32,16 @@ namespace ScoreImageGenerator
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(env.ContentRootPath, "Static")),
                 RequestPath = "/static"
             });
+            
             app.UseRouting();
             app.UseResponseCaching();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

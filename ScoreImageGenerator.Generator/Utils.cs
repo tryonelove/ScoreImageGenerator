@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using ScoreImageGenerator.Generator.Extensions;
-using ScoreImageGenerator.Generator.Objects;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
+using ScoreImageGenerator.Generator.Extensions;
+using ScoreImageGenerator.Generator.Objects;
 
 namespace ScoreImageGenerator.Generator
 {
@@ -58,31 +58,30 @@ namespace ScoreImageGenerator.Generator
             foreach (int mod in Enum.GetValues(typeof(Mods)))
             {
                 if ((mod & mods) == mod)
-                {
                     modsList.Add(Enum.GetName(typeof(Mods), mod));
-                }
             }
+            
+            return OrderMods(modsList);
+        }
 
+        public static List<string> OrderMods(List<string> mods)
+        {
             List<string> orderedMods = new List<string>();
+
             foreach (string mod in ModOrder)
             {
-                if (modsList.Contains(mod))
-                {
+                if (mods.Contains(mod))
                     orderedMods.Add(mod);
-                }
             }
 
             if (orderedMods.Contains("NC"))
-            {
                 orderedMods.Remove("DT");
-            }
 
             if (orderedMods.Contains("PF"))
-            {
                 orderedMods.Remove("SD");
-            }
-            
+
             return orderedMods;
         }
+        
     }
 }

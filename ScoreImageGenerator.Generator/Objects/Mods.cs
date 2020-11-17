@@ -1,4 +1,3 @@
-
 namespace ScoreImageGenerator.Generator.Objects
 {
     public enum Mods

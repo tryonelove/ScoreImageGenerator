@@ -1,0 +1,32 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:40126",
+      "sslPort": 44343
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "score",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "OSU_API_KEY": "09aaab69d2ecc40028579ca5f7fe2d58b1653e6e"
+      }
+    },
+    "ScoreImageGenerator.API": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "launchUrl": "score",
+      "applicationUrl": "http://localhost:3228/;https://localhost:3229/",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "OSU_API_KEY": "09aaab69d2ecc40028579ca5f7fe2d58b1653e6e"
+      }
+    }
+  }
+}

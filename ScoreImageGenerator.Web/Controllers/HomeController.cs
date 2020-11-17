@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ScoreImageGenerator.Controllers
+namespace ScoreImageGenerator.Web.Controllers
 {
     public class HomeController : Controller
     {

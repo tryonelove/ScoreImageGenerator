@@ -1,18 +1,20 @@
 $(function(){
     let type = 1;
     let mode = 0;
+    reloadSig();
     
     function reloadSig() {
             console.log("Reloading sig.");
-            let url = "score?";
-
+            
+            let url = `${window.location.protocol}//${window.location.hostname}:3228/score?` //window.location.protocol+"/"window.location.hostname+":3228/score?";
             url += "username=" + encodeURIComponent(($("input[name=username]").val() || "tryonelove"));
             url += "&limit=1";
             url += "&mode=" + mode;
             url += "&type=" + type;
 
             $("#previewarea img").remove();
-    
+            console.log(url);
+
             let newImage = $("<img />", {
                     "src": url,
                     "class": "preview lazy col-8"

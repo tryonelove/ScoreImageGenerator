@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ScoreImageGenerator.Generator\ScoreImageGenerator.Generator.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.deps.json" />
+      <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.runtimeconfig.dev.json" />
+      <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.runtimeconfig.json" />
+    </ItemGroup>
+
+
+</Project>

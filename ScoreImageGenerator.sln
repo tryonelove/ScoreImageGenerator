@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreImageGenerator.Web", "ScoreImageGenerator.Web\ScoreImageGenerator.Web.csproj", "{67CD64CD-7CD7-4EF9-8AA0-2F7374FDDFCA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreImageGenerator.Generator", "ScoreImageGenerator.Generator\ScoreImageGenerator.Generator.csproj", "{EDD86B1B-99A7-4044-9E97-DBB4A9BA8257}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreImageGenerator.Web", "ScoreImageGenerator.Web\ScoreImageGenerator.Web.csproj", "{E1007FE5-319C-47A5-B4EE-24DB1C0CE5F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreImageGenerator.Web.API", "ScoreImageGenerator.Web.API\ScoreImageGenerator.Web.API.csproj", "{F3B7966F-744F-4B61-A440-575D2D5F849E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,13 +12,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{67CD64CD-7CD7-4EF9-8AA0-2F7374FDDFCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67CD64CD-7CD7-4EF9-8AA0-2F7374FDDFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67CD64CD-7CD7-4EF9-8AA0-2F7374FDDFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67CD64CD-7CD7-4EF9-8AA0-2F7374FDDFCA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDD86B1B-99A7-4044-9E97-DBB4A9BA8257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EDD86B1B-99A7-4044-9E97-DBB4A9BA8257}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDD86B1B-99A7-4044-9E97-DBB4A9BA8257}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDD86B1B-99A7-4044-9E97-DBB4A9BA8257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1007FE5-319C-47A5-B4EE-24DB1C0CE5F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1007FE5-319C-47A5-B4EE-24DB1C0CE5F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1007FE5-319C-47A5-B4EE-24DB1C0CE5F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1007FE5-319C-47A5-B4EE-24DB1C0CE5F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B7966F-744F-4B61-A440-575D2D5F849E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B7966F-744F-4B61-A440-575D2D5F849E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B7966F-744F-4B61-A440-575D2D5F849E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B7966F-744F-4B61-A440-575D2D5F849E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

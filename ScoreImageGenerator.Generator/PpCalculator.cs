@@ -56,7 +56,7 @@ namespace ScoreImageGenerator.Generator
                 RedirectStandardOutput = true,
                 WorkingDirectory = _workingDirectory,
                 Arguments =
-                    $"PerformanceCalculator.dll simulate {osuMode} {_workingDirectory}/cache/{_beatmapId}.osu -j "
+                    $"PerformanceCalculator.dll simulate {osuMode.ToString().ToLower()} {_workingDirectory}/cache/{_beatmapId}.osu -j "
             };
 
             if (string.Compare(osuMode.ToString(), "mania", StringComparison.CurrentCulture) == 0)

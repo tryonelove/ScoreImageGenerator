@@ -6,35 +6,44 @@ namespace ScoreImageGenerator.Generator.Objects
     public class Score: ICloneable
     {
         public Mode Mode { get ; set; }
+
         // Achieved score value
         public int ScoreValue { get; set;}
+
         // Enabled mods
         public int Mods { get; set; }
+ 
         // Rank achieved
         public string Rank { get; }
+
         // Count 300
         public int Count300 { get; set;  }
+
         // Count 100
         public int Count100 { get; set;  }
+
         // Count 50
         public int Count50 { get; set;  }
         // Count misss
         public int CountMiss { get; set;  }
+
         public int CountGeki { get; set; }
+
         public int CountKatu { get; set; }
-        
+
         // Accuracy
         public float Accuracy { get => CalculateAccuracy(); }
-        
+
         // Achieved combo
         public int Combo { get; set;  }
+
         // Beatmap stats
         public Beatmap Beatmap { get; }
+
         // PP for the score
         public double PP { get; set;  }
         
-
-        public Score(GetUserBestResponse resp, Beatmap bmap)
+        public Score(GetUserScore resp, Beatmap bmap)
         {
             Count300 = int.Parse(resp.Count300);
             Count100 = int.Parse(resp.Count100);

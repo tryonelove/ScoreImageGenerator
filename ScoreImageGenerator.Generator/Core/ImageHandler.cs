@@ -71,18 +71,21 @@ namespace ScoreImageGenerator.Generator.Core
             {
                 BackgroundImage = await Utils.GetBeatmapBackground(int.Parse(bmapResp.BeatmapsetId))
             };
-            
+
             return new Score(resp, bmap) { Mode = _mode};
         }
 
-        private async Task<User> GetUserAsync(string username, Mode m = Mode.osu)
+        private async Task<User> GetUserAsync(string username, Mode m = Mode.Osu)
         {
             GetUserRequest request = new GetUserRequest(username, m);
-            List<GetUserResponse> getUserResponses = await request.PerformAsync();
-            GetUserResponse getUserResponse = getUserResponses.First();
-            User user = new User(getUserResponse)
+            List<GetUserResponse> getUserResponseList = await request.PerformAsync();
+            if (getUserResponseList.Count == 0)
+                return null;
+
+            var userResponse = getUserResponseList.First();
+            var user = new User(userResponse)
             {
-                Avatar = await Utils.GetUserAvatar(getUserResponse.UserId)
+                Avatar = await Utils.GetUserAvatar(userResponse.UserId)
             };
 
             return user;
@@ -118,8 +121,9 @@ namespace ScoreImageGenerator.Generator.Core
                 {
                     image = imageGenerator?.Generate();
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    
                     image = await Image.LoadAsync("./Static/usernotfound.png");
                 }
             }

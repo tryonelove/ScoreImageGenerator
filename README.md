@@ -9,3 +9,7 @@ Score Image Generator is a ASP.NET web application which generates images for os
 [SRS](Documentation/Software%20Requirements%20Specifications.md)
 ## Software Design Specifications
 [SDS](Documentation/Software%20Design%20Specifications.md)
+
+---
+
+P.S. It's required to run ScoreImageGenerator.Web and ScoreImageGenerator.Web.API at the same time either with IIS virtual folders or manually specify different ports.

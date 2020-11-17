@@ -5,10 +5,13 @@ namespace ScoreImageGenerator.Generator.Objects
     public class User
     {
         public byte[] Avatar { get; set; }
+
         // Username
         public string Username { get; set; }
+
         // Worldwide rank
         public int Rank { get; set; }
+
         // Performance points
         public float PP { get; set; }
 
