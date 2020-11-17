@@ -1,0 +1,7 @@
+bin/
+obj/
+Properties/
+
+template.png
+*.osu
+cache/
