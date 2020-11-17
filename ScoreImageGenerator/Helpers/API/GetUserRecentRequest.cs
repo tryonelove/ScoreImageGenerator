@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Specialized;
 using System.Web;
 using ScoreImageGenerator.Helpers.API.Responses;
 using ScoreImageGenerator.Objects;
@@ -20,16 +21,12 @@ namespace ScoreImageGenerator.Helpers.API
             _limit = limit;
         }
         
-        protected override Uri BuildUri()
+        protected override NameValueCollection GetRequestParameters(NameValueCollection parameters)
         {
-            var builder = Builder;
-            var parameters = HttpUtility.ParseQueryString(string.Empty);
-            parameters["k"] = Environment.GetEnvironmentVariable("OSU_API_KEY");
             parameters["u"] = _username;
             parameters["m"] = _mode.ToString();
             parameters["limit"] = _limit.ToString();
-            builder.Query = parameters.ToString() ?? string.Empty;
-            return builder.Uri;
+            return parameters;
         }
     }
 }

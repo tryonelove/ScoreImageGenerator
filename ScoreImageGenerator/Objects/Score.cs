@@ -1,8 +1,9 @@
+using System;
 using ScoreImageGenerator.Helpers.API.Responses;
 
 namespace ScoreImageGenerator.Objects
 {
-    public class Score
+    public class Score: ICloneable
     {
         public Mode Mode { get ; set; }
         // Achieved score value
@@ -69,6 +70,11 @@ namespace ScoreImageGenerator.Objects
                 (CountMiss + Count50 + Count100 + Count300));
             accuracy *= 100;
             return accuracy;
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 }

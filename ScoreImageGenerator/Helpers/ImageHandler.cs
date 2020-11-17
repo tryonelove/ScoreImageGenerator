@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using ScoreImageGenerator.Helpers.API.Responses;
 using ScoreImageGenerator.Helpers.API;
@@ -26,23 +25,21 @@ namespace ScoreImageGenerator.Helpers
             _scoreType = (ScoreType)scoreType;
         }
 
-        private async Task<Score> GetBestScore(User user)
+        private async Task<Score> GetBestScoreAsync(User user)
         {
-            GetUserBestRequest userRequest = new GetUserBestRequest(user.Username, _mode, 0);
+            GetUserBestRequest userRequest = new GetUserBestRequest(user.Username, _mode, _limit);
             List<GetUserBestResponse> userBestResponses = await userRequest.PerformAsync();
             if (userBestResponses.Count == 0)
             {
                 return null;
             }
 
-            GetUserBestResponse resp = userBestResponses.First();
+            GetUserBestResponse resp = userBestResponses[_limit-1];
 
             GetBeatmapsRequest bmapRequest = new GetBeatmapsRequest(b: int.Parse(resp.BeatmapId), limit: 1, m: _mode);
             List<GetBeatmapsResponse> bmapResponse = await bmapRequest.PerformAsync();
             if (bmapResponse.Count == 0)
-            {
                 return null;
-            }
 
             GetBeatmapsResponse bmapResp = bmapResponse.First();
             Beatmap bmap = new Beatmap(bmapResp)
@@ -53,16 +50,14 @@ namespace ScoreImageGenerator.Helpers
             return new Score(resp, bmap) { Mode = _mode};
         }
 
-        private async Task<Score> GetRecentScore(User user)
+        private async Task<Score> GetRecentScoreAsync(User user)
         {
-            var request = new GetUserRecentRequest(user.Username, _mode, 0);
+            var request = new GetUserRecentRequest(user.Username, _mode, _limit);
             var response = await request.PerformAsync();
             if (response.Count == 0)
-            {
                 return null;
-            }
-
-            GetUserRecentResponse resp = response.First();
+            
+            GetUserRecentResponse resp = response[_limit-1];
             
             var bmapRequest = new GetBeatmapsRequest(b: int.Parse(resp.BeatmapId), limit: 1);
             var bmapResponse = await bmapRequest.PerformAsync();
@@ -80,7 +75,7 @@ namespace ScoreImageGenerator.Helpers
             return new Score(resp, bmap) { Mode = _mode};
         }
 
-        private async Task<User> GetUser(string username, Mode m = Mode.osu)
+        private async Task<User> GetUserAsync(string username, Mode m = Mode.osu)
         {
             GetUserRequest request = new GetUserRequest(username, m);
             List<GetUserResponse> getUserResponses = await request.PerformAsync();
@@ -93,15 +88,15 @@ namespace ScoreImageGenerator.Helpers
             return user;
         }
         
-        public async Task<byte[]> GetImage()
+        public async Task<byte[]> GetImageAsync()
         {
             Image image;
 
-            var user = await GetUser(_username, _mode);
+            var user = await GetUserAsync(_username, _mode);
             var score = _scoreType switch
             {
-                ScoreType.Best => await GetBestScore(user),
-                ScoreType.Recent => await GetRecentScore(user),
+                ScoreType.Best => await GetBestScoreAsync(user),
+                ScoreType.Recent => await GetRecentScoreAsync(user),
                 _ => null
             };
 
@@ -109,7 +104,7 @@ namespace ScoreImageGenerator.Helpers
             {
                 List<string> mods = Utils.GetModsList(score.Mods);
                 var pp = new PpCalculator(score.Beatmap.BeatmapId);
-            
+                await pp.CacheBeatmap();
                 score.Beatmap.PP = (await pp.GetFcPp(score, mods, _mode)).Pp;
                 score.PP = (await pp.GetScorePp(score, mods, _mode)).Pp;
 
@@ -123,7 +118,7 @@ namespace ScoreImageGenerator.Helpers
                 {
                     image = imageGenerator?.Generate();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     image = await Image.LoadAsync("./Static/usernotfound.png");
                 }
@@ -132,9 +127,7 @@ namespace ScoreImageGenerator.Helpers
             {
                 image = await Image.LoadAsync("./Static/usernotfound.png");
             }
-
-           
-           
+            
             await using var ms = new MemoryStream();
             await image.SaveAsPngAsync(ms);
             byte[] imageArray = ms.GetBuffer();

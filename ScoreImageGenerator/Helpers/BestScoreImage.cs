@@ -1,6 +1,4 @@
 using System;
-using ScoreImageGenerator.Helpers.API;
-using ScoreImageGenerator.Helpers.API.Responses;
 using ScoreImageGenerator.Objects;
 
 

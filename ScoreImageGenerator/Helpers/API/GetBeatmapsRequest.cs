@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -27,22 +28,18 @@ namespace ScoreImageGenerator.Helpers.API
             _mode = (int)m;
             _limit = limit;
         }
-
-        protected override Uri BuildUri()
+        
+        protected override NameValueCollection GetRequestParameters(NameValueCollection parameters)
         {
-            var builder = Builder;
-            var parameters = HttpUtility.ParseQueryString(string.Empty);
-            parameters["k"] = Environment.GetEnvironmentVariable("OSU_API_KEY");
             if (!string.IsNullOrEmpty(_username)) 
                 parameters["u"] = _username;
             if (_beatmapSetId != 0) 
                 parameters["s"] = _beatmapSetId.ToString();
             if (_beatmapId != 0) 
                 parameters["b"] = _beatmapId.ToString();
-            parameters["m"] = _mode.ToString() ?? "0";
-            parameters["limit"] = _limit.ToString() ?? "0";
-            builder.Query = parameters.ToString() ?? string.Empty;
-            return builder.Uri;
+            parameters["m"] = _mode.ToString();
+            parameters["limit"] = _limit.ToString();
+            return parameters;
         }
     }
 }

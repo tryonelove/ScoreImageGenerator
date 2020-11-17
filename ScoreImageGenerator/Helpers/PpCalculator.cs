@@ -2,11 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using ScoreImageGenerator.Objects;
 
@@ -14,19 +11,17 @@ namespace ScoreImageGenerator.Helpers
 {
     public class PpCalculator
     {
-        private string _workingDirectory = Environment.CurrentDirectory + "/PerformanceCalculator";
-        private const string baseUrl = "https://osu.ppy.sh";
-        private int _beatmapId;
+        private readonly string _workingDirectory = Environment.CurrentDirectory + "/PerformanceCalculator";
+        private const string BaseUrl = "https://osu.ppy.sh";
+        private readonly int _beatmapId;
         private readonly HttpClient _client = new HttpClient();
-
-        public int BeatmapId { get => _beatmapId; set => _beatmapId = value; }
 
         public PpCalculator(int beatmapId)
         {
             _beatmapId = beatmapId;
         }
 
-        private async Task CacheBeatmap()
+        public async Task CacheBeatmap()
         {
             string beatmapPath = $"{_workingDirectory}/cache/{_beatmapId}.osu";
             if (File.Exists(beatmapPath))
@@ -34,15 +29,13 @@ namespace ScoreImageGenerator.Helpers
                 return;
             }
             
-            var uri = new Uri ($"{baseUrl}/osu/{_beatmapId}");
+            var uri = new Uri ($"{BaseUrl}/osu/{_beatmapId}");
             var osuFileStream = await _client.GetStreamAsync(uri);
-            using (var fs = new FileStream(beatmapPath, FileMode.CreateNew))
-            {
-                await osuFileStream.CopyToAsync(fs);
-            }
+            await using var fs = new FileStream(beatmapPath, FileMode.CreateNew);
+            await osuFileStream.CopyToAsync(fs);
         }
 
-        private string GetModsArgs(List<string> mods)
+        private static string GetModsArgs(IEnumerable<string> mods)
         {
             string args = string.Empty;
             foreach (string mod in mods)
@@ -53,42 +46,9 @@ namespace ScoreImageGenerator.Helpers
             return args;
         }
 
-        public async Task<CalculatorResponse> GetFcPp(Score score, List<string> mods, Mode osuMode)
+        private ProcessStartInfo GetProcessStartInfo(Score score, Mode osuMode)
         {
-            await CacheBeatmap();
-            mods.Remove("NM");
-
-            ProcessStartInfo startInfo = new ProcessStartInfo
-            {
-                FileName = "dotnet",
-                CreateNoWindow = true,
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                WorkingDirectory = _workingDirectory,
-                Arguments =
-                    $"PerformanceCalculator.dll simulate {osuMode} {_workingDirectory}/cache/{_beatmapId}.osu -j "
-            };
-            startInfo.Arguments += GetModsArgs(mods);
-            
-            Process process = Process.Start(startInfo);
-            string output = process?.StandardOutput.ReadToEnd();
-
-            return JsonSerializer.Deserialize<CalculatorResponse>(output);
-        }
-
-        private string GetStdParams(Score score)
-        {
-            StringBuilder param = new StringBuilder();
-  
-            return param.ToString();
-        }
-        
-        public async Task<CalculatorResponse> GetScorePp(Score score, List<string> mods, Mode osuMode)
-        {
-            await CacheBeatmap();
-            mods.Remove("NM");
-
-            ProcessStartInfo startInfo = new ProcessStartInfo
+            var startInfo = new ProcessStartInfo
             {
                 FileName = "dotnet",
                 CreateNoWindow = true,
@@ -109,12 +69,35 @@ namespace ScoreImageGenerator.Helpers
                 startInfo.Arguments += $"-c {score.Combo} ";
                 startInfo.Arguments += $"-X {score.CountMiss} ";
             }
+            
+            return startInfo;
+        }   
+        
+        public async Task<CalculatorResponse> GetFcPp(Score score, List<string> mods, Mode osuMode)
+        {
+            mods.Remove("NM");
+            
+            var scoreCopy = (Score)score.Clone();
+            scoreCopy.Count300 += scoreCopy.CountMiss;
+            scoreCopy.CountMiss = 0;
+            
+            var startInfo = GetProcessStartInfo(scoreCopy, osuMode);
             startInfo.Arguments += GetModsArgs(mods);
 
-            Process process = Process.Start(startInfo);
-            var output = process?.StandardOutput;
+            var process = Process.Start(startInfo);
 
-            return await JsonSerializer.DeserializeAsync<CalculatorResponse>(output?.BaseStream);
+            return await JsonSerializer.DeserializeAsync<CalculatorResponse>(process?.StandardOutput.BaseStream);
+        }
+
+        public async Task<CalculatorResponse> GetScorePp(Score score, List<string> mods, Mode osuMode)
+        {
+            mods.Remove("NM");
+            var startInfo = GetProcessStartInfo(score, osuMode);
+            startInfo.Arguments += GetModsArgs(mods);
+            
+            Process process = Process.Start(startInfo);
+            
+            return await JsonSerializer.DeserializeAsync<CalculatorResponse>(process?.StandardOutput.BaseStream);
         }
     }
 }

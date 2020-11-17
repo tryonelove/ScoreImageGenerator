@@ -1,24 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 using ScoreImageGenerator.Objects;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
-using Rectangle = System.Drawing.Rectangle;
 
 namespace ScoreImageGenerator.Helpers
 {
     public class ImageGenerator
     {
-        Image<Rgba32> _image = new Image<Rgba32>(956, 454);
-        protected Mode _mode;
-        private User _user;
-        private Score _score;
+        private readonly Image<Rgba32> _image = new Image<Rgba32>(956, 454);
+        private readonly User _user;
+        private readonly Score _score;
         delegate void Drawer(FontFamily family);
         
         protected ImageGenerator(User user, Score score)
@@ -29,15 +25,13 @@ namespace ScoreImageGenerator.Helpers
         
         private void CreateTemplate()
         {
-            const int radius = 15;
             var color = new Rgba32(28,28,28,255);
             _image.Mutate(x => x.Fill(color));
         }
 
         private void DrawBeatmapStats(FontFamily family)
         {
-            var font = family.CreateFont(size: 15);
-            var bg = Image.Load(_score.Beatmap.BackgroundImage);
+            var font = family.CreateFont(15);
             _image.Mutate(x => x
                 .DrawImage(_image, new Point(293, 39), 0.3f)
             );
@@ -46,7 +40,7 @@ namespace ScoreImageGenerator.Helpers
 
         private void DrawUserStats(FontFamily family)
         {
-            var font = family.CreateFont(size: 15);
+            var font = family.CreateFont(15);
             var avatar = Image.Load(_user.Avatar);
             
             // Paste avatar
@@ -131,7 +125,7 @@ namespace ScoreImageGenerator.Helpers
             draw+=DrawBeatmapStats;
             draw+=DrawUserStats;
             draw+=DrawScoreStats;            
-            draw?.Invoke(family);
+            draw.Invoke(family);
 
             return _image;
         }

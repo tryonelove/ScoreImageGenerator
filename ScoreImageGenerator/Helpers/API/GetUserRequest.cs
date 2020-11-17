@@ -1,5 +1,4 @@
-using System;
-using System.Web;
+using System.Collections.Specialized;
 using ScoreImageGenerator.Helpers.API.Responses;
 using ScoreImageGenerator.Objects;
 
@@ -11,21 +10,17 @@ namespace ScoreImageGenerator.Helpers.API
         private readonly string _username;
         private readonly int _mode;
         
-        public GetUserRequest(string u, Mode m = 0)
+        public GetUserRequest(string u, Mode mode = 0)
         {
             _username = u;
-            _mode = (int)m;
+            _mode = (int)mode;
         }
-        
-        protected override Uri BuildUri()
+
+        protected override NameValueCollection GetRequestParameters(NameValueCollection parameters)
         {
-            var builder = Builder;
-            var parameters = HttpUtility.ParseQueryString(string.Empty);
-            parameters["k"] = Environment.GetEnvironmentVariable("OSU_API_KEY");
             parameters["u"] = _username;
             parameters["m"] = _mode.ToString();
-            builder.Query = parameters.ToString() ?? string.Empty;
-            return builder.Uri;
+            return parameters;
         }
     }
 }

@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Web;
 
 
 namespace ScoreImageGenerator.Helpers.API
@@ -23,13 +26,30 @@ namespace ScoreImageGenerator.Helpers.API
         /// <summary>
         /// Uri builder
         /// </summary>
-        protected UriBuilder Builder => new UriBuilder(BaseUri + Endpoint);
+        private UriBuilder Builder => new UriBuilder(BaseUri + Endpoint);
+
+        private readonly HttpClient _client = new HttpClient();
+
+        /// <summary>
+        /// Get request uri parameters
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns><c>NameValueCollection</c> of parameters</returns>
+        protected abstract NameValueCollection GetRequestParameters(NameValueCollection parameters);
         
         /// <summary>
         /// Build Uri to request.
         /// </summary>
         /// <returns>Uri string with query params.</returns>
-        protected abstract Uri BuildUri();
+        private Uri BuildUri()
+        {
+            UriBuilder builder = Builder;
+            var parameters = HttpUtility.ParseQueryString(string.Empty);
+            parameters["k"] = Environment.GetEnvironmentVariable("OSU_API_KEY");
+            parameters = GetRequestParameters(parameters);
+            builder.Query = parameters.ToString() ?? string.Empty;
+            return builder.Uri;
+        }
 
         /// <summary>
         /// Make an async request to API.
@@ -38,15 +58,13 @@ namespace ScoreImageGenerator.Helpers.API
         public async Task<List<T>> PerformAsync()
         {
             var uri = BuildUri();
-            var request =  (HttpWebRequest)WebRequest.Create(uri);
-            request.Accept = "application/json";
-            var response = (HttpWebResponse) await request.GetResponseAsync();
+            var response = await _client.GetAsync(uri);
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new HttpListenerException((int)response.StatusCode);
             }
 
-            var responseStream = response.GetResponseStream();
+            var responseStream = await response.Content.ReadAsStreamAsync();
             if (responseStream is null)
             {
                 throw new EndOfStreamException($"Response stream is null.");
