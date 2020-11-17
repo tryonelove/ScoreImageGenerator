@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>osu.Game.Rulesets.Catch</name>
+    </assembly>
+    <members>
+        <member name="M:osu.Game.Rulesets.Catch.Beatmaps.CatchBeatmapProcessor.applyRandomOffset(System.Single@,System.Double,osu.Game.Rulesets.Catch.MathUtils.FastRandom)">
+            <summary>
+            Applies a random offset in a random direction to a position, ensuring that the final position remains within the boundary of the playfield.
+            </summary>
+            <param name="position">The position which the offset should be applied to.</param>
+            <param name="maxOffset">The maximum offset, cannot exceed 20px.</param>
+            <param name="rng">The random number generator.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.Beatmaps.CatchBeatmapProcessor.applyOffset(System.Single@,System.Single)">
+            <summary>
+            Applies an offset to a position, ensuring that the final position remains within the boundary of the playfield.
+            </summary>
+            <param name="position">The position which the offset should be applied to.</param>
+            <param name="amount">The amount to offset by.</param>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.Difficulty.Preprocessing.CatchDifficultyHitObject.StrainTime">
+            <summary>
+            Milliseconds elapsed since the start time of the previous <see cref="T:osu.Game.Rulesets.Catch.Difficulty.Preprocessing.CatchDifficultyHitObject"/>, with a minimum of 40ms.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.Judgements.CatchJudgement.ShouldExplodeFor(osu.Game.Rulesets.Judgements.JudgementResult)">
+            <summary>
+            Whether fruit on the platter should explode or drop.
+            Note that this is only checked if the owning object is also <see cref="P:osu.Game.Rulesets.Objects.Types.IHasComboInformation.LastInCombo" />
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Catch.MathUtils.FastRandom">
+            <summary>
+            A PRNG specified in http://heliosphan.org/fastrandom.html.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.MathUtils.FastRandom.NextUInt">
+            <summary>
+            Generates a random unsigned integer within the range [<see cref="F:System.UInt32.MinValue"/>, <see cref="F:System.UInt32.MaxValue"/>).
+            </summary>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.MathUtils.FastRandom.Next">
+            <summary>
+            Generates a random integer value within the range [0, <see cref="F:System.Int32.MaxValue"/>).
+            </summary>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.MathUtils.FastRandom.Next(System.Int32)">
+            <summary>
+            Generates a random integer value within the range [0, <paramref name="upperBound"/>).
+            </summary>
+            <param name="upperBound">The upper bound.</param>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.MathUtils.FastRandom.Next(System.Int32,System.Int32)">
+            <summary>
+            Generates a random integer value within the range [<paramref name="lowerBound"/>, <paramref name="upperBound"/>).
+            </summary>
+            <param name="lowerBound">The lower bound of the range.</param>
+            <param name="upperBound">The upper bound of the range.</param>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.MathUtils.FastRandom.Next(System.Double,System.Double)">
+            <summary>
+            Generates a random integer value within the range [<paramref name="lowerBound"/>, <paramref name="upperBound"/>).
+            </summary>
+            <param name="lowerBound">The lower bound of the range.</param>
+            <param name="upperBound">The upper bound of the range.</param>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.MathUtils.FastRandom.NextDouble">
+            <summary>
+            Generates a random double value within the range [0, 1).
+            </summary>
+            <returns>The random value.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.MathUtils.FastRandom.NextBool">
+            <summary>
+            Generates a reandom boolean value. Cached such that a random value is only generated once in every 32 calls.
+            </summary>
+            <returns>The random value.</returns>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.Objects.Banana.BananaIndex">
+            <summary>
+            Index of banana in current shower.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Catch.Objects.CatchHitObject.X">
+            <summary>
+            The horizontal position of the fruit between 0 and <see cref="F:osu.Game.Rulesets.Catch.UI.CatchPlayfield.WIDTH"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Catch.Objects.CatchHitObject.CanBePlated">
+            <summary>
+            Whether this object can be placed on the catcher's plate.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Catch.Objects.CatchHitObject.XOffset">
+            <summary>
+            A random offset applied to <see cref="P:osu.Game.Rulesets.Catch.Objects.CatchHitObject.X"/>, set by the <see cref="T:osu.Game.Rulesets.Catch.Beatmaps.CatchBeatmapProcessor"/>.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Catch.Objects.CatchHitObject.DistanceToHyperDash">
+            <summary>
+            Difference between the distance to the next object
+            and the distance that would have triggered a hyper dash.
+            A value close to 0 indicates a difficult jump (for difficulty calculation).
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Catch.Objects.CatchHitObject.LastInCombo">
+            <summary>
+            The next fruit starts a new combo. Used for explodey.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Catch.Objects.CatchHitObject.HyperDash">
+            <summary>
+            Whether this fruit can initiate a hyperdash.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.Objects.CatchHitObject.HyperDashTarget">
+            <summary>
+            The target fruit if we are to initiate a hyperdash.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Catch.Objects.PalpableCatchHitObject">
+            <summary>
+            Represents a single object that can be caught by the catcher.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.Objects.Drawables.FruitPiece.RADIUS_ADJUST">
+            <summary>
+            Because we're adding a border around the fruit, we need to scale down some.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.Objects.JuiceStream.base_scoring_distance">
+            <summary>
+            Positional distance that results in a duration of one second, before any speed adjustments.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Catch.Objects.JuiceStream.SpanDuration">
+            <summary>
+            The length of one span of this <see cref="T:osu.Game.Rulesets.Catch.Objects.JuiceStream"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.Skinning.CatchSkinColour.HyperDash">
+            <summary>
+            The colour to be used for the catcher while in hyper-dashing state.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.Skinning.CatchSkinColour.HyperDashFruit">
+            <summary>
+            The colour to be used for fruits that grant the catcher the ability to hyper-dash.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.Skinning.CatchSkinColour.HyperDashAfterImage">
+            <summary>
+            The colour to be used for the "exploding" catcher sprite on beginning of hyper-dashing.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.UI.Catcher.DEFAULT_HYPER_DASH_COLOUR">
+            <summary>
+            The default colour used to tint hyper-dash fruit, along with the moving catcher, its trail
+            and end glow/after-image during a hyper-dash.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.UI.Catcher.HYPER_DASH_TRANSITION_DURATION">
+            <summary>
+            The duration between transitioning to hyper-dash state.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Catch.UI.Catcher.HyperDashing">
+            <summary>
+            Whether we are hyper-dashing or not.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.UI.Catcher.BASE_SPEED">
+            <summary>
+            The relative space to cover in 1 millisecond. based on 1 game pixel per millisecond as in osu-stable.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.UI.Catcher.ALLOWED_CATCH_RANGE">
+            <summary>
+            The width of the catcher which can receive fruit. Equivalent to "catchMargin" in osu-stable.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Catch.UI.Catcher.CurrentDrawableCatcher">
+            <summary>
+            The drawable catcher for <see cref="P:osu.Game.Rulesets.Catch.UI.Catcher.CurrentState"/>.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.UI.Catcher.catchWidth">
+            <summary>
+            Width of the area that can be used to attempt catches during gameplay.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.UI.Catcher.CreateProxiedContent">
+            <summary>
+            Creates proxied content to be displayed beneath hitobjects.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.UI.Catcher.calculateScale(osu.Game.Beatmaps.BeatmapDifficulty)">
+            <summary>
+            Calculates the scale of the catcher based off the provided beatmap difficulty.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.UI.Catcher.CalculateCatchWidth(osuTK.Vector2)">
+            <summary>
+            Calculates the width of the area used for attempting catches in gameplay.
+            </summary>
+            <param name="scale">The scale of the catcher.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.UI.Catcher.CalculateCatchWidth(osu.Game.Beatmaps.BeatmapDifficulty)">
+            <summary>
+            Calculates the width of the area used for attempting catches in gameplay.
+            </summary>
+            <param name="difficulty">The beatmap difficulty.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.UI.Catcher.PlaceOnPlate(osu.Game.Rulesets.Catch.Objects.Drawables.DrawableCatchHitObject)">
+            <summary>
+            Add a caught fruit to the catcher's stack.
+            </summary>
+            <param name="fruit">The fruit that was caught.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.UI.Catcher.AttemptCatch(osu.Game.Rulesets.Catch.Objects.CatchHitObject)">
+            <summary>
+            Let the catcher attempt to catch a fruit.
+            </summary>
+            <param name="fruit">The fruit to catch.</param>
+            <returns>Whether the catch is possible.</returns>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.UI.Catcher.SetHyperDashState(System.Double,System.Single)">
+            <summary>
+            Set hyper-dash state.
+            </summary>
+            <param name="modifier">The speed multiplier. If this is less or equals to 1, this catcher will be non-hyper-dashing state.</param>
+            <param name="targetPosition">When this catcher crosses this position, this catcher ends hyper-dashing.</param>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.UI.Catcher.Drop">
+            <summary>
+            Drop any fruit off the plate.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.UI.Catcher.Explode">
+            <summary>
+            Explode any fruit off the plate.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Catch.UI.CatcherTrailDisplay">
+            <summary>
+            Represents a component responsible for displaying
+            the appropriate catcher trails when requested to.
+            </summary>
+        </member>
+        <member name="P:osu.Game.Rulesets.Catch.UI.CatcherTrailDisplay.DisplayTrail">
+            <summary>
+            Whether to start displaying trails following the catcher.
+            </summary>
+        </member>
+        <member name="M:osu.Game.Rulesets.Catch.UI.CatcherTrailDisplay.DisplayEndGlow">
+            <summary>
+            Displays a single end-glow catcher sprite.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.UI.CatchPlayfield.WIDTH">
+            <summary>
+            The width of the playfield.
+            The horizontal movement of the catcher is confined in the area of this width.
+            </summary>
+        </member>
+        <member name="F:osu.Game.Rulesets.Catch.UI.CatchPlayfield.CENTER_X">
+            <summary>
+            The center position of the playfield.
+            </summary>
+        </member>
+        <member name="T:osu.Game.Rulesets.Catch.UI.CatchPlayfieldAdjustmentContainer.ScalingContainer">
+            <summary>
+            A <see cref="T:osu.Framework.Graphics.Containers.Container"/> which scales its content relative to a target width.
+            </summary>
+        </member>
+    </members>
+</doc>
