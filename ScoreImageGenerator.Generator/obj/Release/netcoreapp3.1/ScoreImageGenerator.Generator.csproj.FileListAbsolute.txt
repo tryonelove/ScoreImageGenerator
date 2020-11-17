@@ -1,0 +1,8 @@
+/home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator.Generator/bin/Release/netcoreapp3.1/ScoreImageGenerator.Generator.deps.json
+/home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator.Generator/bin/Release/netcoreapp3.1/ScoreImageGenerator.Generator.dll
+/home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator.Generator/bin/Release/netcoreapp3.1/ScoreImageGenerator.Generator.pdb
+/home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator.Generator/obj/Release/netcoreapp3.1/ScoreImageGenerator.Generator.csprojAssemblyReference.cache
+/home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator.Generator/obj/Release/netcoreapp3.1/ScoreImageGenerator.Generator.AssemblyInfoInputs.cache
+/home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator.Generator/obj/Release/netcoreapp3.1/ScoreImageGenerator.Generator.AssemblyInfo.cs
+/home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator.Generator/obj/Release/netcoreapp3.1/ScoreImageGenerator.Generator.dll
+/home/tryonelove/Documents/code/dotNetTraining/ScoreImageGenerator/ScoreImageGenerator.Generator/obj/Release/netcoreapp3.1/ScoreImageGenerator.Generator.pdb

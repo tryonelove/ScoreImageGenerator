@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreImageGenerator", "ScoreImageGenerator\ScoreImageGenerator.csproj", "{67CD64CD-7CD7-4EF9-8AA0-2F7374FDDFCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreImageGenerator.Web", "ScoreImageGenerator.Web\ScoreImageGenerator.Web.csproj", "{67CD64CD-7CD7-4EF9-8AA0-2F7374FDDFCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreImageGenerator.Generator", "ScoreImageGenerator.Generator\ScoreImageGenerator.Generator.csproj", "{EDD86B1B-99A7-4044-9E97-DBB4A9BA8257}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{67CD64CD-7CD7-4EF9-8AA0-2F7374FDDFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67CD64CD-7CD7-4EF9-8AA0-2F7374FDDFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67CD64CD-7CD7-4EF9-8AA0-2F7374FDDFCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD86B1B-99A7-4044-9E97-DBB4A9BA8257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD86B1B-99A7-4044-9E97-DBB4A9BA8257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD86B1B-99A7-4044-9E97-DBB4A9BA8257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD86B1B-99A7-4044-9E97-DBB4A9BA8257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

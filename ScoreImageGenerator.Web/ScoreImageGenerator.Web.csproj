@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>ScoreImageGenerator</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="SixLabors.Fonts" Version="1.0.0-beta0013" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.2" />
+    <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta0010" />
+    <PackageReference Include="SixLabors.ImageSharp.Web" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="PerformanceCalculator\obj\PerformanceCalculator.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="PerformanceCalculator\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.deps.json" />
+    <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.runtimeconfig.dev.json" />
+    <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.runtimeconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="PerformanceCalculator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="PerformanceCalculator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="PerformanceCalculator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="PerformanceCalculator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ScoreImageGenerator.Generator\ScoreImageGenerator.Generator.csproj" />
+  </ItemGroup>
+
+
+</Project>
