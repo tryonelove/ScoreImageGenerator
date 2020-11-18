@@ -4,6 +4,7 @@ using System.Globalization;
 using ScoreImageGenerator.Generator.Objects;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Drawing;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
@@ -42,7 +43,7 @@ namespace ScoreImageGenerator.Generator.Core
         {
             var font = family.CreateFont(15);
             var avatar = Image.Load(_user.Avatar);
-            
+
             // Paste avatar
             _image.Mutate(x => x
                 .DrawImage(avatar, new Point(48, 39), 0.3f)
@@ -81,8 +82,16 @@ namespace ScoreImageGenerator.Generator.Core
             {
                 mods.Add("NM");
             }
-            
+
             var font = family.CreateFont(size: 21);
+            
+            var textGraphicsOptions = new TextGraphicsOptions()
+            {
+                TextOptions = {
+                    HorizontalAlignment = HorizontalAlignment.Center
+                }
+            };
+            
             var color = new Rgba32(185,185,185,255);
             // Draw middle image info about score
             _image.Mutate(x => x
@@ -93,7 +102,7 @@ namespace ScoreImageGenerator.Generator.Core
                 .DrawText("Combo", font, color, new Point(538, 245))
                 .DrawText($"{_score.Combo}/{_score.Beatmap.MaxCombo}", font, Color.White, new Point(538, 284))
                 .DrawText("Mods", font, color, new Point(817, 245))
-                .DrawText($"{string.Join("", mods)}", font, Color.White, new Point(817, 284))
+                .DrawText(textGraphicsOptions, $"{string.Join("", mods)}", font, Color.White, new Point(843, 284))
 
                 // Draw hit circles accuracy
                 .DrawText("300", font, color, new Point(48, 350))
@@ -107,9 +116,9 @@ namespace ScoreImageGenerator.Generator.Core
                 .DrawText("Accuracy", font, color, new Point(402, 350))
                 .DrawText($"{Math.Round(_score.Accuracy, 2)}%", font, Color.White, new Point(408, 382))
                 .DrawText("Performance", font, color, new Point(626, 350))
-                .DrawText($"{Math.Round(_score.PP, 2)}pp", font, Color.White, new Point(645, 382))
+                .DrawText(textGraphicsOptions, $"{Math.Round(_score.PP, 2)}pp", font, Color.White, new Point(680, 382))
                 .DrawText("If FC", font, color, new Point(826, 350))
-                .DrawText($"{Math.Round(_score.Beatmap.PP, 2)}", font, Color.White, new Point(815, 382)));
+                .DrawText(textGraphicsOptions, $"{Math.Round(_score.Beatmap.PP, 2)}pp", font, Color.White, new Point(843, 382)));
         }
 
         public Image Generate()
