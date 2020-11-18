@@ -8,6 +8,7 @@ $(function(){
             
             let url = window.location.href + "/score?";
             
+            
             url += "username=" + encodeURIComponent(($("input[name=username]").val() || "tryonelove"));
             url += "&limit=1";
             url += "&mode=" + mode;
@@ -18,7 +19,7 @@ $(function(){
 
             let newImage = $("<img />", {
                     "src": url,
-                    "class": "preview lazy col-8"
+                    "class": "col-12 col-md-8 col-lg-4 preview lazy"
             });
             
             $("#previewarea").append(newImage);

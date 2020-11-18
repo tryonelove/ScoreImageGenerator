@@ -23,11 +23,16 @@ namespace ScoreImageGenerator.Generator
 
         public async Task CacheBeatmap()
         {
-            string beatmapPath = $"{_workingDirectory}/cache/{_beatmapId}.osu";
-            if (File.Exists(beatmapPath))
+            string beatmapPath = $"{_workingDirectory}/cache/";
+            if (!Directory.Exists(beatmapPath))
             {
+                Directory.CreateDirectory(beatmapPath);
                 return;
             }
+
+            beatmapPath += $"{_beatmapId}.osu";
+            if (File.Exists(beatmapPath))
+                return;
             
             var uri = new Uri ($"{BaseUrl}/osu/{_beatmapId}");
             var osuFileStream = await _client.GetStreamAsync(uri);
