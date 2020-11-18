@@ -123,7 +123,7 @@ namespace ScoreImageGenerator.Generator.Core
             await pp.CacheBeatmap();
             score.Beatmap.PP = (await pp.GetFcPp(score, mods, _mode)).Pp;
             score.PP = (await pp.GetScorePp(score, mods, _mode)).Pp;
-
+            
             ImageGenerator imageGenerator = _scoreType switch
             {
                 ScoreType.Best => new BestScoreImage(user, score),

@@ -68,9 +68,8 @@ namespace ScoreImageGenerator.Generator.API
             {
                 throw new EndOfStreamException($"Response stream is null.");
             }
-            
-            List<T> deserialized = await JsonSerializer.DeserializeAsync<List<T>>(responseStream);
-            return deserialized;
+
+            return await JsonSerializer.DeserializeAsync<List<T>>(responseStream);;
         }
     }
 }

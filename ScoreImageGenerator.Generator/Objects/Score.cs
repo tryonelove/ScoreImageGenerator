@@ -1,11 +1,12 @@
 using System;
+using System.Diagnostics;
 using ScoreImageGenerator.Generator.API.Responses;
 
 namespace ScoreImageGenerator.Generator.Objects
 {
     public class Score: ICloneable
     {
-        public Mode Mode { get ; set; }
+        public Mode Mode { get; set; }
 
         // Achieved score value
         public int ScoreValue { get; set;}
@@ -32,7 +33,19 @@ namespace ScoreImageGenerator.Generator.Objects
         public int CountKatu { get; set; }
 
         // Accuracy
-        public float Accuracy { get => CalculateAccuracy(); }
+        public double Accuracy {
+            get
+            {
+                return 100 * Mode switch
+                {
+                    Mode.Osu => CalculateStdAccuracy(),
+                    Mode.Taiko => CalculateTaikoAccuracy(),
+                    Mode.Catch => CalculateCtbAccuracy(),
+                    Mode.Mania => CalculateManiaAccuracy(),
+                    _ => 0
+                };
+            }
+        }
 
         // Achieved combo
         public int Combo { get; set;  }
@@ -73,12 +86,25 @@ namespace ScoreImageGenerator.Generator.Objects
             Beatmap = bmap;
         }
         
-        private float CalculateAccuracy()
+        private double CalculateStdAccuracy()
         {
-            float accuracy = (50f * Count50 + 100f * Count100 + 300f * Count300) / (300f *
-                (CountMiss + Count50 + Count100 + Count300));
-            accuracy *= 100;
-            return accuracy;
+            return (50f * Count50 + 100f * Count100 + 300f * Count300) / 
+                   (300f * (CountMiss + Count50 + Count100 + Count300));
+        }
+
+        private double CalculateTaikoAccuracy()
+        {
+            return (0.5 * Count100 + Count300) / (CountMiss + Count50 + Count100 + Count300);
+        }
+
+        private double CalculateCtbAccuracy()
+        {
+            return ((double)Count50 + Count100 + Count300) / (Count50 + Count100 + Count300 + CountMiss + CountKatu);
+        }
+
+        private double CalculateManiaAccuracy()
+        {
+            return (Count50 * 50f + Count100 * 100f + CountKatu * 200f + (CountGeki + Count300) * 300f) / ((Count50 + Count100 + Count300 + CountMiss + CountGeki + CountKatu) * 300f);
         }
 
         public object Clone()

@@ -14,7 +14,7 @@ namespace ScoreImageGenerator.Generator.API
         private readonly int _mode;
         private readonly int _limit;
         
-        public GetBeatmapsRequest(string username = "", int s = 0, int b = 0, Mode m = 0, int limit = 100)
+        public GetBeatmapsRequest(string username = "", int s = 0, int b = 0, Mode m = Mode.Osu, int limit = 100)
         {
             _username = username;
             _beatmapSetId = s;
@@ -22,15 +22,24 @@ namespace ScoreImageGenerator.Generator.API
             _mode = (int)m;
             _limit = limit;
         }
-        
+
         protected override NameValueCollection GetRequestParameters(NameValueCollection parameters)
         {
-            if (!string.IsNullOrEmpty(_username)) 
+            if (!string.IsNullOrEmpty(_username))
+            {
                 parameters["u"] = _username;
-            if (_beatmapSetId != 0) 
+            }
+
+            if (_beatmapSetId != 0)
+            {
                 parameters["s"] = _beatmapSetId.ToString();
-            if (_beatmapId != 0) 
+            }
+
+            if (_beatmapId != 0)
+            {
                 parameters["b"] = _beatmapId.ToString();
+            }
+
             parameters["m"] = _mode.ToString();
             parameters["limit"] = _limit.ToString();
             return parameters;

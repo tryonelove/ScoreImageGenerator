@@ -32,8 +32,10 @@ namespace ScoreImageGenerator.Generator
 
             beatmapPath += $"{_beatmapId}.osu";
             if (File.Exists(beatmapPath))
+            {
                 return;
-            
+            }
+
             var uri = new Uri ($"{BaseUrl}/osu/{_beatmapId}");
             var osuFileStream = await _client.GetStreamAsync(uri);
             await using var fs = new FileStream(beatmapPath, FileMode.CreateNew);
@@ -64,17 +66,15 @@ namespace ScoreImageGenerator.Generator
                     $"PerformanceCalculator.dll simulate {osuMode.ToString().ToLower()} {_workingDirectory}/cache/{_beatmapId}.osu -j "
             };
 
-            if (string.Compare(osuMode.ToString(), "mania", StringComparison.CurrentCulture) == 0)
-            {   
-                startInfo.Arguments += $"-s {score.ScoreValue} ";
-            }
-            else
+            if (osuMode == Mode.Mania)
             {
-                startInfo.Arguments += $"-a {score.Accuracy} ";
-                startInfo.Arguments += $"-c {score.Combo} ";
-                startInfo.Arguments += $"-X {score.CountMiss} ";
+                return startInfo;
             }
             
+            startInfo.Arguments += $"-a {score.Accuracy} ";
+            startInfo.Arguments += $"-c {score.Combo} ";
+            startInfo.Arguments += $"-X {score.CountMiss} ";
+
             return startInfo;
         }   
         
