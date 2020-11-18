@@ -23,7 +23,7 @@ namespace ScoreImageGenerator.Generator
             var url = $"https://assets.ppy.sh/beatmaps/{beatmapSetId}/covers/cover.jpg";
             var request =  (HttpWebRequest)WebRequest.Create(url);
             request.Accept = "image/jpeg";
-            var response = request.GetResponseAsync().Result;
+            var response = await request.GetResponseAsync();
             using (Image image = await Image.LoadAsync(response.GetResponseStream()))
             {
                 using (Image bg = image.Clone(x => x.ConvertToRounded(new Size(615, 170), 10)))
@@ -37,10 +37,21 @@ namespace ScoreImageGenerator.Generator
 
         public static async Task<byte[]> GetUserAvatar(string userId)
         {
-            var url = $"https://a.ppy.sh/{userId}";
-            var request = (HttpWebRequest) WebRequest.Create(url);
+            WebResponse response;
+            string url = $"https://a.ppy.sh/{userId}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Accept = "image/png";
-            var response = request.GetResponse();
+            try
+            {
+                response = await request.GetResponseAsync();
+            }
+            catch (WebException e)
+            {
+                url = $"https://a.ppy.sh/";
+                request = (HttpWebRequest)WebRequest.Create(url);
+                response = await request.GetResponseAsync();
+            }
+            
             using (Image image = await Image.LoadAsync(response.GetResponseStream()))
             {
                 using (Image avatar = image.Clone(x => x.ConvertToRounded(new Size(170, 170), 10)))

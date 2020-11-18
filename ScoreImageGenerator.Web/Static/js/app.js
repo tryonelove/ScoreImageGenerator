@@ -6,8 +6,7 @@ $(function(){
     function reloadSig() {
             console.log("Reloading sig.");
             
-            let url = window.location.href + "/score?";
-            
+            let url = "http://"+window.location.hostname + ":3228/score?";
             
             url += "username=" + encodeURIComponent(($("input[name=username]").val() || "tryonelove"));
             url += "&limit=1";

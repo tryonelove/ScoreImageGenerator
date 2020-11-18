@@ -26,7 +26,7 @@ namespace ScoreImageGenerator.Web.API.Controllers
         {
             _logger.LogInformation($"Username: {username} | Mode: {mode} | Limit: {limit} | Type: {type}");
             ImageHandler handler = new ImageHandler(username, limit, mode, type);
-            var image = await handler.GetImageAsync();
+            var image = await handler.GetByteImageAsync();
             return File(image, "image/png");
         }
     }
