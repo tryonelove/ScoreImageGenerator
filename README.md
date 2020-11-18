@@ -4,7 +4,7 @@
 
 Score Image Generator is a ASP.NET web application which generates images for osu! scores.
 
-https://tryonelove.codes/
+http://tryonelove.codes/
 
 ## Software Requirements Specifications
 [SRS](Documentation/Software%20Requirements%20Specifications.md)
