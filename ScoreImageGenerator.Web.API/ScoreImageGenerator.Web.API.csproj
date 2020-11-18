@@ -7,12 +7,9 @@
     <ItemGroup>
       <ProjectReference Include="..\ScoreImageGenerator.Generator\ScoreImageGenerator.Generator.csproj" />
     </ItemGroup>
-
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.deps.json" />
-      <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.runtimeconfig.dev.json" />
-      <_ContentIncludedByDefault Remove="PerformanceCalculator\PerformanceCalculator.runtimeconfig.json" />
+        <Content Include="PerformanceCalculator\**">
+            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+        </Content>
     </ItemGroup>
-
-
 </Project>
