@@ -68,10 +68,13 @@
 
 [Figma](https://www.figma.com/embed?embed_host=notion&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FEmIlOFGn6zH8dJEjiRnhLN%2FUntitled%3Fnode-id%3D1%253A4)
 
+![pic](./img/Home.png)
 
 ### Изображение с результатом
 
 [Figma](https://www.figma.com/embed?embed_host=notion&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FEmIlOFGn6zH8dJEjiRnhLN%2FUntitled%3Fnode-id%3D5%253A3)
+
+![pic](./img/ScoreTemplate.png)
 
 ### Модификации пользовательского интерфейса
 
@@ -114,11 +117,11 @@ API предназначено для тонкой настройки и в ко
 - `limit` - индекс возвращаемого результата.
 - `type` - тип возвращаемого результата (0 - последний, 1 - лучший).
 
-## **Response**
+## Response
 
 Mimetype: ***image/png***
 
-Возвращаемре значение: изображение, содержащее информацию о результате.
+Возвращаемое значение: изображение, содержащее информацию о результате.
 
 
 ## Спецификация взаимодействия со сторонниим сервисами
@@ -129,3 +132,7 @@ Mimetype: ***image/png***
 Для приложения необходимо взаимодействие с osu! API, спецификация которого представлена ниже.*
 
 ### https://osu.ppy.sh/api/
+
+## Диаграмма классов
+
+![img](Class%20Diagram.png)
