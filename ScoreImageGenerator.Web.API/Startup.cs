@@ -37,10 +37,6 @@ namespace ScoreImageGenerator.Web.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler();
-            }
 
             app.UseRouting();
 
