@@ -95,7 +95,7 @@
 
 ## Спецификация API
 
-### http://somerandomurl.com/
+### http://tryonelove.codes/
 
 ## Обзор
 
