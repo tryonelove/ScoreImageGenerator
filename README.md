@@ -2,7 +2,7 @@
 # Score Image Generator
 [![CodeFactor](https://www.codefactor.io/repository/github/tryonelove/scoreimagegenerator/badge)](https://www.codefactor.io/repository/github/tryonelove/scoreimagegenerator)
 
-Score Image Generator is a ASP.NET web application which generates images for osu! scores.
+Score Image Generator is an ASP.NET web application which generates images for osu! scores.
 
 http://tryonelove.codes/
 
