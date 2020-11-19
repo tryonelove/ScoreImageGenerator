@@ -13,13 +13,13 @@ namespace ScoreImageGenerator.Generator.Objects
         public int Rank { get; set; }
 
         // Performance points
-        public float PP { get; set; }
+        public double PP { get; set; }
 
         public User(GetUserResponse response)
         {
             Username = response.Username;
             Rank = int.Parse(response.PpRank);
-            PP = float.Parse(response.PpRaw);
+            PP = double.Parse(response.PpRaw);
         }
     }
 }
