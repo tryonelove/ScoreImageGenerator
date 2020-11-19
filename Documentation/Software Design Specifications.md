@@ -68,13 +68,13 @@
 
 [Figma](https://www.figma.com/embed?embed_host=notion&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FEmIlOFGn6zH8dJEjiRnhLN%2FUntitled%3Fnode-id%3D1%253A4)
 
-![pic](./img/Home.png)
+![img](img/Home.png)
 
 ### Изображение с результатом
 
 [Figma](https://www.figma.com/embed?embed_host=notion&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FEmIlOFGn6zH8dJEjiRnhLN%2FUntitled%3Fnode-id%3D5%253A3)
 
-![pic](./img/ScoreTemplate.png)
+![img](img/ScoreTemplate.png)
 
 ### Модификации пользовательского интерфейса
 
@@ -135,4 +135,10 @@ Mimetype: ***image/png***
 
 ## Диаграмма классов
 
-![img](Class%20Diagram.png)
+[Диаграмма классов](files/Class%20Diagram.pdf)
+
+## Диаграмма компонентов
+[Диаграмма компонентов](files/Component%20Diagram.pdf)
+
+## Use case
+[Use case](files/Use%20case.pdf)
