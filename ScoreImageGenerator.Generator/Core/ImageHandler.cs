@@ -36,7 +36,7 @@ namespace ScoreImageGenerator.Generator.Core
 
             GetUserBestResponse resp = userBestResponses[_limit-1];
 
-            GetBeatmapsRequest bmapRequest = new GetBeatmapsRequest(b: int.Parse(resp.BeatmapId), limit: 1, m: _mode);
+            GetBeatmapsRequest bmapRequest = new GetBeatmapsRequest(b: int.Parse(resp.BeatmapId), limit: 1);
             List<GetBeatmapsResponse> bmapResponse = await bmapRequest.PerformAsync();
             if (bmapResponse.Count == 0)
             {

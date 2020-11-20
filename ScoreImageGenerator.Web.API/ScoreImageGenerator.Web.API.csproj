@@ -7,9 +7,4 @@
     <ItemGroup>
       <ProjectReference Include="..\ScoreImageGenerator.Generator\ScoreImageGenerator.Generator.csproj" />
     </ItemGroup>
-    <ItemGroup>
-        <Content Include="PerformanceCalculator\**">
-            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-        </Content>
-    </ItemGroup>
 </Project>
