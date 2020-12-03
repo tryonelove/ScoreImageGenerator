@@ -70,7 +70,7 @@ namespace ScoreImageGenerator.Generator.Core
                 .DrawText($"AR: {Math.Round(_score.Beatmap.AR, 2)}", font, Color.White, new Point(410, 182))
                 .DrawText($"OD: {Math.Round(_score.Beatmap.OD, 2)}", font, Color.White, new Point(490, 182))
                 .DrawText($"HP: {Math.Round(_score.Beatmap.HP, 2)}", font, Color.White, new Point(570, 182))
-                .DrawText($"BPM: {Math.Round(_score.Beatmap.BPM, 2)}", font, Color.White, new Point(670, 182))
+                .DrawText($"BPM: {Math.Round(_score.Beatmap.BPM)}", font, Color.White, new Point(670, 182))
                 .DrawText($"Stars: {Math.Round(_score.Beatmap.Stars, 2)}", font, Color.White, new Point(790, 182)));
         }
 
