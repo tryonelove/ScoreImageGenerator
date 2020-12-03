@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <EnableDefaultContentItems>false</EnableDefaultContentItems>
+        <OutputType>Exe</OutputType>
     </PropertyGroup>
     <ItemGroup>
         <Content Include="Static\**">

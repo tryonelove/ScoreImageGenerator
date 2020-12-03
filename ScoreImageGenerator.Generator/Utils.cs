@@ -93,6 +93,24 @@ namespace ScoreImageGenerator.Generator
 
             return orderedMods;
         }
+
+        public static Color GetRankColor(string rank)
+        {
+            Color color = rank switch
+            {
+                "XH" => Color.LightGrey,
+                "X" => Color.Gold,
+                "SH" => Color.Silver,
+                "S" => Color.Yellow,
+                "A" => Color.SpringGreen,
+                "B" => Color.LightSkyBlue,
+                "C" => Color.Orchid,
+                "D" => Color.Tomato,
+                "F" => Color.DarkRed,
+            };
+
+            return color;
+        }
         
     }
 }
